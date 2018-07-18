@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class QuestionManager {
 
-	private static final String DATA_BASE = "kcv2.Question";
+	private static final String DATA_TABLE = "kcv2.Question";
 	private static final String ID_KEY = "id";
 	private static final String SET_KEY = "qSet";
 	private static final String SETID_KEY = "setId";
@@ -18,7 +18,13 @@ public class QuestionManager {
 	private static final String ANSWERSVAR_KEY = "answersVar";
 	private static final String ANSWERSCOR_KEY = "answersCor";
 
+	
 	protected Connection conn;
+	
+	public static QuestionManager qmSingleton = new QuestionManager();
+	
+	private ArrayList<StudentAnswerSheet>  answers = new ArrayList<>();
+	private String currentQuestionBundle;
 
 	public QuestionManager() {
 
@@ -32,15 +38,47 @@ public class QuestionManager {
 		}
 	}
 
+	public static QuestionManager getInstance(){
+		return qmSingleton;
+	}
+	
+	public void submitResults(ArrayList<StudentAnswerSheet> answers) {
+		
+		
+		
+	}
+	
+	/**
+	 * Generates a list of Questions to be displayed by ServerController (parsed and later HTML is made)
+	 * @param userCode
+	 * @return
+	 */
+	public ArrayList<Question> getQuestionBundle(String userCode) {
+		// TODO: add check if testing for this users already started
+		StudentAnswerSheet as = new StudentAnswerSheet();
+		as.setStudentCode(userCode);
+		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
+		answers.add(as);	
+		
+		ArrayList<Question> alq = new ArrayList<>();
+		alq = findQuestion(qmSingleton.currentQuestionBundle);
+		
+		
+		
+		return alq;
+	}
+	
 	//Returns Question object searched by SET and SETID
-	public Question findQuestion(String set, int setID) {
+	public ArrayList<Question> findQuestion(String currentQuestionBundle) {
+		
+		ArrayList<Question> alq = new ArrayList<>();
+		
 		// find student by id
-		String query = "SELECT * FROM " + DATA_BASE + " WHERE `" + SET_KEY + "` = ? AND `" + SETID_KEY + "` = ?";
+		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + SETID_KEY + "` = ?";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1, set);
-			preparedStatement.setInt(2, setID);
+			preparedStatement.setString(1, currentQuestionBundle);
 			ResultSet rs = preparedStatement.executeQuery();
 			conn.commit();
 			// if no such question
@@ -55,19 +93,19 @@ public class QuestionManager {
 				String questionTypeQ = rs.getString(QUESTIONTYPE_KEY);
 				ArrayList<String> answersVar = answersSpliter(rs.getString(ANSWERSVAR_KEY));
 				ArrayList<String> answersCor = answersSpliter(rs.getString(ANSWERSCOR_KEY));
-				return new Question(idQ, setQ, setIdQ, questionTextQ, questionTypeQ, answersVar, answersCor);
+				alq.add(new Question(idQ, setQ, setIdQ, questionTextQ, questionTypeQ, answersVar, answersCor));
 			}
 		} catch (SQLException e) {
 			// Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return alq;
 	}
 	
 	//Updates Question object in DB by ID
 	public boolean updateQuestion(Question question) {
 		boolean status = false;
-		String query = "UPDATE " + DATA_BASE + " SET `"+SET_KEY+"` = ?, `"+SETID_KEY+"` = ?,"
+		String query = "UPDATE " + DATA_TABLE + " SET `"+SET_KEY+"` = ?, `"+SETID_KEY+"` = ?,"
 				+ " `"+QUESTIONTEXT_KEY+"` = ?, `"+QUESTIONTYPE_KEY+"` = ?,"
 						+ " `"+ANSWERSVAR_KEY+"` = ?, `"+ANSWERSCOR_KEY+"` = ? WHERE `"+ID_KEY+"` = ?";
 
@@ -95,7 +133,7 @@ public class QuestionManager {
 	
 	//Deletes question form DB
 	public boolean deleteQuestion(int id) {
-		String query = "DELETE FROM " + DATA_BASE + " WHERE `"+ID_KEY+"` = ?";
+		String query = "DELETE FROM " + DATA_TABLE + " WHERE `"+ID_KEY+"` = ?";
 		
 		try {
 			PreparedStatement preparedStatement;
@@ -117,7 +155,7 @@ public class QuestionManager {
 	//Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {
 
-		String query = "INSERT INTO " + DATA_BASE + " ("+SET_KEY+", "+SETID_KEY+", "+QUESTIONTEXT_KEY+", "+QUESTIONTYPE_KEY+", "
+		String query = "INSERT INTO " + DATA_TABLE + " ("+SET_KEY+", "+SETID_KEY+", "+QUESTIONTEXT_KEY+", "+QUESTIONTYPE_KEY+", "
 				+ ""+ANSWERSVAR_KEY+", "+ANSWERSCOR_KEY+") VALUES (?,?,?,?,?,?)";
 		PreparedStatement preparedStatement;
 		try {
@@ -183,14 +221,14 @@ public class QuestionManager {
 
 		QuestionManager manager = new QuestionManager();
 
-		Question question = manager.findQuestion("SQL", 1);
+		ArrayList<Question> question = manager.findQuestion("SQL");
 
 		manager.deleteQuestion(15);
 
 
-			System.out.println(question.getAnswersVar());
+			//System.out.println(question.getAnswersVar());
 			
-			System.out.println(manager.answersGrouping(question.getAnswersVar()));	
+			//System.out.println(manager.answersGrouping(question.getAnswersVar()));	
 		
 	}
 }

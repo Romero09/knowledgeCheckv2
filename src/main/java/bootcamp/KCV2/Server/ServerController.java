@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bootcamp.KCV2.Question;
+import bootcamp.KCV2.QuestionManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,66 +19,60 @@ import java.util.Scanner;
 
 @Controller
 public class ServerController {
+	
+	
 
     // TODO: tricky part - organize sessioned access per "logged" user
     // TODO: add checks if "exam" is open or not
     // TODO: restrict passing the exam again for the same session
 
-    /**
-     * This is mock-up class to simulate incoming set of questons
-    * */
-    class Question {
-        int uniqueId;
-        String questionText;
-        String questionType;
-        ArrayList<String> answerOptions;
-
-        @Override
-        public String toString() {
-            return questionType + ": " + questionText + "\n\t" + answerOptions;
-        }
-    }
+    String userCode = "AAAA"; // TODO: for testing only. remove in production
+	
+//	/**
+//     * This is mock-up class to simulate incoming set of questons
+//    * */
+//    class Question {
+//        int uniqueId;
+//        String questionText;
+//        String questionType;
+//        ArrayList<String> answerOptions;
+//
+//        @Override
+//        public String toString() {
+//            return questionType + ": " + questionText + "\n\t" + answerOptions;
+//        }
+//    }
 
     // used to store question set for a particular exam
+//    ArrayList<Question> al = new ArrayList<>();
     ArrayList<Question> al = new ArrayList<>();
 
-    {
-        Question q1 = new Question();
-        q1.questionText = "How many bytes are used to store the Double variable?";
-        q1.questionType = "singlechoice";
-        q1.answerOptions = new ArrayList<String>();
-        q1.answerOptions.add("1 byte");
-        q1.answerOptions.add("2 bytes");
-        q1.answerOptions.add("I don't know");
-        System.err.println(q1);
-        al.add(q1);
-
-        Question q2 = new Question();
-        q2.questionText = "Which primitive type takes <b>2 bytes</b> in memory?";
-        q2.questionType = "multichoice";
-        q2.answerOptions = new ArrayList<String>();
-        q2.answerOptions.add("byte");
-        q2.answerOptions.add("float");
-        q2.answerOptions.add("Short");
-        q2.answerOptions.add("Int");
-        q2.answerOptions.add("char");
-        q2.answerOptions.add("Byte");
-        System.err.println(q2);
-        al.add(q2);
-
-    }
-    static String extractPostRequestBody(HttpServletRequest request) {
-        if ("POST".equalsIgnoreCase(request.getMethod())) {
-            Scanner s = null;
-            try {
-                s = new Scanner(request.getInputStream(), "UTF-8").useDelimiter("\\A");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return s.hasNext() ? s.next() : "";
-        }
-        return "";
-    }
+//    {
+//        Question q1 = new Question();
+//        q1.questionText = "How many bytes are used to store the Double variable?";
+//        q1.questionType = "singlechoice";
+//        q1.answerOptions = new ArrayList<String>();
+//        q1.answerOptions.add("1 byte");
+//        q1.answerOptions.add("2 bytes");
+//        q1.answerOptions.add("I don't know");
+//        System.err.println(q1);
+//        al.add(q1);
+//
+//        Question q2 = new Question();
+//        q2.questionText = "Which primitive type takes <b>2 bytes</b> in memory?";
+//        q2.questionType = "multichoice";
+//        q2.answerOptions = new ArrayList<String>();
+//        q2.answerOptions.add("byte");
+//        q2.answerOptions.add("float");
+//        q2.answerOptions.add("Short");
+//        q2.answerOptions.add("Int");
+//        q2.answerOptions.add("char");
+//        q2.answerOptions.add("Byte");
+//        System.err.println(q2);
+//        al.add(q2);
+//
+//    }
+    
     /**
      * Method is used to parse and process received answers
      *
@@ -98,11 +95,17 @@ public class ServerController {
 
         // TODO: submit answers and get the result
 //        result = submitResults(answers);
+    	
+    	// 1, boolean, 321,
+    	
 
         // TODO: output result as HTML table
 
         return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results has been submitted\"</a>";
     }
+    
+    
+    
     @RequestMapping(value = "/", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     // This method should work without declared name parameter, request and
@@ -122,7 +125,7 @@ public class ServerController {
         sb.append("<form method=\"post\" action=\"/sendAnswers\">\n");
 
         // get questions and answer options from the ServerManager class
-        // al = ServerManager.getExaminationSet();
+        al = QuestionManager.getInstance().getQuestionBundle(userCode);
 
         // TODO: add countdowntimer
 
@@ -135,32 +138,30 @@ public class ServerController {
 
 
             sb.append("<hr>");
-            sb.append(q.questionText+"\n<p>");
-            switch (q.questionType) {
-                case "singlechoice":
-                    // make radio buttons
-                    for (String answer: q.answerOptions) {
-                        sb.append("<input type=\"radio\" name=\"q"+al.indexOf(q)
-                                +" value=\"\">")
-                                .append(answer)
-                                .append("<br>\n");
-                    }
-                    break;
-                case "multichoice":
-                    // make checkboxes
-                    for (String answer: q.answerOptions) {
-                        sb.append("<input type=\"checkbox\" name=\"q"+al.indexOf(q)
-                                +"\" value=\"\">")
-                                .append(answer)
-                                .append("<br>\n");
-                    }
-                    break;
-                case "open":
-//                     <input type="text" name="usrname"><br>
-                    break;
-                case "sequence":
-//                     <input type="text" name="usrname"><br>
-                    break;
+            sb.append(q.getQuestionText()+"\n<p>");
+            for (String answer: q.getAnswersVar()) {
+	            switch (q.getQuestionType()) {
+	                case "singlechoice":
+	                    // make radio buttons
+	                        sb.append("<input type=\"radio\" name=\"q"+al.indexOf(q)
+	                                +" value=\"\">")
+	                                .append(answer)
+	                                .append("<br>\n");
+	                    break;
+	                case "multichoice":
+	                    // make check boxes
+	                        sb.append("<input type=\"checkbox\" name=\"q"+al.indexOf(q)
+	                                +"\" value=\"\">")
+	                                .append(answer)
+	                                .append("<br>\n");
+	                    break;
+	                case "open":
+	//                     <input type="text" name="usrname"><br>
+	                    break;
+	                case "sequence":
+	//                     <input type="text" name="usrname"><br>
+	                    break;
+	            }
             }
 
         }
