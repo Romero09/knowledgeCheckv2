@@ -9,6 +9,8 @@
 
 	<name>knowledgeCheckV2</name>
 	<url>http://maven.apache.org</url>
+	
+	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,6 +18,16 @@
 
 	<dependencies>
 
+<!--   <dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+</dependency>
+ 
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+</dependency>
+-->
 		<!-- JDBC exercise using MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>

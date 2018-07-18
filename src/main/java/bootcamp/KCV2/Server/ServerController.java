@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bootcamp.KCV2.Question;
 import bootcamp.KCV2.QuestionManager;
+import bootcamp.KCV2.StudentAnswerSheet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -22,57 +26,16 @@ public class ServerController {
 	
 	
 
-    // TODO: tricky part - organize sessioned access per "logged" user
+    private static final String MULTI_FLAG = "_multi";
+
+	// TODO: tricky part - organize sessioned access per "logged" user
     // TODO: add checks if "exam" is open or not
     // TODO: restrict passing the exam again for the same session
 
     String userCode = "AAAA"; // TODO: for testing only. remove in production
 	
-//	/**
-//     * This is mock-up class to simulate incoming set of questons
-//    * */
-//    class Question {
-//        int uniqueId;
-//        String questionText;
-//        String questionType;
-//        ArrayList<String> answerOptions;
-//
-//        @Override
-//        public String toString() {
-//            return questionType + ": " + questionText + "\n\t" + answerOptions;
-//        }
-//    }
-
-    // used to store question set for a particular exam
-//    ArrayList<Question> al = new ArrayList<>();
     ArrayList<Question> al = new ArrayList<>();
 
-//    {
-//        Question q1 = new Question();
-//        q1.questionText = "How many bytes are used to store the Double variable?";
-//        q1.questionType = "singlechoice";
-//        q1.answerOptions = new ArrayList<String>();
-//        q1.answerOptions.add("1 byte");
-//        q1.answerOptions.add("2 bytes");
-//        q1.answerOptions.add("I don't know");
-//        System.err.println(q1);
-//        al.add(q1);
-//
-//        Question q2 = new Question();
-//        q2.questionText = "Which primitive type takes <b>2 bytes</b> in memory?";
-//        q2.questionType = "multichoice";
-//        q2.answerOptions = new ArrayList<String>();
-//        q2.answerOptions.add("byte");
-//        q2.answerOptions.add("float");
-//        q2.answerOptions.add("Short");
-//        q2.answerOptions.add("Int");
-//        q2.answerOptions.add("char");
-//        q2.answerOptions.add("Byte");
-//        System.err.println(q2);
-//        al.add(q2);
-//
-//    }
-    
     /**
      * Method is used to parse and process received answers
      *
@@ -83,20 +46,42 @@ public class ServerController {
      * 4. displays result to the student
      *
      * */
-    @RequestMapping(value = "/sendAnswers", produces = "text/html;charset=UTF-8", method = RequestMethod.POST)
+    @RequestMapping(value = "/sendAnswers", produces = "text/html;chearset=UTF-8", method = RequestMethod.POST)
     @ResponseBody
     // TODO redesign method as POST to hide answer string and allow variable number of parameters
-    public String sendAnswers(@RequestParam(value = "q0", required = false) String a0,
-                              @RequestParam(value = "q1", required = false) String a1,
-                              HttpServletRequest request,
-                              HttpServletResponse response) {
+    public String sendAnswers(@RequestParam(value = "userCode", required = true) String userCode,
+					    		HttpServletRequest request,
+                                HttpServletResponse response) {
 
-        // TODO: build HashMap<Integer, Integer> with answers
-
-        // TODO: submit answers and get the result
-//        result = submitResults(answers);
+    	System.err.println(userCode);
+    	ArrayList<String> currentAnswers = new ArrayList<>();
     	
-    	// 1, boolean, 321,
+    	// TODO: build HashMap<Integer, Integer> with answers
+    	QuestionManager qm = QuestionManager.getInstance();
+    	Enumeration<String> parNames = request.getParameterNames();
+    	 
+    	while(parNames.hasMoreElements()) {
+    		String elementName = parNames.nextElement();
+    		if(elementName.contains(MULTI_FLAG)){
+    			String[] multiArray = request.getParameterValues(elementName);
+    			String multiString = "";
+    			for (int i = 0; i < multiArray.length; i++) {
+					if(i == multiArray.length - 1){
+						multiString = multiString + multiArray[i];
+					} else {
+					multiString = multiString + multiArray[i] +"; ";
+					}
+				}
+    			currentAnswers.add(multiString);
+    		} else {
+    		String value = request.getParameter(elementName);
+    		currentAnswers.add(value);
+    		}
+    	}
+    	
+    	
+        // TODO: submit answers and get the result
+    	qm.submitResults(userCode, currentAnswers);
     	
 
         // TODO: output result as HTML table
@@ -113,19 +98,26 @@ public class ServerController {
     // but it shows, how passed request and returned response can be used inside
     // method
     public String homePage(@RequestParam(value = "name", required = false) String name, HttpServletRequest request,
-                           HttpServletResponse response) {
+                           HttpServletResponse response) throws IOException {
         StringBuilder sb = new StringBuilder();
 
+       // response.sendRedirect("/test");
+        QuestionManager qm = QuestionManager.getInstance();
+        
+        
         // TODO: add id's for html elements and make it "sexy" with BootStrap.css
         sb.append("<link rel=\"stylesheet\" " +
                 "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css " +
                 "\"integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" " +
                 "crossorigin=\"anonymous\">\n");
-        sb.append("<h1>KCv2 SERVER </h1>\n");
+        sb.append("<h1>"+qm.getCurrentQuestionBundle()+"</h1>\n");
         sb.append("<form method=\"post\" action=\"/sendAnswers\">\n");
 
+        // add userCode tag to the answers
+        sb.append("<input name=\"userCode\" type=\"hidden\" value=\""+userCode+ "\">");
+        
         // get questions and answer options from the ServerManager class
-        al = QuestionManager.getInstance().getQuestionBundle(userCode);
+        al = qm.getQuestionBundle(userCode);
 
         // TODO: add countdowntimer
 
@@ -144,14 +136,14 @@ public class ServerController {
 	                case "singlechoice":
 	                    // make radio buttons
 	                        sb.append("<input type=\"radio\" name=\"q"+al.indexOf(q)
-	                                +" value=\"\">")
+	                                +"\" value=\""+answer+"\">")
 	                                .append(answer)
 	                                .append("<br>\n");
 	                    break;
 	                case "multichoice":
 	                    // make check boxes
 	                        sb.append("<input type=\"checkbox\" name=\"q"+al.indexOf(q)
-	                                +"\" value=\"\">")
+	                        			+MULTI_FLAG+"\""+" value=\""+answer+"\">")
 	                                .append(answer)
 	                                .append("<br>\n");
 	                    break;

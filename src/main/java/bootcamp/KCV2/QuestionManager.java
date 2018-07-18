@@ -11,12 +11,13 @@ public class QuestionManager {
 
 	private static final String DATA_TABLE = "kcv2.Question";
 	private static final String ID_KEY = "id";
-	private static final String SET_KEY = "qSet";
-	private static final String SETID_KEY = "setId";
-	private static final String QUESTIONTEXT_KEY = "questionText";
-	private static final String QUESTIONTYPE_KEY = "questionType";
-	private static final String ANSWERSVAR_KEY = "answersVar";
-	private static final String ANSWERSCOR_KEY = "answersCor";
+	private static final String QUESTION_BUNDULE_KEY = "questionBundule";
+	private static final String QUESTION_ID_KEY = "questionId";
+	private static final String QUESTION_TEXT_KEY = "questionText";
+	private static final String QUESTION_TYPE_KEY = "questionType";
+	private static final String ANSWERS_VAR_KEY = "answersVar";
+	private static final String ANSWERS_COR_KEY = "answersCor";
+	private static final String SEPARATOR = "; ";
 
 	
 	protected Connection conn;
@@ -24,7 +25,15 @@ public class QuestionManager {
 	public static QuestionManager qmSingleton = new QuestionManager();
 	
 	private ArrayList<StudentAnswerSheet>  answers = new ArrayList<>();
-	private String currentQuestionBundle;
+	private String currentQuestionBundle = "SQL";
+
+	
+	/**
+	 * @return the currentQuestionBundle
+	 */
+	public String getCurrentQuestionBundle() {
+		return currentQuestionBundle;
+	}
 
 	public QuestionManager() {
 
@@ -42,10 +51,14 @@ public class QuestionManager {
 		return qmSingleton;
 	}
 	
-	public void submitResults(ArrayList<StudentAnswerSheet> answers) {
+	public void submitResults(String userCode, ArrayList<String> answers) {
 		
+		System.err.println("QuestionManager: Submitted results:\n\t"+"User="+userCode+" Answers="+answers);
 		
+		//answers.get(userCode)
 		
+		// parse this sheet
+//		return percentange;
 	}
 	
 	/**
@@ -55,26 +68,33 @@ public class QuestionManager {
 	 */
 	public ArrayList<Question> getQuestionBundle(String userCode) {
 		// TODO: add check if testing for this users already started
+//		for (StudentAnswerSheet studentAnswerSheet : answers) {
+//			if (studentAnswerSheet.getStudentCode().equals(userCode)) {
+//				System.err.println("User has already participated.");
+//				return null;
+//			}
+//		}
 		StudentAnswerSheet as = new StudentAnswerSheet();
 		as.setStudentCode(userCode);
 		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
 		answers.add(as);	
 		
 		ArrayList<Question> alq = new ArrayList<>();
-		alq = findQuestion(qmSingleton.currentQuestionBundle);
-		
+		alq = pullQuestionBundle(qmSingleton.currentQuestionBundle);
 		
 		
 		return alq;
 	}
 	
-	//Returns Question object searched by SET and SETID
-	public ArrayList<Question> findQuestion(String currentQuestionBundle) {
+//	public void exportToFile() {
+//		ArrayList<Question> alq = pullQuestionBundle("%%");
+//	}
+	
+	//Returns Question object searched by SET 
+	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
 		
-		ArrayList<Question> alq = new ArrayList<>();
-		
-		// find student by id
-		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + SETID_KEY + "` = ?";
+		ArrayList<Question> alq = new ArrayList<>(); 
+		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + QUESTION_BUNDULE_KEY + "` = ?";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
@@ -87,12 +107,12 @@ public class QuestionManager {
 			}
 			while (rs.next()) {
 				int idQ = rs.getInt(ID_KEY);
-				String setQ = rs.getString(SET_KEY);
-				int setIdQ = rs.getInt(SETID_KEY);
-				String questionTextQ = rs.getString(QUESTIONTEXT_KEY);
-				String questionTypeQ = rs.getString(QUESTIONTYPE_KEY);
-				ArrayList<String> answersVar = answersSpliter(rs.getString(ANSWERSVAR_KEY));
-				ArrayList<String> answersCor = answersSpliter(rs.getString(ANSWERSCOR_KEY));
+				String setQ = rs.getString(QUESTION_BUNDULE_KEY);
+				int setIdQ = rs.getInt(QUESTION_ID_KEY);
+				String questionTextQ = rs.getString(QUESTION_TEXT_KEY);
+				String questionTypeQ = rs.getString(QUESTION_TYPE_KEY);
+				ArrayList<String> answersVar = answersSpliter(rs.getString(ANSWERS_VAR_KEY));
+				ArrayList<String> answersCor = answersSpliter(rs.getString(ANSWERS_COR_KEY));
 				alq.add(new Question(idQ, setQ, setIdQ, questionTextQ, questionTypeQ, answersVar, answersCor));
 			}
 		} catch (SQLException e) {
@@ -105,9 +125,9 @@ public class QuestionManager {
 	//Updates Question object in DB by ID
 	public boolean updateQuestion(Question question) {
 		boolean status = false;
-		String query = "UPDATE " + DATA_TABLE + " SET `"+SET_KEY+"` = ?, `"+SETID_KEY+"` = ?,"
-				+ " `"+QUESTIONTEXT_KEY+"` = ?, `"+QUESTIONTYPE_KEY+"` = ?,"
-						+ " `"+ANSWERSVAR_KEY+"` = ?, `"+ANSWERSCOR_KEY+"` = ? WHERE `"+ID_KEY+"` = ?";
+		String query = "UPDATE " + DATA_TABLE + " SET `"+QUESTION_BUNDULE_KEY+"` = ?, `"+QUESTION_ID_KEY+"` = ?,"
+				+ " `"+QUESTION_TEXT_KEY+"` = ?, `"+QUESTION_TYPE_KEY+"` = ?,"
+						+ " `"+ANSWERS_VAR_KEY+"` = ?, `"+ANSWERS_COR_KEY+"` = ? WHERE `"+ID_KEY+"` = ?";
 
 		PreparedStatement preparedStatement;
 		try {
@@ -155,8 +175,8 @@ public class QuestionManager {
 	//Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {
 
-		String query = "INSERT INTO " + DATA_TABLE + " ("+SET_KEY+", "+SETID_KEY+", "+QUESTIONTEXT_KEY+", "+QUESTIONTYPE_KEY+", "
-				+ ""+ANSWERSVAR_KEY+", "+ANSWERSCOR_KEY+") VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO " + DATA_TABLE + " ("+QUESTION_BUNDULE_KEY+", "+QUESTION_ID_KEY+", "+QUESTION_TEXT_KEY+", "+QUESTION_TYPE_KEY+", "
+				+ ""+ANSWERS_VAR_KEY+", "+ANSWERS_COR_KEY+") VALUES (?,?,?,?,?,?)";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
@@ -191,7 +211,7 @@ public class QuestionManager {
 				answers = answers + a;
 				return answers;
 			  }
-			answers = answers + a + "; ";
+			answers = answers + a + SEPARATOR;
 		}
 		return answers;
 	}
@@ -203,7 +223,7 @@ public class QuestionManager {
 			return null;
 		}
 		if (answers.contains(";")) {
-			String[] parts = answers.split("; ");
+			String[] parts = answers.split(SEPARATOR);
 			for (int i = 0; i < parts.length; i++) {
 				answersList.add(parts[i]);
 			}
@@ -221,12 +241,11 @@ public class QuestionManager {
 
 		QuestionManager manager = new QuestionManager();
 
-		ArrayList<Question> question = manager.findQuestion("SQL");
-
-		manager.deleteQuestion(15);
+		ArrayList<Question> question = manager.pullQuestionBundle("SQL");
 
 
-			//System.out.println(question.getAnswersVar());
+
+			System.out.println(question);
 			
 			//System.out.println(manager.answersGrouping(question.getAnswersVar()));	
 		
