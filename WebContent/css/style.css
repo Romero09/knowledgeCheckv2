@@ -1,0 +1,63 @@
+
+#login-box {
+    width:620px;
+    height: 420px;
+    padding: 58px 76px 0 76px;
+    color: #000000;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-top: -70px;
+    background: url(ACCENTURE.png) no-repeat left top;
+}
+
+#login-box h2 {
+    padding:0;
+    margin:0;
+    color: #000000;
+    font: bold 44px Arial, Helvetica;
+}
+ 
+ #table-box {
+    width:620px;
+    height: 420px;
+    padding: 58px 76px 0 76px;
+    color: #000000;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-top: -70px;
+    background: url(ACCENTURE.png) no-repeat left top;
+ }
+
+  #logout-box {
+    width:620px;
+    height: 420px;
+    padding: 58px 76px 0 76px;
+    color: #000000;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-top: -70px;
+    background: url(ACCENTURE.png) no-repeat left top;
+  }
+ 
+ #error-box {
+    width:620px;
+    height: 420px;
+    padding: 58px 76px 0 76px;
+    color: #000000;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-top: -70px;
+    background: url(ACCENTURE.png) no-repeat left top;
+  }
+
+#home-box {
+    width:620px;
+    height: 420px;
+    padding: 58px 76px 0 76px;
+    color: #000000;
+    font: 12px Arial, Helvetica, sans-serif;
+    margin-top: -70px;
+    background: url(ACCENTURE.png) no-repeat left top;
+  }
+ 
+ 
+
+ 
+
+}
