@@ -13,7 +13,6 @@ public class Student {
 		this.code = code;
 		this.name = name;
 		this.surname = surname;
-		
 	}
 
 	/**
@@ -71,7 +70,4 @@ public class Student {
 	public void setSurename(String surename) {
 		this.surname = surename;
 	}
-	
-	
-
 }

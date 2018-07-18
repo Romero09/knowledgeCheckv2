@@ -114,35 +114,20 @@ public class QuestionManager {
 		return false;
 	}
 	
-	//Inserts Question in DB if ID is uniq.
+	//Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {
 
-		String query = "SELECT * FROM " + DATA_BASE + " WHERE `"+ID_KEY+"` = ?";
+		String query = "INSERT INTO " + DATA_BASE + " ("+SET_KEY+", "+SETID_KEY+", "+QUESTIONTEXT_KEY+", "+QUESTIONTYPE_KEY+", "
+				+ ""+ANSWERSVAR_KEY+", "+ANSWERSCOR_KEY+") VALUES (?,?,?,?,?,?)";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setInt(1, question.getId());
-			ResultSet rs = preparedStatement.executeQuery();
-			conn.commit();
-			if (rs.isBeforeFirst()) {
-				System.out.println("Such ID already exists");
-				return false;
-			}
-		} catch (SQLException e) {
-			// Auto-generated catch block
-			e.printStackTrace();
-		}
-		query = "INSERT INTO " + DATA_BASE + " ("+ID_KEY+", "+SET_KEY+", "+SETID_KEY+", "+QUESTIONTEXT_KEY+", "+QUESTIONTYPE_KEY+", "
-				+ ""+ANSWERSVAR_KEY+", "+ANSWERSCOR_KEY+") VALUES (?,?,?,?,?,?,?)";
-		try {
-			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setInt(1, question.getId());
-			preparedStatement.setString(2, question.getSet());
-			preparedStatement.setInt(3, question.getSetId());
-			preparedStatement.setString(4, question.getQuestionText());
-			preparedStatement.setString(5, question.getQuestionType());
-			preparedStatement.setString(6, answersGrouping(question.getAnswersVar()));
-			preparedStatement.setString(7, answersGrouping(question.getCorrectAnswers()));
+			preparedStatement.setString(1, question.getSet());
+			preparedStatement.setInt(2, question.getSetId());
+			preparedStatement.setString(3, question.getQuestionText());
+			preparedStatement.setString(4, question.getQuestionType());
+			preparedStatement.setString(5, answersGrouping(question.getAnswersVar()));
+			preparedStatement.setString(6, answersGrouping(question.getCorrectAnswers()));
 			int insertedRow = preparedStatement.executeUpdate();
 			conn.commit();
 			if (insertedRow > 0) {
@@ -199,9 +184,8 @@ public class QuestionManager {
 		QuestionManager manager = new QuestionManager();
 
 		Question question = manager.findQuestion("SQL", 1);
-		question.setQuestionText("surname22222");
-		question.setId(5);
-		manager.insertQuestion(question);
+
+		manager.deleteQuestion(15);
 
 
 			System.out.println(question.getAnswersVar());
