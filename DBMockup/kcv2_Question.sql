@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `Question`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `qSet` varchar(45) NOT NULL,
-  `setId` int(11) NOT NULL,
+  `questionBundule` varchar(45) NOT NULL,
+  `questionId` int(11) NOT NULL,
   `questionText` varchar(4500) NOT NULL,
   `questionType` varchar(45) NOT NULL,
   `answersVar` varchar(4500) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `Question` (
 
 LOCK TABLES `Question` WRITE;
 /*!40000 ALTER TABLE `Question` DISABLE KEYS */;
-INSERT INTO `Question` VALUES (1,'intro',1,'name','free','',''),(2,'intro',2,'surname22222','free',NULL,NULL),(3,'SQL',1,'surname22222','single','table; column; array','table'),(5,'SQL',1,'surname22222','single','table; column; array','table');
+INSERT INTO `Question` VALUES (1,'SQL',1,'name','open','','Pavel'),(2,'SQL',2,'Write in correct sequence a)dog b)cat c)bird','sequence','','a; c'),(3,'SQL',3,'surname22222','singlechoice','table; column; array','array'),(5,'SQL',4,'surname22222','multichoice','table; column; array','table; array');
 /*!40000 ALTER TABLE `Question` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-17 16:55:17
+-- Dump completed on 2018-07-19 22:05:39

@@ -16,30 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Student`
+-- Table structure for table `Result`
 --
 
-DROP TABLE IF EXISTS `Student`;
+DROP TABLE IF EXISTS `Result`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Student` (
+CREATE TABLE `Result` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(4) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `surname` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `code_UNIQUE` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `userCode` varchar(4) NOT NULL,
+  `questionBundule` varchar(45) NOT NULL,
+  `questionId` int(11) NOT NULL,
+  `answer` varchar(45) NOT NULL,
+  `isCorrect` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Student`
+-- Dumping data for table `Result`
 --
 
-LOCK TABLES `Student` WRITE;
-/*!40000 ALTER TABLE `Student` DISABLE KEYS */;
-INSERT INTO `Student` VALUES (1,'pxzX','Pavel','Vetlugins');
-/*!40000 ALTER TABLE `Student` ENABLE KEYS */;
+LOCK TABLES `Result` WRITE;
+/*!40000 ALTER TABLE `Result` DISABLE KEYS */;
+INSERT INTO `Result` VALUES (1,'AAAA','SQL',1,'Pavel',1),(2,'AAAA','SQL',2,'a; c',1),(3,'AAAA','SQL',3,'array',1),(4,'AAAA','SQL',4,'table; array',1),(5,'AAAA','SQL',1,'',0),(6,'AAAA','SQL',2,'',0),(7,'AAAA','SQL',3,'',0),(8,'AAAA','SQL',4,'',0),(9,'AAAA','SQL',1,'Pavel',1),(10,'AAAA','SQL',2,'',0),(11,'AAAA','SQL',3,'',0),(12,'AAAA','SQL',4,'',0);
+/*!40000 ALTER TABLE `Result` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

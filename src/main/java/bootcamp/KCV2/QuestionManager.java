@@ -19,15 +19,13 @@ public class QuestionManager {
 	private static final String ANSWERS_COR_KEY = "answersCor";
 	private static final String SEPARATOR = "; ";
 
-	
 	protected Connection conn;
-	
+
 	public static QuestionManager qmSingleton = new QuestionManager();
-	
-	private ArrayList<StudentAnswerSheet>  answers = new ArrayList<>();
+
+	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle = "SQL";
 
-	
 	/**
 	 * @return the currentQuestionBundle
 	 */
@@ -47,53 +45,62 @@ public class QuestionManager {
 		}
 	}
 
-	public static QuestionManager getInstance(){
+	public static QuestionManager getInstance() {
 		return qmSingleton;
 	}
-	
-	public void submitResults(String userCode, ArrayList<String> answers) {
-		
-		System.err.println("QuestionManager: Submitted results:\n\t"+"User="+userCode+" Answers="+answers);
-		
-		//answers.get(userCode)
-		
-		// parse this sheet
-//		return percentange;
-	}
-	
+
 	/**
-	 * Generates a list of Questions to be displayed by ServerController (parsed and later HTML is made)
+	 * 
+	 * @param userCode
+	 * @param answers
+	 *            - Answers list that was made by student
+	 * @return
+	 */
+	public void submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+
+		answers.remove(0);
+
+		System.err.println("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
+
+		restultsCheck(userCode, answers, alQuestions);
+
+		// answers.get(userCode)
+
+		// parse this sheet
+		// return percentange;
+	}
+
+	/**
+	 * Generates a list of Questions to be displayed by ServerController (parsed
+	 * and later HTML is made)
+	 * 
 	 * @param userCode
 	 * @return
 	 */
 	public ArrayList<Question> getQuestionBundle(String userCode) {
 		// TODO: add check if testing for this users already started
-//		for (StudentAnswerSheet studentAnswerSheet : answers) {
-//			if (studentAnswerSheet.getStudentCode().equals(userCode)) {
-//				System.err.println("User has already participated.");
-//				return null;
-//			}
-//		}
+		// for (StudentAnswerSheet studentAnswerSheet : answers) {
+		// if (studentAnswerSheet.getStudentCode().equals(userCode)) {
+		// System.err.println("User has already participated.");
+		// return null;
+		// }
+		// }
 		StudentAnswerSheet as = new StudentAnswerSheet();
 		as.setStudentCode(userCode);
 		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
-		answers.add(as);	
-		
+		answers.add(as);
+
 		ArrayList<Question> alq = new ArrayList<>();
 		alq = pullQuestionBundle(qmSingleton.currentQuestionBundle);
-		
-		
+
 		return alq;
 	}
-	
-//	public void exportToFile() {
-//		ArrayList<Question> alq = pullQuestionBundle("%%");
-//	}
-	
-	//Returns Question object searched by SET 
+
+
+	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
-		
-		ArrayList<Question> alq = new ArrayList<>(); 
+
+		ArrayList<Question> alq = new ArrayList<>();
 		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + QUESTION_BUNDULE_KEY + "` = ?";
 		PreparedStatement preparedStatement;
 		try {
@@ -121,13 +128,13 @@ public class QuestionManager {
 		}
 		return alq;
 	}
-	
-	//Updates Question object in DB by ID
+
+	// Updates Question object in DB by ID
 	public boolean updateQuestion(Question question) {
 		boolean status = false;
-		String query = "UPDATE " + DATA_TABLE + " SET `"+QUESTION_BUNDULE_KEY+"` = ?, `"+QUESTION_ID_KEY+"` = ?,"
-				+ " `"+QUESTION_TEXT_KEY+"` = ?, `"+QUESTION_TYPE_KEY+"` = ?,"
-						+ " `"+ANSWERS_VAR_KEY+"` = ?, `"+ANSWERS_COR_KEY+"` = ? WHERE `"+ID_KEY+"` = ?";
+		String query = "UPDATE " + DATA_TABLE + " SET `" + QUESTION_BUNDULE_KEY + "` = ?, `" + QUESTION_ID_KEY
+				+ "` = ?," + " `" + QUESTION_TEXT_KEY + "` = ?, `" + QUESTION_TYPE_KEY + "` = ?," + " `"
+				+ ANSWERS_VAR_KEY + "` = ?, `" + ANSWERS_COR_KEY + "` = ? WHERE `" + ID_KEY + "` = ?";
 
 		PreparedStatement preparedStatement;
 		try {
@@ -150,11 +157,11 @@ public class QuestionManager {
 		}
 		return status;
 	}
-	
-	//Deletes question form DB
+
+	// Deletes question form DB
 	public boolean deleteQuestion(int id) {
-		String query = "DELETE FROM " + DATA_TABLE + " WHERE `"+ID_KEY+"` = ?";
-		
+		String query = "DELETE FROM " + DATA_TABLE + " WHERE `" + ID_KEY + "` = ?";
+
 		try {
 			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(query);
@@ -171,12 +178,13 @@ public class QuestionManager {
 		}
 		return false;
 	}
-	
-	//Inserts new Question in DB with new ID(objects ID is ignored)
+
+	// Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {
 
-		String query = "INSERT INTO " + DATA_TABLE + " ("+QUESTION_BUNDULE_KEY+", "+QUESTION_ID_KEY+", "+QUESTION_TEXT_KEY+", "+QUESTION_TYPE_KEY+", "
-				+ ""+ANSWERS_VAR_KEY+", "+ANSWERS_COR_KEY+") VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO " + DATA_TABLE + " (" + QUESTION_BUNDULE_KEY + ", " + QUESTION_ID_KEY + ", "
+				+ QUESTION_TEXT_KEY + ", " + QUESTION_TYPE_KEY + ", " + "" + ANSWERS_VAR_KEY + ", " + ANSWERS_COR_KEY
+				+ ") VALUES (?,?,?,?,?,?)";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
@@ -197,29 +205,27 @@ public class QuestionManager {
 		}
 		return false;
 	}
-	
-	
-	
-	//Grouping from array to String to store in DB separating it with delimiter
-	public String answersGrouping(ArrayList<String> answersList ){
-		if(answersList == null){
+
+	// Grouping from array to String to store in DB separating it with delimiter
+	public String answersGrouping(ArrayList<String> answersList) {
+		if (answersList == null) {
 			return null;
 		}
 		String answers = "";
-		for(String a : answersList){
-			if(a == answersList.get(answersList.size() - 1)) {
+		for (String a : answersList) {
+			if (a == answersList.get(answersList.size() - 1)) {
 				answers = answers + a;
 				return answers;
-			  }
+			}
 			answers = answers + a + SEPARATOR;
 		}
 		return answers;
 	}
-	
-	//Splits answers by selected delimiter for answers var and correct answers.
+
+	// Splits answers by selected delimiter for answers var and correct answers.
 	public ArrayList<String> answersSpliter(String answers) {
 		ArrayList<String> answersList = new ArrayList<String>();
-		if(answers == null){
+		if (answers == null) {
 			return null;
 		}
 		if (answers.contains(";")) {
@@ -234,20 +240,31 @@ public class QuestionManager {
 		}
 	}
 
-	
-	
-	
-	public static void main(String args[]) {
+	public float restultsCheck(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 
-		QuestionManager manager = new QuestionManager();
+		ArrayList<Integer> correctAnswers = new ArrayList<>();
+		int totalQuestions = 0;
+		int correctAnswersCount = 0;
 
-		ArrayList<Question> question = manager.pullQuestionBundle("SQL");
+		if (answers.size() != alQuestions.size()) {
+			System.err.println("Something went wrong Answers array size doesent match Question array size");
+		}
 
+		for (int i = 0; i < answers.size(); i++) {
+			totalQuestions++;
 
-
-			System.out.println(question);
-			
-			//System.out.println(manager.answersGrouping(question.getAnswersVar()));	
+			if (answers.get(i).equals(answersGrouping(alQuestions.get(i).getCorrectAnswers()))) {
+				correctAnswers.add(1); // Correct - True
+				correctAnswersCount++;
+			} else {
+				correctAnswers.add(0); // Incorrect - False
+			}
+		}
 		
+		ResultManager rm = new ResultManager();
+		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
+		rm.insertQuestion(result);
+		
+		return correctAnswersCount / totalQuestions;
 	}
 }

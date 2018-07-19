@@ -34,7 +34,7 @@ public class ServerController {
 
     String userCode = "AAAA"; // TODO: for testing only. remove in production
 	
-    ArrayList<Question> al = new ArrayList<>();
+    ArrayList<Question> alQuestions = new ArrayList<>();
 
     /**
      * Method is used to parse and process received answers
@@ -69,7 +69,9 @@ public class ServerController {
 					if(i == multiArray.length - 1){
 						multiString = multiString + multiArray[i];
 					} else {
+						if(!multiArray[i].equals("")){
 					multiString = multiString + multiArray[i] +"; ";
+						}
 					}
 				}
     			currentAnswers.add(multiString);
@@ -81,7 +83,7 @@ public class ServerController {
     	
     	
         // TODO: submit answers and get the result
-    	qm.submitResults(userCode, currentAnswers);
+    	qm.submitResults(userCode, currentAnswers, alQuestions);
     	
 
         // TODO: output result as HTML table
@@ -93,10 +95,6 @@ public class ServerController {
     
     @RequestMapping(value = "/", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
-    // This method should work without declared name parameter, request and
-    // response objects,
-    // but it shows, how passed request and returned response can be used inside
-    // method
     public String homePage(@RequestParam(value = "name", required = false) String name, HttpServletRequest request,
                            HttpServletResponse response) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -117,11 +115,11 @@ public class ServerController {
         sb.append("<input name=\"userCode\" type=\"hidden\" value=\""+userCode+ "\">");
         
         // get questions and answer options from the ServerManager class
-        al = qm.getQuestionBundle(userCode);
+        alQuestions = qm.getQuestionBundle(userCode);
 
         // TODO: add countdowntimer
 
-        for (Question q : al) {
+        for (Question q : alQuestions) {
             // for each question make an html representation
 
             // TODO: case Types must be done as ENUM
@@ -135,23 +133,32 @@ public class ServerController {
 	            switch (q.getQuestionType()) {
 	                case "singlechoice":
 	                    // make radio buttons
-	                        sb.append("<input type=\"radio\" name=\"q"+al.indexOf(q)
+	                	sb.append("<input type=\"hidden\" name=\"q"+alQuestions.indexOf(q)+MULTI_FLAG
+                        +"\" value=\""+""+"\">");
+	                        sb.append("<input type=\"radio\" name=\"q"+alQuestions.indexOf(q)+MULTI_FLAG
 	                                +"\" value=\""+answer+"\">")
 	                                .append(answer)
 	                                .append("<br>\n");
 	                    break;
 	                case "multichoice":
 	                    // make check boxes
-	                        sb.append("<input type=\"checkbox\" name=\"q"+al.indexOf(q)
+                        sb.append("<input type=\"hidden\" name=\"q"+alQuestions.indexOf(q)
+            			+MULTI_FLAG+"\""+" value=\""+""+"\">");
+	                        sb.append("<input type=\"checkbox\" name=\"q"+alQuestions.indexOf(q)
 	                        			+MULTI_FLAG+"\""+" value=\""+answer+"\">")
 	                                .append(answer)
 	                                .append("<br>\n");
 	                    break;
 	                case "open":
-	//                     <input type="text" name="usrname"><br>
+	                     sb.append("<input type=\"text\" name=\"q"+alQuestions.indexOf(q)+"\" value=\""+answer+"\">")
+	                     .append(answer)
+	                     .append("<br>\n");
 	                    break;
 	                case "sequence":
-	//                     <input type="text" name="usrname"><br>
+	                	// TODO: solve concept of sequence question
+	                     sb.append("<input type=\"text\" name=\"q"+alQuestions.indexOf(q)+MULTI_FLAG+"\" value=\""+answer+"\">")
+	                     .append(answer)
+	                     .append("<br>\n");
 	                    break;
 	            }
             }
@@ -161,10 +168,6 @@ public class ServerController {
         sb.append("<input class=\"btn btn-primary\"" +
                 " type=\"submit\" value=\"Submit answers and get results\">\n</form>");
 
-        //EXAMPLE:
-        //sb.append("<a href='/findTeacher'>Find teacher<a><br/>\n");
-        //sb.append("<a href='/deleteTeacher'>Delete teacher<a><br/>\n");
-        // Following is also redundant because status is OK by default:
 
         response.setStatus(HttpServletResponse.SC_OK);
         return sb.toString();
