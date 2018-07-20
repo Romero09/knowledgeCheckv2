@@ -5,9 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import bootcamp.kcv2.util.BaseConfiguration;
+
 public class ResultManager {
 
-	private static final String DATA_TABLE = "kcv2.Result";
+	private static final String DATA_TABLE = "Result";
 	private static final String ID_KEY = "id";
 	private static final String USER_CODE_KEY = "userCode";
 	private static final String QUESTION_BUNDULE_KEY = "questionBundule";
@@ -21,8 +23,10 @@ public class ResultManager {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/?autoReconnect=true&useSSL=false", "root",
-					"abcd1234");
+			String connectionUrl = "jdbc:mysql://" + BaseConfiguration.DB_SERVER +":"+ BaseConfiguration.DB_PORT + "/" + BaseConfiguration.DB_NAME
+					+ "?autoReconnect=true&useSSL=false";
+			System.err.println(connectionUrl);
+			conn = DriverManager.getConnection(connectionUrl, BaseConfiguration.DB_USER, BaseConfiguration.DB_PASSWORD);
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

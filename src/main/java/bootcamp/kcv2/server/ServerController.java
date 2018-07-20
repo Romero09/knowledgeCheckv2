@@ -88,7 +88,7 @@ public class ServerController {
 
         // TODO: output result as HTML table
 
-        return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results has been submitted\"</a>";
+        return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"</a>";
     }
     
     

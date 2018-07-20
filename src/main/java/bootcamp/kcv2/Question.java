@@ -3,16 +3,20 @@ package bootcamp.kcv2;
 import java.util.ArrayList;
 
 public class Question {
-	
+
 	private int id;
 	private String set;
 	private int setId;
 	private String questionText;
+
+	// TODO must me replaced with enum
+	// private QuestionTypes questionType;
 	private String questionType;
 	private ArrayList<String> answersVar;
 	private ArrayList<String> correctAnswers;
 
-	public Question(int id, String set, int setId, String questionText, String questiontype, ArrayList<String> answersVar, ArrayList<String> correctAnswers) {
+	public Question(int id, String set, int setId, String questionText, String questiontype,
+			ArrayList<String> answersVar, ArrayList<String> correctAnswers) {
 		this.id = id;
 		this.set = set;
 		this.setId = setId;
@@ -30,7 +34,8 @@ public class Question {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -44,7 +49,8 @@ public class Question {
 	}
 
 	/**
-	 * @param set the set to set
+	 * @param set
+	 *            the set to set
 	 */
 	public void setSet(String set) {
 		this.set = set;
@@ -58,7 +64,8 @@ public class Question {
 	}
 
 	/**
-	 * @param setId the setId to set
+	 * @param setId
+	 *            the setId to set
 	 */
 	public void setSetId(int setId) {
 		this.setId = setId;
@@ -72,7 +79,8 @@ public class Question {
 	}
 
 	/**
-	 * @param questionText the questionText to set
+	 * @param questionText
+	 *            the questionText to set
 	 */
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
@@ -86,7 +94,8 @@ public class Question {
 	}
 
 	/**
-	 * @param questiontype the questiontype to set
+	 * @param questiontype
+	 *            the questiontype to set
 	 */
 	public void setQuestionType(String questiontype) {
 		this.questionType = questiontype;
@@ -100,7 +109,8 @@ public class Question {
 	}
 
 	/**
-	 * @param answersVar the answersVar to set
+	 * @param answersVar
+	 *            the answersVar to set
 	 */
 	public void setAnswersVar(ArrayList<String> answersVar) {
 		this.answersVar = answersVar;
@@ -114,7 +124,8 @@ public class Question {
 	}
 
 	/**
-	 * @param correctAnswers the correctAnswers to set
+	 * @param correctAnswers
+	 *            the correctAnswers to set
 	 */
 	public void setCorrectAnswers(ArrayList<String> correctAnswers) {
 		this.correctAnswers = correctAnswers;

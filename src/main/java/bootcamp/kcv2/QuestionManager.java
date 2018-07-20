@@ -5,11 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import bootcamp.kcv2.util.BaseConfiguration;
 
 public class QuestionManager {
 
-	private static final String DATA_TABLE = "kcv2.Question";
+	private static final String DATA_TABLE = "Question";
 	private static final String ID_KEY = "id";
 	private static final String QUESTION_BUNDULE_KEY = "questionBundule";
 	private static final String QUESTION_ID_KEY = "questionId";
@@ -18,13 +21,26 @@ public class QuestionManager {
 	private static final String ANSWERS_VAR_KEY = "answersVar";
 	private static final String ANSWERS_COR_KEY = "answersCor";
 	private static final String SEPARATOR = "; ";
+	private boolean isExamStarted = true;
 
 	protected Connection conn;
-
-	public static QuestionManager qmSingleton = new QuestionManager();
-
+	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
+	// TODO: DF 2018-07-19 why it's still hardcoded ????
 	private String currentQuestionBundle = "SQL";
+
+	public void setExamStarted(boolean examStarted) {
+		isExamStarted = examStarted;
+	}
+	
+    /**
+     * Returns true if exam session has been started by administrator
+     *
+     * */
+    public boolean isExamStarted() {
+        return isExamStarted;
+    }
+
 
 	/**
 	 * @return the currentQuestionBundle
@@ -33,12 +49,14 @@ public class QuestionManager {
 		return currentQuestionBundle;
 	}
 
-	public QuestionManager() {
+	private QuestionManager() {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/?autoReconnect=true&useSSL=false", "root",
-					"abcd1234");
+			String connectionUrl = "jdbc:mysql://" + BaseConfiguration.DB_SERVER +":"+ BaseConfiguration.DB_PORT + "/" + BaseConfiguration.DB_NAME
+					+ "?autoReconnect=true&useSSL=false";
+			System.err.println(connectionUrl);
+			conn = DriverManager.getConnection(connectionUrl, BaseConfiguration.DB_USER, BaseConfiguration.DB_PASSWORD);
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -95,7 +113,12 @@ public class QuestionManager {
 
 		return alq;
 	}
+	
 
+    // TODO: implement exportToFile() and importFromFile() methods in util/...
+    // TODO: don't forget to  clean the questions database before importing
+	
+	
 
 	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
@@ -123,11 +146,34 @@ public class QuestionManager {
 				alq.add(new Question(idQ, setQ, setIdQ, questionTextQ, questionTypeQ, answersVar, answersCor));
 			}
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return alq;
 	}
+	
+	
+    public ArrayList<String> pullBundleNames() {
+        String query = "SELECT DISTINCT (" + QUESTION_BUNDULE_KEY + ") " +
+                "FROM " + DATA_TABLE;
+        ArrayList<String> result = new ArrayList<>();
+
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            conn.commit();
+            while (rs.next()) {
+                String bundleName = rs.getString(QUESTION_BUNDULE_KEY);
+                if (bundleName != null) {
+                    result.add(rs.getString(QUESTION_BUNDULE_KEY));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+	
+	
 
 	// Updates Question object in DB by ID
 	public boolean updateQuestion(Question question) {
@@ -260,11 +306,11 @@ public class QuestionManager {
 				correctAnswers.add(0); // Incorrect - False
 			}
 		}
-		
+
 		ResultManager rm = new ResultManager();
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
 		rm.insertQuestion(result);
-		
+
 		return correctAnswersCount / totalQuestions;
 	}
 }
