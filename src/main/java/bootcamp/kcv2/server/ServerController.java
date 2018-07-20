@@ -1,4 +1,4 @@
-package bootcamp.KCV2.Server;
+package bootcamp.kcv2.server;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bootcamp.KCV2.Question;
-import bootcamp.KCV2.QuestionManager;
-import bootcamp.KCV2.StudentAnswerSheet;
+import bootcamp.kcv2.Question;
+import bootcamp.kcv2.QuestionManager;
+import bootcamp.kcv2.StudentAnswerSheet;
 
 import java.io.IOException;
 import java.util.ArrayList;

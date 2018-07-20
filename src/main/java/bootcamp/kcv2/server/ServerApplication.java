@@ -1,4 +1,4 @@
-package bootcamp.KCV2.Server;
+package bootcamp.kcv2.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
