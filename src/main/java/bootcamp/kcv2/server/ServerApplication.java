@@ -12,10 +12,10 @@ public class ServerApplication {
 	public static String AUTH_KEY;
 	public static void main(String[] args) throws Exception {
 		//  uncomment next line to start JettyApplication web app:
-
-		// TODO read password from command line
-//		AUTH_KEY = args[0];
-		AUTH_KEY = "aaaa";
+		
+		if (args.length > 0) {
+			bootcamp.kcv2.util.BaseConfiguration.AUTH_KEY = args[0];	
+		} 
 		
 		SpringApplication.run(ServerApplication.class, args);
 		// Look at

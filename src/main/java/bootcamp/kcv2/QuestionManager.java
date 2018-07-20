@@ -124,7 +124,7 @@ public class QuestionManager {
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
 
 		ArrayList<Question> alq = new ArrayList<>();
-		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + QUESTION_BUNDULE_KEY + "` = ?";
+		String query = "SELECT * FROM " + DATA_TABLE + " WHERE `" + QUESTION_BUNDULE_KEY + "` LIKE ?";
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = conn.prepareStatement(query);
