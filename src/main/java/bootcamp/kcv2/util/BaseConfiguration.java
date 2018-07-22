@@ -8,7 +8,7 @@ public class BaseConfiguration {
 	public static final String DB_NAME = "sql2248369";
 	public static final String DB_USER = "sql2248369";
 	public static final String DB_PASSWORD = "xC8!kW1!";
-	public static String AUTH_KEY = "AAAA";
+	public static String AUTH_KEY = "1234";
 	
 	// login - dimon40001@yandex.ru
 	// pass - PxDpiUiom35Dk5RLpMDD
