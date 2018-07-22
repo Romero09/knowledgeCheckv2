@@ -1,9 +1,12 @@
 package bootcamp.kcv2;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Question {
 
+	public static final String SEPARATOR = "===";
 	private int id;
 	private String set;
 	private int setId;
@@ -130,5 +133,56 @@ public class Question {
 	public void setCorrectAnswers(ArrayList<String> correctAnswers) {
 		this.correctAnswers = correctAnswers;
 	}
+	
+	// Grouping from array to String to store in DB separating it with delimiter
+	public static String answersGrouping(ArrayList<String> answersList) {
+		if (answersList == null) {
+			return null;
+		}
+		String answers = "";
+		for (String a : answersList) {
+			if (a == answersList.get(answersList.size() - 1)) {
+				answers = answers + a;
+				return answers;
+			}
+			answers = answers + a + SEPARATOR;
+		}
+		return answers;
+	}
 
+	// Splits answers by selected delimiter for answers var and correct answers.
+	public static ArrayList<String> answersSpliter(String answers) {
+		ArrayList<String> answersList = new ArrayList<String>();
+		if (answers == null) {
+			return null;
+		}
+		if (answers.contains("===")) {
+			String[] parts = answers.split(SEPARATOR);
+			for (int i = 0; i < parts.length; i++) {
+				answersList.add(parts[i]);
+			}
+			return answersList;
+		} else {
+			answersList.add(answers);
+			return answersList;
+		}
+	}
+	
+	public static String sequenceAnswersFormatter(String answer){
+		
+		String seqAnswer = "";
+		
+		char[] answerChars = answer.toCharArray();
+		for (char c : answerChars) {
+			String stringChar = Character.toString(c);
+			Pattern pattern = Pattern.compile("([a-zA-Z])");
+			 Matcher matcher = pattern.matcher(stringChar);
+			if(matcher.find()){
+				seqAnswer = seqAnswer + stringChar;
+			}
+		}
+		seqAnswer = seqAnswer.toLowerCase();
+		return seqAnswer;
+	}
+	
 }
