@@ -47,18 +47,16 @@ public class QuestionManager {
 	 *            - Answers list that was made by student
 	 * @return
 	 */
-	public void submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+	public float submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 
 		answers.remove(0);
 
 		System.err.println("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
 
-		restultsCheck(userCode, answers, alQuestions);
-
 		// answers.get(userCode)
 
 		// parse this sheet
-		// return percentange;
+		return restultsCheck(userCode, answers, alQuestions);
 	}
 
 	/**

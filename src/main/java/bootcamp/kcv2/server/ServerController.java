@@ -83,10 +83,11 @@ public class ServerController {
             currentAnswers = null;
         }
         // TODO: make sure method processes currentAnswers==null as all wrong
-        qm.submitResults(userCode, currentAnswers, alQuestions);
+        float ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
 
-        // TODO: output result for a student as HTML table
-        return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"</a>";
+        // TO-DO: output result for a student as HTML table
+        return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"" +
+                "<p>Correct answers: "+ratio+"</a>";
     }
 
     /**
