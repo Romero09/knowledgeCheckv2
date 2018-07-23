@@ -132,7 +132,7 @@ public class QuestionManager {
 				currentAnswer = answers.get(i);
 			}
 
-			if (alQuestions.get(i).getQuestionType().equals("sequence")) {
+			if (alQuestions.get(i).getQuestionType().equals(QuestionTypes.SEQUENCE)) {
 				String sequenceAnswer = Question.sequenceAnswersFormatter(currentAnswer);
 				String sequenceCorrectAnswer = Question.sequenceAnswersFormatter(correctAnswer);
 				if(sequenceAnswer.equals(sequenceCorrectAnswer)){

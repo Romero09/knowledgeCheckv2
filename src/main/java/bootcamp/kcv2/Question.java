@@ -14,7 +14,7 @@ public class Question {
 
 	// TODO must me replaced with enum
 	// private QuestionTypes questionType;
-	private String questionType;
+	private QuestionTypes questionType;
 	private ArrayList<String> answersVar;
 	private ArrayList<String> correctAnswers;
 
@@ -24,7 +24,7 @@ public class Question {
 		this.set = set;
 		this.setId = setId;
 		this.questionText = questionText;
-		this.questionType = questiontype;
+		this.questionType = QuestionTypes.valueOf(questiontype);
 		this.answersVar = answersVar;
 		this.correctAnswers = correctAnswers;
 	}
@@ -92,16 +92,18 @@ public class Question {
 	/**
 	 * @return the questiontype
 	 */
-	public String getQuestionType() {
+	public QuestionTypes getQuestionType() {
 		return questionType;
 	}
 
+
+	
 	/**
 	 * @param questiontype
 	 *            the questiontype to set
 	 */
 	public void setQuestionType(String questiontype) {
-		this.questionType = questiontype;
+		this.questionType = QuestionTypes.valueOf(questiontype);
 	}
 
 	/**

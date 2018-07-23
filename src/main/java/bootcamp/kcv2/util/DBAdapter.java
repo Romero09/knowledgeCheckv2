@@ -104,7 +104,7 @@ public class DBAdapter {
 				preparedStatement.setString(1, question.getSet());
 				preparedStatement.setInt(2, question.getSetId());
 				preparedStatement.setString(3, question.getQuestionText());
-				preparedStatement.setString(4, question.getQuestionType());
+				preparedStatement.setString(4, question.getQuestionType().toString());
 				preparedStatement.setString(5, Question.answersGrouping(question.getAnswersVar()));
 				preparedStatement.setString(6, Question.answersGrouping(question.getCorrectAnswers()));
 				preparedStatement.setInt(7, question.getId());
@@ -150,7 +150,7 @@ public class DBAdapter {
 				preparedStatement.setString(1, question.getSet());
 				preparedStatement.setInt(2, question.getSetId());
 				preparedStatement.setString(3, question.getQuestionText());
-				preparedStatement.setString(4, question.getQuestionType());
+				preparedStatement.setString(4, question.getQuestionType().toString());
 				preparedStatement.setString(5, Question.answersGrouping(question.getAnswersVar()));
 				preparedStatement.setString(6, Question.answersGrouping(question.getCorrectAnswers()));
 				int insertedRow = preparedStatement.executeUpdate();
