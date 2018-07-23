@@ -56,9 +56,6 @@ public class QuestionManager {
 
 		System.err.println("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
 
-		// answers.get(userCode)
-
-		// parse this sheet
 		return restultsCheck(userCode, answers, alQuestions);
 	}
 

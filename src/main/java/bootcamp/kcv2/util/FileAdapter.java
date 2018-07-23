@@ -94,7 +94,7 @@ public class FileAdapter  {
 				     int id=Integer.parseInt(tmp.substring(3));
 					 //
 					 tmp = fin.readLine();
-					 String QBundle=tmp.substring(17);
+					 String QBundle=tmp.substring(16);
 				     //
 					 tmp = fin.readLine();
 					 int idQ=Integer.parseInt(tmp.substring(12));
@@ -135,9 +135,8 @@ public class FileAdapter  {
 
 	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 		FileAdapter util = new FileAdapter();
-		util.exportQuestions("question.txt");
+		//util.exportQuestions("question.txt");
 		util.importQuestion("question.txt");
 		
 	}
-	
 }

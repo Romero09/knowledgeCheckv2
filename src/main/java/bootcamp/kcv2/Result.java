@@ -1,6 +1,7 @@
 package bootcamp.kcv2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Result {
 
@@ -10,13 +11,12 @@ public class Result {
 	private int questionId;
 	private ArrayList<String> answer;
 	private ArrayList<Integer> isCorrect;
-	
-	public Result(String code, String questionBundule, ArrayList<String> answer,
-			ArrayList<Integer> isCorrect) {
+
+	public Result(String code, String questionBundule, ArrayList<String> answer, ArrayList<Integer> isCorrect) {
 		this(0, code, questionBundule, 0, answer, isCorrect);
 
 	}
-	
+
 	public Result(int id, String code, String questionBundule, int questionId, ArrayList<String> answer,
 			ArrayList<Integer> isCorrect) {
 		super();
@@ -27,8 +27,7 @@ public class Result {
 		this.answer = answer;
 		this.isCorrect = isCorrect;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -76,5 +75,40 @@ public class Result {
 	public void setIsCorrect(ArrayList<Integer> isCorrect) {
 		this.isCorrect = isCorrect;
 	}
-	
+
+	public static ArrayList<String> resultList(ArrayList<ArrayList<String>> resultArray) {
+
+		ArrayList<String> resultList = new ArrayList<>();
+
+		String currentCode = "";
+		int currentScore = 0;
+		String oneResult = "";
+
+		for (int i = 0; i < resultArray.size(); i++) {
+			
+			if (currentCode.equals("")) {
+				currentCode = resultArray.get(i).get(0);
+				currentScore = Integer.valueOf(resultArray.get(i).get(1));
+			} else {
+				if (currentCode.equals(resultArray.get(i).get(0))) {
+					currentScore = currentScore + Integer.valueOf(resultArray.get(i).get(1));
+					if (i == resultArray.size() - 1) {
+						oneResult = "Student: " + currentCode + " Result: " + String.valueOf(currentScore);
+						resultList.add(oneResult);
+						currentCode = resultArray.get(i).get(0);
+						currentScore = Integer.valueOf(resultArray.get(i).get(1));
+					}
+				} else {
+					oneResult = "Student: " + currentCode + " Result: " + String.valueOf(currentScore);
+					resultList.add(oneResult);
+					currentCode = resultArray.get(i).get(0);
+					currentScore = Integer.valueOf(resultArray.get(i).get(1));
+				}
+			}
+		}
+
+		return resultList;
+
+	}
+
 }

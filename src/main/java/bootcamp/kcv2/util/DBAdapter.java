@@ -33,11 +33,13 @@ public class DBAdapter {
 			conn = DriverManager.getConnection(connectionUrl, BaseConfiguration.DB_USER, BaseConfiguration.DB_PASSWORD);
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			log.error("DB connection", e);
 		}
 	}
 
 	public static final class QuestionTableAdapter {
+		
+		final Logger log = Logger.getLogger(DBAdapter.class);
 		
 		private QuestionTableAdapter(){
 			
@@ -239,7 +241,41 @@ public class DBAdapter {
 			}
 			return false;
 		}
+		
+		
+		public static ArrayList<String> pullResultsBundle(String bundleName){
+			
+			ArrayList<ArrayList<String>> resultList = new ArrayList<>();
+			
+			String query = "SELECT * FROM " + ResultTable.DATA_TABLE + " WHERE `" + ResultTable.QUESTION_BUNDULE_KEY + "` = ?";
+			
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+				preparedStatement.setString(1, bundleName);
+				
+				try (ResultSet rs = preparedStatement.executeQuery()){
+					conn.commit();
+					// if no such question
+					if (!rs.isBeforeFirst()) {
+						return Result.resultList(resultList);
+					}
+					while (rs.next()) {
+						ArrayList<String> oneResult = new ArrayList<>();
+						oneResult.add(rs.getString(ResultTable.USER_CODE_KEY));
+						oneResult.add(String.valueOf(rs.getInt(ResultTable.IS_CORRECT_KEY)));
+						resultList.add(oneResult);
+					}
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return Result.resultList(resultList);
+				
+		}
 
+//		public static void main(String[] args){
+//			System.out.println(pullResultsBundle("Knowledge Check 4"));
+//		}
+		
 	}
 
 	public static final class StudentTableAdapter {
@@ -250,7 +286,7 @@ public class DBAdapter {
 
 		public static Student findStudent(int id) {
 			// find student by id
-			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
+			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setInt(1, id);
 				try (ResultSet rs = preparedStatement.executeQuery()){
@@ -283,7 +319,7 @@ public class DBAdapter {
 
 			List<Student> studentList = new ArrayList<>();
 
-			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.NAME_KEY
+			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.NAME_KEY
 					+ "` LIKE ? AND `" + StudentTable.SURNAME_KEY + "` LIKE ?";
 
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
@@ -314,7 +350,7 @@ public class DBAdapter {
 
 		public static boolean insertStudent(String firstName, String lastName, String code) {
 
-			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.CODE_KEY + "` = ?";
+			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.CODE_KEY + "` = ?";
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, code);
 				try(ResultSet rs = preparedStatement.executeQuery()){
@@ -340,7 +376,7 @@ public class DBAdapter {
 			if (firstName.length() > 45)
 				return false;
 
-			query = "INSERT INTO " + StudentTable.DATA_BASE + " (" + StudentTable.NAME_KEY + ", "
+			query = "INSERT INTO " + StudentTable.DATA_TABLE + " (" + StudentTable.NAME_KEY + ", "
 					+ StudentTable.SURNAME_KEY + ", " + StudentTable.CODE_KEY + ") VALUES (?,?,?)";
 
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
@@ -362,7 +398,7 @@ public class DBAdapter {
 		public static boolean updateStudent(Student student) {
 			boolean status = false;
 
-			String query = "UPDATE " + StudentTable.DATA_BASE + " SET `" + StudentTable.NAME_KEY + "` = ?, `"
+			String query = "UPDATE " + StudentTable.DATA_TABLE + " SET `" + StudentTable.NAME_KEY + "` = ?, `"
 					+ StudentTable.SURNAME_KEY + "` = ?, `" + StudentTable.CODE_KEY + "` = ? WHERE `"
 					+ StudentTable.ID_KEY + "` = ?";
 
@@ -387,7 +423,7 @@ public class DBAdapter {
 		}
 
 		public static boolean deleteStudent(int id) {
-			String query = "DELETE FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
+			String query = "DELETE FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
 
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setInt(1, id);
