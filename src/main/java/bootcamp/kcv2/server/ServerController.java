@@ -150,7 +150,7 @@ public class ServerController {
 //			 DF: questionBundle = qm.getQuestionBundle(userCode);
 
             // TODO: add countdown timer (or this will remain manual using "yellow screen" scenario
-            // TODO: question types must be done as enum
+            // TO-DO: question types must be done as enum
 
             for (Question q : alQuestions) {
                 // for each question make an html representation
@@ -159,7 +159,7 @@ public class ServerController {
 
                 for (String answer : q.getAnswersVar()) {
                     switch (q.getQuestionType()) {
-                        case "singlechoice":
+                        case SINGLE_CHOICE:
                             // make radio buttons
                             sb.append("<input type=\"hidden\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG
                                     + "\" value=\"" + "" + "\">");
@@ -169,18 +169,18 @@ public class ServerController {
                                     .append(answer)
                                     .append("<br>\n");
                             break;
-                        case "multichoice":
+                        case MULTI_CHOICE:
                             // make check boxes
                             sb.append("<input type=\"hidden\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG + "\""
                                     + " value=\"" + "" + "\">");
                             sb.append("<input type=\"checkbox\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG + "\""
                                     + " value=\"" + answer + "\">").append(answer).append("<br>\n");
                             break;
-                        case "open":
+                        case OPEN:
                             sb.append("<input type=\"text\" name=\"q" + alQuestions.indexOf(q) + "\" value=\"" + answer
                                     + "\">").append(answer).append("<br>\n");
                             break;
-                        case "sequence":
+                        case SEQUENCE:
                             // TODO: solve concept of sequence question
                             sb.append("<input type=\"text\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG + "\" value=\""
                                     + answer + "\">").append(answer).append("<br>\n");
