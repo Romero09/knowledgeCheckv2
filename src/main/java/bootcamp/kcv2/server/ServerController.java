@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import bootcamp.kcv2.util.FileAdapter;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,10 @@ import bootcamp.kcv2.util.BaseConfiguration;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.*;
 
-// TODO add auth check for every /admin page and subpage (cookie check)
+// TO-DO add auth check for every /admin page and subpage (cookie check)
 
 @Controller
 public class ServerController {
@@ -32,6 +34,7 @@ public class ServerController {
     private static final String MULTI_FLAG = "_multi";
     public static final String COOKIE_NAME = "KCV2Admin";
     public static final String COOKIE_VALUE = "KCV2AdminYES";
+    private static final String IMPORT_EXPORT_FILENAME = "df_kcv2_questions.txt";
 
     // TODO: select one or another. Irrational implementation when parameter is returned to the calling method
 
@@ -87,7 +90,7 @@ public class ServerController {
 
         // TO-DO: output result for a student as HTML table
         return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"" +
-                "<p>Correct answers: "+ratio+"</a>";
+                "<p>Correct answers: " + ratio + "</a>";
     }
 
     /**
@@ -206,6 +209,32 @@ public class ServerController {
     }
 
     /**
+     * Pages to be protected by requiring the authorization:
+     *
+     * /admin (and set's cookie if it's absent)
+     * /admin/startExam
+     * /admin/stopExam
+     * /admin/showResults
+     * /admin/exportQuestions
+     * /admin/importQuestions
+     *
+    * */
+    private boolean authorizeAdmin(HttpServletRequest request, HttpServletResponse response) {
+        // check if admin is logged in
+        boolean isAdmin = false;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+                System.err.println("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
+                if (c.getName().equals(COOKIE_NAME) && c.getValue().equals(COOKIE_VALUE)) {
+                    isAdmin = true;
+                }
+            }
+        }
+        return isAdmin;
+    }
+
+    /**
      * Admin page implementation with Start/Stop, Check results, Import, Export
      * buttons.
      *
@@ -226,16 +255,17 @@ public class ServerController {
         sb.append("<h1>Administrator Page</h1>");
 
         // check if admin is logged in
-        boolean isAdmin = false;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                System.err.println("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
-                if (c.getName().equals(COOKIE_NAME) && c.getValue().equals(COOKIE_VALUE)) {
-                    isAdmin = true;
-                }
-            }
-        }
+        boolean isAdmin = authorizeAdmin(request, response);
+//        boolean isAdmin = false;
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null) {
+//            for (Cookie c : cookies) {
+//                System.err.println("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
+//                if (c.getName().equals(COOKIE_NAME) && c.getValue().equals(COOKIE_VALUE)) {
+//                    isAdmin = true;
+//                }
+//            }
+//        }
 
 		 /*
 		 If not admin - check if the GET request has "admin" AUTH_KEY.
@@ -249,8 +279,8 @@ public class ServerController {
             } else {
                 Cookie c = new Cookie(COOKIE_NAME, COOKIE_VALUE); //bake cookie
                 // TODO set production cookie timeout
-                c.setMaxAge(1800); //set expire time to 30 min
-//                c.setMaxAge(60); //set expire time to 60 seconds for debug purposes
+//                c.setMaxAge(1800); //set expire time to 30 min
+                c.setMaxAge(60); //set expire time to 60 seconds for debug purposes
                 response.addCookie(c); //put cookie in response
                 response.sendRedirect("/admin"); // and return to the main admin page
             }
@@ -265,14 +295,14 @@ public class ServerController {
         }
 
         /*
-        * If exam is not started then make 4 forms on the web page
-        *
-        * Start
-        * Check results
-        * Import
-        * Export
-        *
-        * */
+         * If exam is not started then make 4 forms on the web page
+         *
+         * Start
+         * Check results
+         * Import
+         * Export
+         *
+         * */
         // Start Exam form
         ArrayList<String> bundleNamesList = qm.pullBundleNames();
         sb.append("<p><form method=\"get\" action=\"/admin/startExam\">");
@@ -310,14 +340,32 @@ public class ServerController {
 
     @RequestMapping(value = "/admin/exportQuestions", method = RequestMethod.GET)
     public void exportQuestions(
-            HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+            HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.err.println("ServerController__exportQuestions() called");
 
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+            return;
+        }
+
+        // generate file on server
+        FileAdapter fa = new FileAdapter();
+        fa.exportQuestions(IMPORT_EXPORT_FILENAME);
+
         response.setContentType("application/octet-stream; charset=UTF-8");
+        response.setHeader("Content-Disposition", "Content-Disposition: attachment; filename=\"all_questions.txt\" \t");
         PrintWriter out = response.getWriter();
-        // TODO: replace with FileAdapter.exportAllQuestions() method
-        out.write("<h1>Hello World Download</h1>\n");
-        out.write("String2");
+
+        // copy from file on server to the browser response
+        File f = new File(IMPORT_EXPORT_FILENAME);
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+        String str;
+        while ((str = br.readLine()) != null) {
+            out.println(str);
+        }
+
+        out.flush();
         out.close();
     }
 
@@ -327,15 +375,37 @@ public class ServerController {
         System.err.println("ServerController__importQuestions() called");
         System.err.println("___Received input file:");
 
-        Part p = request.getPart("txtfile");
-        InputStream ir = p.getInputStream();
-        int i = 0;
-        while ((i=ir.read())!=-1) {
-            System.err.print((char) i);
-            // TODO 1: process POST body and generate .txt file on the server side
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+            return;
         }
 
-        // TODO 2: call FileAdapter method to load the information into DB
+        Part p = request.getPart("txtfile");
+        InputStream ir = p.getInputStream();
+
+        // delete existing temp file on server
+        File f = new File(IMPORT_EXPORT_FILENAME);
+        f.delete();
+
+        FileWriter fr = new FileWriter(f);
+
+        // TO-DO 1: process POST body and generate .txt file on the server side
+        int i;
+        while ((i = ir.read()) != -1) {
+//            System.err.print((char) i);
+            fr.write(i);
+        }
+        fr.close();
+
+        // TO-DO 2: call FileAdapter method to load the information into DB
+        FileAdapter fa = new FileAdapter();
+        try {
+            fa.importQuestion(IMPORT_EXPORT_FILENAME);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         // TODO 3: even better: pass InputStream variable as a parameter to ImportAllQuestions() method
 
         response.sendRedirect("/admin");
@@ -348,18 +418,31 @@ public class ServerController {
             HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.err.println("ServerController__startExam() called");
 
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+            return;
+        }
+
         // TODO create startExam() or refine login in setExamStarted();
-        // TODO pass the selected topic
+        // TO-DO pass the selected topic
         qm.setCurrentQuestionBundle(bundleName);
         qm.setExamStarted(true);
 
-        System.err.println("Selected bundle:"+bundleName);
+        System.err.println("Selected bundle:" + bundleName);
         response.sendRedirect("/admin");
     }
+
     @RequestMapping(value = "/admin/stopExam", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public void stopExam(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.err.println("ServerController__stopExam() called");
+
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+            return;
+        }
 
         // TODO create stopExam() or refine login in setExamStarted();
 //		qm.stopExam();
@@ -372,6 +455,11 @@ public class ServerController {
     @ResponseBody
     public String showResults(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.err.println("ServerController__showResults() called");
+
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append(BOOTSTRAP_CSS);
