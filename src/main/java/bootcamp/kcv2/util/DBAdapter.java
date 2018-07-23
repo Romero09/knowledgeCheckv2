@@ -272,9 +272,9 @@ public class DBAdapter {
 				
 		}
 
-//		public static void main(String[] args){
-//			System.out.println(pullResultsBundle("Knowledge Check 4"));
-//		}
+		public static void main(String[] args){
+			System.out.println(pullResultsBundle("Knowledge Check 4"));
+		}
 		
 	}
 
@@ -366,8 +366,6 @@ public class DBAdapter {
 				// Auto-generated catch block
 				e.printStackTrace();
 			}
-	
-			
 
 			if (code.length() > 4)
 				return false;

@@ -7,7 +7,7 @@ import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
 
 public class QuestionManager {
 
-	private boolean isExamStarted = true;
+	private boolean isExamStarted = false;
 
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
@@ -50,7 +50,7 @@ public class QuestionManager {
 	 *            - Answers list that was made by student
 	 * @return
 	 */
-	public float submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+	public String submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 
 		answers.remove(0);
 
@@ -67,13 +67,12 @@ public class QuestionManager {
 	 * @return
 	 */
 	public ArrayList<Question> getQuestionBundle(String userCode) {
-		// TODO: add check if testing for this users already started
-		// for (StudentAnswerSheet studentAnswerSheet : answers) {
-		// if (studentAnswerSheet.getStudentCode().equals(userCode)) {
-		// System.err.println("User has already participated.");
-		// return null;
-		// }
-		// }
+		 for (StudentAnswerSheet studentAnswerSheet : answers) {
+		 if (studentAnswerSheet.getStudentCode().equals(userCode)) {
+		 System.err.println("User has already participated.");
+		 return null;
+		 }
+		 }
 		StudentAnswerSheet as = new StudentAnswerSheet();
 		as.setStudentCode(userCode);
 		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
@@ -107,7 +106,7 @@ public class QuestionManager {
 		return QuestionTableAdapter.insertQuestion(question);
 	}
 
-	public float restultsCheck(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+	public String restultsCheck(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 
 		ArrayList<Integer> correctAnswers = new ArrayList<>();
 		int totalQuestions = 0;
@@ -151,12 +150,37 @@ public class QuestionManager {
 
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
 		ResultTableAdapter.insertQuestion(result);
-
+		
+		
+		
+		int percantageResult = 0;
 		if(totalQuestions>0){
-		return (float) correctAnswersCount / totalQuestions;
+		percantageResult = (int)(((float) correctAnswersCount / totalQuestions * 100));
 		} else{
-		return 0;
+			percantageResult = 0;
+			}
+		
+		StringBuilder totalResult = new StringBuilder();
+		totalResult.append(correctAnswersCount+"/"+totalQuestions);
+		totalResult.append(" " + String.valueOf(percantageResult +"%, "));
+		totalResult.append("Wrong answers on questions: " + studentResults(correctAnswers) + ".");
+		
+		return totalResult.toString();
+	}
+	
+	public String studentResults(ArrayList<Integer> correctAnswers){
+		
+		ArrayList<String> incorrectQuestions = new ArrayList<>();
+		
+		for (int i = 0; i < correctAnswers.size(); i++) {
+			
+			if(correctAnswers.get(i)==0)
+			incorrectQuestions.add(String.valueOf(i+1));
 		}
+		
+		String incorrectQuestionString = incorrectQuestions.toString();
+		
+		return incorrectQuestionString;
 	}
 
 }
