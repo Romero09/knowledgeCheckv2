@@ -9,7 +9,6 @@ public class QuestionManager {
 
 	private boolean isExamStarted = true;
 
-	// TODO DELETE protected Connection conn;
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	// TODO: DF 2018-07-19 why it's still hardcoded ????
@@ -82,10 +81,7 @@ public class QuestionManager {
 		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
 		answers.add(as);
 
-		ArrayList<Question> alq = new ArrayList<>();
-		alq = pullQuestionBundle(qmSingleton.currentQuestionBundle);
-
-		return alq;
+		return pullQuestionBundle(qmSingleton.currentQuestionBundle);
 	}
 
 	// TODO: implement exportToFile() and importFromFile() methods in util/...
@@ -126,7 +122,6 @@ public class QuestionManager {
 		if (answers.size() != alQuestions.size()) {
 			System.err.println("Something went wrong Answers array size doesent match Question array size");
 		}
-
 		for (int i = 0; i < answers.size(); i++) {
 			correctAnswer = Question.answersGrouping(alQuestions.get(i).getCorrectAnswers());
 			totalQuestions++;
@@ -161,7 +156,11 @@ public class QuestionManager {
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
 		ResultTableAdapter.insertQuestion(result);
 
-		return correctAnswersCount / totalQuestions;
+		if(totalQuestions>0){
+		return (float) correctAnswersCount / totalQuestions;
+		} else{
+		return 0;
+		}
 	}
 
 }

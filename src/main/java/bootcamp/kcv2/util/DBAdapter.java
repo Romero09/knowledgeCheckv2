@@ -19,7 +19,7 @@ import bootcamp.kcv2.Student;
 public class DBAdapter {
 
 	protected static Connection conn;
-	public static DBAdapter dbAdapter = new DBAdapter();
+	public static final DBAdapter dbAdapter = new DBAdapter();
 
 	private DBAdapter() {
 		try {
@@ -35,6 +35,10 @@ public class DBAdapter {
 	}
 
 	public static final class QuestionTableAdapter {
+		
+		private QuestionTableAdapter(){
+			
+		}
 
 		// Returns Question object searched by SET
 		public static ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
@@ -42,15 +46,13 @@ public class DBAdapter {
 			ArrayList<Question> alq = new ArrayList<>();
 			String query = "SELECT * FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.QUESTION_BUNDULE_KEY
 					+ "` LIKE ?";
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, currentQuestionBundle);
-				ResultSet rs = preparedStatement.executeQuery();
+				try (ResultSet rs = preparedStatement.executeQuery()){
 				conn.commit();
 				// if no such question
 				if (!rs.isBeforeFirst()) {
-					return null;
+					return alq;
 				}
 				while (rs.next()) {
 					int idQ = rs.getInt(QuestionTable.ID_KEY);
@@ -61,6 +63,7 @@ public class DBAdapter {
 					ArrayList<String> answersVar = Question.answersSpliter(rs.getString(QuestionTable.ANSWERS_VAR_KEY));
 					ArrayList<String> answersCor = Question.answersSpliter(rs.getString(QuestionTable.ANSWERS_COR_KEY));
 					alq.add(new Question(idQ, setQ, setIdQ, questionTextQ, questionTypeQ, answersVar, answersCor));
+				}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -73,15 +76,15 @@ public class DBAdapter {
 					+ QuestionTable.DATA_TABLE;
 			ArrayList<String> result = new ArrayList<>();
 
-			try {
-				Statement st = conn.createStatement();
-				ResultSet rs = st.executeQuery(query);
+			try(Statement st = conn.createStatement()) {
+				try(ResultSet rs = st.executeQuery(query)){
 				conn.commit();
 				while (rs.next()) {
 					String bundleName = rs.getString(QuestionTable.QUESTION_BUNDULE_KEY);
 					if (bundleName != null) {
 						result.add(rs.getString(QuestionTable.QUESTION_BUNDULE_KEY));
 					}
+				}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -97,9 +100,7 @@ public class DBAdapter {
 					+ "` = ?, `" + QuestionTable.QUESTION_TYPE_KEY + "` = ?," + " `" + QuestionTable.ANSWERS_VAR_KEY
 					+ "` = ?, `" + QuestionTable.ANSWERS_COR_KEY + "` = ? WHERE `" + QuestionTable.ID_KEY + "` = ?";
 
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, question.getSet());
 				preparedStatement.setInt(2, question.getSetId());
 				preparedStatement.setString(3, question.getQuestionText());
@@ -123,9 +124,7 @@ public class DBAdapter {
 		public static boolean deleteQuestion(int id) {
 			String query = "DELETE FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.ID_KEY + "` = ?";
 
-			try {
-				PreparedStatement preparedStatement;
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setInt(1, id);
 				int deletedRows = preparedStatement.executeUpdate();
 				conn.commit();
@@ -147,9 +146,7 @@ public class DBAdapter {
 					+ QuestionTable.QUESTION_ID_KEY + ", " + QuestionTable.QUESTION_TEXT_KEY + ", "
 					+ QuestionTable.QUESTION_TYPE_KEY + ", " + "" + QuestionTable.ANSWERS_VAR_KEY + ", "
 					+ QuestionTable.ANSWERS_COR_KEY + ") VALUES (?,?,?,?,?,?)";
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, question.getSet());
 				preparedStatement.setInt(2, question.getSetId());
 				preparedStatement.setString(3, question.getQuestionText());
@@ -167,9 +164,32 @@ public class DBAdapter {
 			}
 			return false;
 		}
+		
+		// Deletes results form DB
+		public static boolean clearQuestionTable() {
+			String query = "DELETE FROM " + QuestionTable.DATA_TABLE;
+
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+				int deletedRows = preparedStatement.executeUpdate();
+				conn.commit();
+
+				if (deletedRows > 0) {
+					return true;
+				}
+			} catch (SQLException e) {
+				// Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
+		
 	}
 
 	public static final class ResultTableAdapter {
+		
+		private ResultTableAdapter(){
+			
+		}
 
 		// Inserts new Results in Result table
 		public static boolean insertQuestion(Result result) {
@@ -180,9 +200,7 @@ public class DBAdapter {
 					+ ResultTable.ANSWER_KEY + ", " + ResultTable.IS_CORRECT_KEY + ") VALUES (?,?,?,?,?)";
 
 			for (int i = 0; i < result.getIsCorrect().size(); i++) {
-				PreparedStatement preparedStatement;
-				try {
-					preparedStatement = conn.prepareStatement(query);
+				try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 					preparedStatement.setString(1, result.getUserCode());
 					preparedStatement.setString(2, result.getQuestionBundule());
 					preparedStatement.setInt(3, i + 1);
@@ -202,12 +220,10 @@ public class DBAdapter {
 		}
 		
 		// Deletes results form DB
-		public static boolean deleteResult() {
+		public static boolean clearResultTable() {
 			String query = "DELETE FROM " + ResultTable.DATA_TABLE;
 
-			try {
-				PreparedStatement preparedStatement;
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				int deletedRows = preparedStatement.executeUpdate();
 				conn.commit();
 
@@ -224,15 +240,17 @@ public class DBAdapter {
 	}
 
 	public static final class StudentTableAdapter {
+		
+		private StudentTableAdapter(){
+			
+		}
 
 		public static Student findStudent(int id) {
 			// find student by id
 			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setInt(1, id);
-				ResultSet rs = preparedStatement.executeQuery();
+				try (ResultSet rs = preparedStatement.executeQuery()){
 				conn.commit();
 				if (!rs.isBeforeFirst()) {
 					return new Student(0, null, null, null);
@@ -242,6 +260,7 @@ public class DBAdapter {
 					String lastName = rs.getString(StudentTable.SURNAME_KEY);
 					String code = rs.getString("code");
 					return new Student(id, code, firstName, lastName);
+				}
 				}
 			} catch (SQLException e) {
 				// Auto-generated catch block
@@ -259,17 +278,15 @@ public class DBAdapter {
 			firstName = "%" + firstName + "%";
 			lastName = "%" + lastName + "%";
 
-			List<Student> studentList = new ArrayList<Student>();
+			List<Student> studentList = new ArrayList<>();
 
 			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.NAME_KEY
 					+ "` LIKE ? AND `" + StudentTable.SURNAME_KEY + "` LIKE ?";
 
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, firstName);
 				preparedStatement.setString(2, lastName);
-				ResultSet rs = preparedStatement.executeQuery();
+				try(ResultSet rs = preparedStatement.executeQuery()){
 				conn.commit();
 
 				if (!rs.isBeforeFirst()) {
@@ -283,6 +300,7 @@ public class DBAdapter {
 
 					studentList.add(new Student(id, code, first, last));
 				}
+				}
 
 			} catch (SQLException e) {
 				// Auto-generated catch block
@@ -294,22 +312,23 @@ public class DBAdapter {
 		public static boolean insertStudent(String firstName, String lastName, String code) {
 
 			String query = "SELECT * FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.CODE_KEY + "` = ?";
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, code);
-				ResultSet rs = preparedStatement.executeQuery();
+				try(ResultSet rs = preparedStatement.executeQuery()){
 				conn.commit();
 				if (rs.isBeforeFirst()) {
 					System.out.println("Such code already exists");
 
 					return false;
 				}
+				}
 
 			} catch (SQLException e) {
 				// Auto-generated catch block
 				e.printStackTrace();
 			}
+	
+			
 
 			if (code.length() > 4)
 				return false;
@@ -321,8 +340,7 @@ public class DBAdapter {
 			query = "INSERT INTO " + StudentTable.DATA_BASE + " (" + StudentTable.NAME_KEY + ", "
 					+ StudentTable.SURNAME_KEY + ", " + StudentTable.CODE_KEY + ") VALUES (?,?,?)";
 
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, firstName);
 				preparedStatement.setString(2, lastName);
 				preparedStatement.setString(3, code);
@@ -345,9 +363,7 @@ public class DBAdapter {
 					+ StudentTable.SURNAME_KEY + "` = ?, `" + StudentTable.CODE_KEY + "` = ? WHERE `"
 					+ StudentTable.ID_KEY + "` = ?";
 
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, student.getName());
 				preparedStatement.setString(2, student.getSurename());
 				preparedStatement.setString(3, student.getCode());
@@ -370,9 +386,7 @@ public class DBAdapter {
 		public static boolean deleteStudent(int id) {
 			String query = "DELETE FROM " + StudentTable.DATA_BASE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
 
-			try {
-				PreparedStatement preparedStatement;
-				preparedStatement = conn.prepareStatement(query);
+			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setInt(1, id);
 				int deletedRows = preparedStatement.executeUpdate();
 				conn.commit();

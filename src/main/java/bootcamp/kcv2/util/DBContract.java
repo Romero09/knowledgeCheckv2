@@ -1,8 +1,16 @@
 package bootcamp.kcv2.util;
 
 public class DBContract {
+	
+	private DBContract(){
+		
+	}
 
 	public static final class QuestionTable {
+		
+		private QuestionTable(){
+			
+		}
 
 		public static final String DATA_TABLE = "Question";
 		public static final String ID_KEY = "id";
@@ -16,6 +24,10 @@ public class DBContract {
 	}
 
 	public static final class ResultTable {
+		
+		private ResultTable(){
+			
+		}
 
 		public static final String DATA_TABLE = "Result";
 		public static final String ID_KEY = "id";
@@ -28,6 +40,11 @@ public class DBContract {
 	}
 	
 	public static final class StudentTable {
+		
+		private StudentTable(){
+			
+		}
+		
 		public static final String DATA_BASE = "Student";
 		public static final String ID_KEY = "id";
 		public static final String NAME_KEY = "name";

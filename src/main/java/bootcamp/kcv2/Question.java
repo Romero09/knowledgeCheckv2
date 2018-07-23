@@ -139,24 +139,23 @@ public class Question {
 		if (answersList == null) {
 			return null;
 		}
-		String answers = "";
+		StringBuilder answers = new StringBuilder();
 		for (String a : answersList) {
 			if (a == answersList.get(answersList.size() - 1)) {
-				answers = answers + a;
-				return answers;
+				return answers.append(a).toString();
 			}
-			answers = answers + a + SEPARATOR;
+			answers.append(a).append(SEPARATOR);
 		}
-		return answers;
+		return answers.toString();
 	}
 
 	// Splits answers by selected delimiter for answers var and correct answers.
 	public static ArrayList<String> answersSpliter(String answers) {
-		ArrayList<String> answersList = new ArrayList<String>();
+		ArrayList<String> answersList = new ArrayList<>();
 		if (answers == null) {
-			return null;
+			return answersList;
 		}
-		if (answers.contains("===")) {
+		if (answers.contains(SEPARATOR)) {
 			String[] parts = answers.split(SEPARATOR);
 			for (int i = 0; i < parts.length; i++) {
 				answersList.add(parts[i]);
@@ -170,7 +169,7 @@ public class Question {
 	
 	public static String sequenceAnswersFormatter(String answer){
 		
-		String seqAnswer = "";
+		StringBuilder seqAnswer = new StringBuilder();
 		
 		char[] answerChars = answer.toCharArray();
 		for (char c : answerChars) {
@@ -178,11 +177,10 @@ public class Question {
 			Pattern pattern = Pattern.compile("([a-zA-Z])");
 			 Matcher matcher = pattern.matcher(stringChar);
 			if(matcher.find()){
-				seqAnswer = seqAnswer + stringChar;
+				seqAnswer.append(stringChar);
 			}
 		}
-		seqAnswer = seqAnswer.toLowerCase();
-		return seqAnswer;
+		return seqAnswer.toString().toLowerCase();
 	}
 	
 }
