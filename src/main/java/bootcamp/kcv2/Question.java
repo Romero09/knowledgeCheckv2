@@ -12,8 +12,6 @@ public class Question {
 	private int setId;
 	private String questionText;
 
-	// TODO must me replaced with enum
-	// private QuestionTypes questionType;
 	private QuestionTypes questionType;
 	private ArrayList<String> answersVar;
 	private ArrayList<String> correctAnswers;

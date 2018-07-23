@@ -1,7 +1,6 @@
-package bootcamp.kcv2;
+package bootcamp.kcv2.util;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,7 +8,16 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import bootcamp.kcv2.Question;
+import bootcamp.kcv2.QuestionManager;
 
+/**
+ * This class provides export from database
+ * and input into ArrayList
+ * @author Deniss Sutugins
+ * @version 1.0
+ *
+ */
 
 
 public class FileAdapter  {
@@ -24,21 +32,21 @@ public class FileAdapter  {
 	
 	
 	/**
-	 * Export Question from Database
-	 * 
-	 * @return 0 if successful, 1 if error
-	 * @param questionBundle name of question bundle to save
+	 *  This method receives fileName and question
+	 *  
 	 * @param fileName File name where the questions are saved
-	 * 
+	 * @param question is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers
+	 * @return true if successful, false if error
+	 * @see IOException
 	 */
-	public ArrayList<Question> exportQuestions( String fileName ,ArrayList<Question> question) {
+	public boolean exportQuestions( String fileName, ArrayList<Question> question) {
 		ArrayList<Question> alq = new ArrayList<>();
 		// TODO questionBundule hardcoded
-		alq = QuestionManager.qmSingleton.pullQuestionBundle("SQL");
+		alq = QuestionManager.getInstance().pullQuestionBundle("SQL");
 
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-			File file = new File(fileName);
+			
 
 			for (Question q : alq) {
 				System.err.println(q);
@@ -53,12 +61,12 @@ public class FileAdapter  {
 			 
 			}
 			writer.close();
-			String path = file.getAbsolutePath();
-			return alq;
+			
+			return true;
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			return false;
 		}
 
 	}
@@ -72,63 +80,43 @@ public class FileAdapter  {
 	 */
 
 	public ArrayList<Question> importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
-		ArrayList<String> alq = new ArrayList<String>();
+		ArrayList<Question> alq = new ArrayList<>();
+		alq.clear();
 		String tmp;
-		String str;
-		int i=0;
+	
+		
 		try (BufferedReader fin = new BufferedReader(new FileReader(fileName))) {
 			tmp = fin.readLine();
 			
 			while (tmp != null) {
-				if(i==0) {
-					 
-					 str=tmp.substring(3);
-					 System.out.println(str);
-					 alq.add(str);
-				}
-				if(i==1) {
-					 
-					 str=tmp.substring(17);
-					 System.out.println(str);
-					 alq.add(str);
-				}
-				if(i==2) {
 					
-					str=tmp.substring(12);
-					System.out.println(str);
-					alq.add(str);
-				}
-				if(i==3) {
-					
-					str=tmp.substring(14);
-					System.out.println(str);
-					alq.add(str);
-				}
-				if(i==4) {
-					
-					str=tmp.substring(14);
-					System.out.println(str);
-					alq.add(str);
-				}
-				if(i==5) {
-					 
-					str=tmp.substring(14);
-					System.out.println(str);
-					alq.add(str);
-				}
-				if(i==6) {
-					
-					str=tmp.substring(15);
-					System.out.println(str);
-					alq.add(str);
-				}
-				if(i==7) {
-					tmp = fin.readLine();
-					
-					i=0;
-				}
-				i++;
-				tmp = fin.readLine();
+				     int id=Integer.parseInt(tmp.substring(3));
+					 //
+					 tmp = fin.readLine();
+					 String QBundle=tmp.substring(17);
+				     //
+					 tmp = fin.readLine();
+					 int idQ=Integer.parseInt(tmp.substring(12));
+				     //
+					 tmp = fin.readLine();
+					 String QText=tmp.substring(14);
+				     // 
+					 tmp = fin.readLine();
+					 String QType=tmp.substring(14);
+				     //
+					 tmp = fin.readLine();
+					 String str=tmp.substring(16);
+					 ArrayList<String> answersVar=new ArrayList<String>();
+					 answersVar.add(str);
+				     //
+					 tmp = fin.readLine();
+					 String str1=tmp.substring(15);
+					 ArrayList<String> correctAnswers=new ArrayList<String>();
+					 correctAnswers.add(str1);
+					 //
+					 alq.add(new Question(id, QBundle, idQ, QText, QType, answersVar, correctAnswers));
+					 tmp = fin.readLine();
+					 tmp = fin.readLine();
 			}
 			
 
@@ -137,14 +125,19 @@ public class FileAdapter  {
 			e.printStackTrace();
 			
 		}
-		//System.err.println(alq);
+		
+		for(int i=0;i<alq.size();i++) {
+			System.out.println(alq.get(i).getQuestionText());
+		}
 		return alq;
 
 	}
 
 	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 		FileAdapter util = new FileAdapter();
+		//util.exportQuestions("question.txt",null);
 		util.importQuestion("question.txt");
+		
 	}
 	
 }
