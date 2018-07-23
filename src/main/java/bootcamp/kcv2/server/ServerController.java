@@ -350,7 +350,7 @@ public class ServerController {
 
         // TODO create startExam() or refine login in setExamStarted();
         // TODO pass the selected topic
-//        qm.setCurrentQuestionBundle(bundleName);
+        qm.setCurrentQuestionBundle(bundleName);
         qm.setExamStarted(true);
 
         System.err.println("Selected bundle:"+bundleName);
