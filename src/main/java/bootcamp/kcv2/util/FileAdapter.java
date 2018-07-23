@@ -53,8 +53,8 @@ public class FileAdapter  {
 			    writer.println(QUESTION_ID+q.getSetId());
 			    writer.println(QUESTION_TEXT+q.getQuestionText());
 			    writer.println(QUESTION_TYPE+q.getQuestionType());
-			    writer.println(ANSWER_VARIANT+q.getAnswersVar());
-			    writer.println(ANSWER_CORRECT+q.getCorrectAnswers());
+			    writer.println(ANSWER_VARIANT+Question.answersGrouping(q.getAnswersVar()));
+			    writer.println(ANSWER_CORRECT+Question.answersGrouping(q.getCorrectAnswers()));
 			    writer.println("===========================================================================");
 			 
 			}
@@ -78,15 +78,18 @@ public class FileAdapter  {
 	 */
 
 	public ArrayList<Question> importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
+		
+		DBAdapter.QuestionTableAdapter.clearQuestionTable();
+		
 		ArrayList<Question> alq = new ArrayList<>();
 		alq.clear();
 		String tmp;
-	
 		
 		try (BufferedReader fin = new BufferedReader(new FileReader(fileName))) {
 			tmp = fin.readLine();
 			
 			while (tmp != null) {
+				tmp = tmp.replace("\uFEFF", "");
 					
 				     int id=Integer.parseInt(tmp.substring(3));
 					 //
@@ -116,7 +119,6 @@ public class FileAdapter  {
 					 tmp = fin.readLine();
 					 tmp = fin.readLine();
 			}
-			
 
 		} catch (IOException e) {
 			System.err.println("Error I/O" + e);
@@ -125,16 +127,16 @@ public class FileAdapter  {
 		}
 		
 		for(int i=0;i<alq.size();i++) {
-			System.out.println(alq.get(i).getQuestionText());
+			DBAdapter.QuestionTableAdapter.insertQuestion(alq.get(i));
+			//System.out.println(alq.get(i).getCorrectAnswers());
 		}
 		return alq;
-
 	}
 
 	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 		FileAdapter util = new FileAdapter();
 		util.exportQuestions("question.txt");
-		//util.importQuestion("question.txt");
+		util.importQuestion("question.txt");
 		
 	}
 	

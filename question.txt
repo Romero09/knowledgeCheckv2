@@ -1,32 +1,31 @@
-ID:1
+﻿ID:1
 QUESTION BUNDULE:SQL
 QUESTION ID:1
 QUESTION TEXT:name
 QUESTION TYPE:OPEN
-ANSWER VARIANTS:[]
-ANSWER CORRECT:[Pavel]
+ANSWER VARIANTS:
+ANSWER CORRECT:Pavel
 ===========================================================================
 ID:2
 QUESTION BUNDULE:SQL
 QUESTION ID:2
 QUESTION TEXT:Write in correct sequence a)dog b)cat c)bird
 QUESTION TYPE:SEQUENCE
-ANSWER VARIANTS:[]
-ANSWER CORRECT:[c, b, a]
+ANSWER VARIANTS:
+ANSWER CORRECT:c===b===a
 ===========================================================================
 ID:3
 QUESTION BUNDULE:Threads
 QUESTION ID:3
 QUESTION TEXT:surname22222
 QUESTION TYPE:SINGLE_CHOICE
-ANSWER VARIANTS:[table, column, array]
-ANSWER CORRECT:[column]
+ANSWER VARIANTS:table===column===array
+ANSWER CORRECT:column
 ===========================================================================
 ID:5
 QUESTION BUNDULE:SQL
 QUESTION ID:4
 QUESTION TEXT:surname22222
 QUESTION TYPE:MULTI_CHOICE
-ANSWER VARIANTS:[table, column, array]
-ANSWER CORRECT:[table, column]
-===========================================================================
+ANSWER VARIANTS:table===column===array
+ANSWER CORRECT:table===column

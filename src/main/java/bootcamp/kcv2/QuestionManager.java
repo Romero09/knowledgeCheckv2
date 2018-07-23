@@ -11,8 +11,7 @@ public class QuestionManager {
 
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
-	// TODO: DF 2018-07-19 why it's still hardcoded ????
-	private String currentQuestionBundle = "SQL";
+	private String currentQuestionBundle;
 
 	public void setExamStarted(boolean examStarted) {
 		isExamStarted = examStarted;
@@ -31,6 +30,10 @@ public class QuestionManager {
 	 */
 	public String getCurrentQuestionBundle() {
 		return currentQuestionBundle;
+	}
+	
+	public void setCurrentQuestionBundle(String set) {
+		this.currentQuestionBundle = set;
 	}
 
 	private QuestionManager() {
@@ -82,8 +85,6 @@ public class QuestionManager {
 		return pullQuestionBundle(qmSingleton.currentQuestionBundle);
 	}
 
-	// TODO: implement exportToFile() and importFromFile() methods in util/...
-	// TODO: don't forget to clean the questions database before importing
 
 	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
