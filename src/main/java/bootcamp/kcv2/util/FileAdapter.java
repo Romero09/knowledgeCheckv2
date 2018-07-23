@@ -35,14 +35,12 @@ public class FileAdapter  {
 	 *  This method receives fileName and question
 	 *  
 	 * @param fileName File name where the questions are saved
-	 * @param question is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers
+	 * @param alq is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers
 	 * @return true if successful, false if error
 	 * @see IOException
 	 */
-	public boolean exportQuestions( String fileName, ArrayList<Question> question) {
-		ArrayList<Question> alq = new ArrayList<>();
-		// TODO questionBundule hardcoded
-		alq = QuestionManager.getInstance().pullQuestionBundle("SQL");
+	public boolean exportQuestions( String fileName) {
+		ArrayList<Question> alq = QuestionManager.getInstance().pullQuestionBundle("%%");
 
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
@@ -135,8 +133,8 @@ public class FileAdapter  {
 
 	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 		FileAdapter util = new FileAdapter();
-		//util.exportQuestions("question.txt",null);
-		util.importQuestion("question.txt");
+		util.exportQuestions("question.txt");
+		//util.importQuestion("question.txt");
 		
 	}
 	

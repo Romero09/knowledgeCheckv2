@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import bootcamp.kcv2.util.DBContract.QuestionTable;
 import bootcamp.kcv2.util.DBContract.ResultTable;
 import bootcamp.kcv2.util.DBContract.StudentTable;
@@ -20,13 +22,14 @@ public class DBAdapter {
 
 	protected static Connection conn;
 	public static final DBAdapter dbAdapter = new DBAdapter();
+	final Logger log = Logger.getLogger(DBAdapter.class);
 
 	private DBAdapter() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String connectionUrl = "jdbc:mysql://" + BaseConfiguration.DB_SERVER + ":" + BaseConfiguration.DB_PORT + "/"
 					+ BaseConfiguration.DB_NAME + "?autoReconnect=true&useSSL=false";
-			System.err.println(connectionUrl);
+			log.info(connectionUrl);
 			conn = DriverManager.getConnection(connectionUrl, BaseConfiguration.DB_USER, BaseConfiguration.DB_PASSWORD);
 			conn.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
