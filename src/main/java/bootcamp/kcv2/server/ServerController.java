@@ -67,7 +67,7 @@ public class ServerController {
                         multiString = multiString + multiArray[i];
                     } else {
                         if (!multiArray[i].equals("")) {
-                            multiString = multiString + multiArray[i] + "; ";
+                            multiString = multiString + multiArray[i] + Question.SEPARATOR;
                         }
                     }
                 }
@@ -164,7 +164,7 @@ public class ServerController {
                             sb.append("<input type=\"hidden\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG
                                     + "\" value=\"" + "" + "\">");
                             sb
-                                    .append("<input type=\"radio\" name=\"q" + alQuestions.indexOf(q)
+                                    .append("<input type=\"radio\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG
                                             + "\" value=\"" + answer + "\">")
                                     .append(answer)
                                     .append("<br>\n");
