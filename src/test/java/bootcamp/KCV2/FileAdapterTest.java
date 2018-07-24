@@ -2,6 +2,7 @@ package bootcamp.KCV2;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -9,7 +10,9 @@ import javax.validation.constraints.AssertTrue;
 
 import org.apache.log4j.Logger;
 import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 
 import bootcamp.kcv2.QuestionManager;
@@ -26,13 +29,23 @@ public class FileAdapterTest {
 		adapter = new FileAdapter();
 		
 		assertTrue(adapter.exportQuestions("testfile.txt"));
-		//try {
-			//assertTrue(adapter.importQuestion("testfile.txt"));
-		//} catch (IOException | SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		//}
-		// TODO Auto-generated constructor stub
+		try {
+			assertTrue(adapter.importQuestion("testfile.txt"));
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public final void Test02fileAdapterTest() {
+		
+		try {
+			assertFalse(adapter.importQuestion("blank.txt"));
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
 	}
 
-}

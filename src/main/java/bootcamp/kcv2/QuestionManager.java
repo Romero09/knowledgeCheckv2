@@ -123,10 +123,6 @@ public class QuestionManager {
 		}
 	}
 
-	public static void main(String args[]) {
-		examTimer();
-	}
-
 	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
 		return QuestionTableAdapter.pullQuestionBundle(currentQuestionBundle);
@@ -136,15 +132,6 @@ public class QuestionManager {
 		return QuestionTableAdapter.pullBundleNames();
 	}
 
-	// TODO DELETE// Updates Question object in DB by ID
-	// public boolean updateQuestion(Question question) {
-	// return QuestionTableAdapter.updateQuestion(question);
-	// }
-
-	// TODO DELETE// Deletes question form DB
-	// public boolean deleteQuestion(int id) {
-	// return QuestionTableAdapter.deleteQuestion(id);
-	// }
 
 	// Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {

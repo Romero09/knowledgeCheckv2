@@ -92,3 +92,520 @@
 2018-07-24 14:27:23 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-24 14:27:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-24 14:28:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:35:00 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:35:05 ERROR bootcamp.kcv2.util.DBAdapter <init>:34 - DB connection
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:917)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2165)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2090)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at bootcamp.kcv2.util.DBAdapter.<init>(DBAdapter.java:31)
+	at bootcamp.kcv2.util.DBAdapter.<clinit>(DBAdapter.java:22)
+	at bootcamp.kcv2.util.DBAdapter$QuestionTableAdapter.pullBundleNames(DBAdapter.java:82)
+	at bootcamp.kcv2.QuestionManager.pullBundleNames(QuestionManager.java:136)
+	at bootcamp.kcv2.server.ServerController.adminPage(ServerController.java:307)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:832)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:743)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:858)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:528)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1099)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:670)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1520)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1476)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2253)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2106)
+	... 70 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 72 more
+2018-07-24 14:35:31 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:40:58 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:49:55 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:50:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:51:03 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:51:14 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:51:24 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:52:30 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:52:47 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:52:52 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:52:59 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:53:34 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:53:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:56:50 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:56:54 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:56:58 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:57:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:01:43 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:02:16 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:02:36 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:03:14 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:04:09 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:11:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:11:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:13:05 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:13:20 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:13:41 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:14:14 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:15:21 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:15:38 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:15:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:16:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:16:59 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:20:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:20:52 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:21:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:25:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:25:50 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:26:10 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:26:21 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:29:09 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:29:10 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:29:10 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:29:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:29:11 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:29:11 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:121 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:39:10 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:39:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:39:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:39:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:39:12 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:39:12 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:121 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:39:45 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:39:46 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:39:46 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:39:46 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:39:47 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:39:47 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:121 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:41:02 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:41:03 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:41:03 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:41:03 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:41:03 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:41:04 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:121 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:41:36 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:41:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:41:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:41:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:41:37 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:41:38 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:122 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:41:52 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:41:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:41:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:41:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:41:53 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:41:53 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:122 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:43:49 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:43:51 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:43:51 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:43:51 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:43:51 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:43:51 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:122 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:44:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:44:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:44:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:44:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:44:52 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:44:53 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:122 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:45:37 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:45:39 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:45:39 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:45:39 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:45:39 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:45:39 INFO  bootcamp.KCV2.QuestionManagerTest test08resultsCheck:121 - 0/0 0%, Wrong answers on questions: [].
+2018-07-24 15:46:29 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:46:31 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:46:31 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:46:31 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:46:31 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:47:57 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:47:58 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:47:58 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:47:58 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:47:59 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:48:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:48:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:48:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:48:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:48:41 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:50:05 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:50:06 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:50:06 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:50:06 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:50:06 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:50:22 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:50:23 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:50:23 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:50:23 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:50:23 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:50:50 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:50:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:50:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:50:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:50:52 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:51:47 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:51:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:51:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:51:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:51:49 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:56:26 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:56:28 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:56:28 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:56:28 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:56:28 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 15:57:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 15:57:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 15:57:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 15:57:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 15:57:41 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:01:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:01:14 ERROR bootcamp.kcv2.util.DBAdapter <init>:34 - DB connection
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:917)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2165)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2090)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at bootcamp.kcv2.util.DBAdapter.<init>(DBAdapter.java:31)
+	at bootcamp.kcv2.util.DBAdapter.<clinit>(DBAdapter.java:22)
+	at bootcamp.kcv2.util.DBAdapter$QuestionTableAdapter.pullQuestionBundle(DBAdapter.java:52)
+	at bootcamp.kcv2.QuestionManager.pullQuestionBundle(QuestionManager.java:128)
+	at bootcamp.KCV2.QuestionManagerTest.test05submitResults(QuestionManagerTest.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2253)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2106)
+	... 40 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 42 more
+2018-07-24 16:01:20 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:01:25 ERROR bootcamp.kcv2.util.DBAdapter <init>:34 - DB connection
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:917)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2165)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2090)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at bootcamp.kcv2.util.DBAdapter.<init>(DBAdapter.java:31)
+	at bootcamp.kcv2.util.DBAdapter.<clinit>(DBAdapter.java:22)
+	at bootcamp.kcv2.util.DBAdapter$QuestionTableAdapter.pullQuestionBundle(DBAdapter.java:52)
+	at bootcamp.kcv2.QuestionManager.pullQuestionBundle(QuestionManager.java:128)
+	at bootcamp.KCV2.QuestionManagerTest.test05submitResults(QuestionManagerTest.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2253)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2106)
+	... 40 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 42 more
+2018-07-24 16:01:32 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:01:37 ERROR bootcamp.kcv2.util.DBAdapter <init>:34 - DB connection
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:917)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2165)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2090)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at bootcamp.kcv2.util.DBAdapter.<init>(DBAdapter.java:31)
+	at bootcamp.kcv2.util.DBAdapter.<clinit>(DBAdapter.java:22)
+	at bootcamp.kcv2.util.DBAdapter$QuestionTableAdapter.pullQuestionBundle(DBAdapter.java:52)
+	at bootcamp.kcv2.QuestionManager.pullQuestionBundle(QuestionManager.java:128)
+	at bootcamp.KCV2.QuestionManagerTest.test05submitResults(QuestionManagerTest.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2253)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2106)
+	... 40 more
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 42 more
+2018-07-24 16:02:06 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:02:08 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:02:08 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:02:08 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:02:08 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:03:29 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:03:30 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:03:30 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:03:30 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:03:30 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:04:23 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:04:24 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:04:24 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:04:24 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:04:24 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:04:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:04:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:04:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:04:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:04:43 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:05:10 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:05:12 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:05:12 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:05:12 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:05:12 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:06:38 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:06:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:06:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:06:40 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:06:40 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:10:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:10:44 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:10:44 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:10:44 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:10:44 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 16:11:50 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]

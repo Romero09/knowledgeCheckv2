@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import bootcamp.kcv2.Question;
 import bootcamp.kcv2.QuestionManager;
 
@@ -17,6 +19,9 @@ import bootcamp.kcv2.QuestionManager;
  */
 
 public class FileAdapter  {
+	
+	static final Logger log = Logger.getLogger(FileAdapter.class);
+	
 	private static final String ANSWER_VARIANT = "ANSWER VARIANTS:";
 	private static final String ANSWER_CORRECT = "ANSWER CORRECT:";
 	private static final String QUESTION_TYPE = "QUESTION TYPE:";
@@ -24,8 +29,6 @@ public class FileAdapter  {
 	private static final String QUESTION_ID = "QUESTION ID:";
 	private static final String QUESTION_BUNDLE= "QUESTION BUNDLE:";
 	private static final String ID = "ID:";
-	
-	
 	
 	/**
 	 * This method  exports content into txt file.
@@ -37,11 +40,8 @@ public class FileAdapter  {
 	 */
 	public boolean exportQuestions( String fileName) {
 		ArrayList<Question> alq = QuestionManager.getInstance().pullQuestionBundle("%%");
-
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-			
-
 			for (Question q : alq) {
 				System.err.println(q);
 				writer.println(ID+q.getId());
@@ -52,19 +52,14 @@ public class FileAdapter  {
 			    writer.println(ANSWER_VARIANT+Question.answersGrouping(q.getAnswersVar()));
 			    writer.println(ANSWER_CORRECT+Question.answersGrouping(q.getCorrectAnswers()));
 			    writer.println("===========================================================================");
-			 
 			}
 			writer.close();
-			
 			return true;
-
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("exportQuestions", e);
 			return false;
 		}
-
 	}
-
 
 	/**
 	 * This method imports Questions into ArrayList which then proceed into database.
@@ -75,8 +70,7 @@ public class FileAdapter  {
 	 * @throws SQLException
 	 * @returns ArraList of object Question.
 	 */
-
-	public ArrayList<Question> importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
+	public boolean importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
 		System.out.println(fileName);
 		
 		ArrayList<Question> alq = new ArrayList<>();
@@ -86,8 +80,8 @@ public class FileAdapter  {
 		try (BufferedReader fin = new BufferedReader(new FileReader(fileName))) {
 			tmp = fin.readLine();
 			
-			if(tmp.isEmpty()){
-				return null;
+			if(tmp == null){
+				return false;
 			}
 			
 			while (tmp != null) {
@@ -121,26 +115,20 @@ public class FileAdapter  {
 					 tmp = fin.readLine();
 					 tmp = fin.readLine();
 			}
-
+			DBAdapter.QuestionTableAdapter.clearQuestionTable();
 		} catch (IOException e) {
-			System.err.println("Error I/O" + e);
-			e.printStackTrace();
-			
+			log.error("importQuestion", e);
 		}
-		
-		DBAdapter.QuestionTableAdapter.clearQuestionTable();
-		
 		for(int i=0;i<alq.size();i++) {
 			DBAdapter.QuestionTableAdapter.insertQuestion(alq.get(i));
-			//System.out.println(alq.get(i).getCorrectAnswers());
 		}
-		return alq;
+		return true;
 	}
 
-	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
-		FileAdapter util = new FileAdapter();
-		//util.exportQuestions("question.txt");
-		util.importQuestion("all_questions.txt");
-		
-	}
+//	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
+//		FileAdapter util = new FileAdapter();
+//		//util.exportQuestions("question.txt");
+//		util.importQuestion("blank.txt");
+//		
+//	}
 }

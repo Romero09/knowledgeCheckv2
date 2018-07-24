@@ -22,6 +22,14 @@ public class ServerControllerTest extends Mockito{
 	public static ServerController controller ;
 	
 	@Test
+	public final void test01homePage() {
+		 HttpServletRequest request = mock(HttpServletRequest.class);       
+	        HttpServletResponse response = mock(HttpServletResponse.class);
+		
+		
+	}
+	
+	@Test
 	public final void test01isExamStarted() {
 		 HttpServletRequest request = mock(HttpServletRequest.class);       
 	        HttpServletResponse response = mock(HttpServletResponse.class);

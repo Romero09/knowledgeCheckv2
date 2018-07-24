@@ -20,7 +20,7 @@ public class DBAdapter {
 
 	protected static Connection conn;
 	public static final DBAdapter dbAdapter = new DBAdapter();
-	final Logger log = Logger.getLogger(DBAdapter.class);
+	static final Logger log = Logger.getLogger(DBAdapter.class);
 
 	private DBAdapter() {
 		try {
@@ -37,7 +37,7 @@ public class DBAdapter {
 
 	public static final class QuestionTableAdapter {
 		
-		final Logger log = Logger.getLogger(DBAdapter.class);
+		static final Logger log = Logger.getLogger(QuestionTableAdapter.class);
 		
 		private QuestionTableAdapter(){
 			
@@ -69,7 +69,7 @@ public class DBAdapter {
 				}
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("pullQuestionBundle", e);
 			}
 			return alq;
 		}
@@ -90,57 +90,10 @@ public class DBAdapter {
 				}
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("pullBundleNames", e);
 			}
 			return result;
 		}
-//TODO DELETE IF NOT USED
-//		// Updates Question object in DB by ID
-//		public static boolean updateQuestion(Question question) {
-//			boolean status = false;
-//			String query = "UPDATE " + QuestionTable.DATA_TABLE + " SET `" + QuestionTable.QUESTION_BUNDLE_KEY
-//					+ "` = ?, `" + QuestionTable.QUESTION_ID_KEY + "` = ?," + " `" + QuestionTable.QUESTION_TEXT_KEY
-//					+ "` = ?, `" + QuestionTable.QUESTION_TYPE_KEY + "` = ?," + " `" + QuestionTable.ANSWERS_VAR_KEY
-//					+ "` = ?, `" + QuestionTable.ANSWERS_COR_KEY + "` = ? WHERE `" + QuestionTable.ID_KEY + "` = ?";
-//
-//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-//				preparedStatement.setString(1, question.getSet());
-//				preparedStatement.setInt(2, question.getSetId());
-//				preparedStatement.setString(3, question.getQuestionText());
-//				preparedStatement.setString(4, question.getQuestionType().toString());
-//				preparedStatement.setString(5, Question.answersGrouping(question.getAnswersVar()));
-//				preparedStatement.setString(6, Question.answersGrouping(question.getCorrectAnswers()));
-//				preparedStatement.setInt(7, question.getId());
-//
-//				int updatedRows = preparedStatement.executeUpdate();
-//				conn.commit();
-//				if (updatedRows > 0)
-//					status = true;
-//			} catch (SQLException e) {
-//				// Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			return status;
-//		}
-
-//		TODO Delete
-//		public static boolean deleteQuestion(int id) {
-//			String query = "DELETE FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.ID_KEY + "` = ?";
-//
-//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-//				preparedStatement.setInt(1, id);
-//				int deletedRows = preparedStatement.executeUpdate();
-//				conn.commit();
-//
-//				if (deletedRows > 0) {
-//					return true;
-//				}
-//			} catch (SQLException e) {
-//				// Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			return false;
-//		}
 
 		// Inserts new Question in DB with new ID(objects ID is ignored)
 		public static boolean insertQuestion(Question question) {
@@ -162,8 +115,7 @@ public class DBAdapter {
 					return true;
 				}
 			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
+				log.error("insertQuestion", e);
 			}
 			return false;
 		}
@@ -180,12 +132,10 @@ public class DBAdapter {
 					return true;
 				}
 			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
+				log.error("clearQuestionTable", e);
 			}
 			return false;
 		}
-		
 	}
 
 	public static final class ResultTableAdapter {
@@ -215,8 +165,7 @@ public class DBAdapter {
 						status = true;
 					}
 				} catch (SQLException e) {
-					// Auto-generated catch block
-					e.printStackTrace();
+					log.error("insertQuestion", e);
 				}
 			}
 			return status;
@@ -234,8 +183,7 @@ public class DBAdapter {
 					return true;
 				}
 			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
+				log.error("clearResultTable", e);
 			}
 			return false;
 		}
@@ -264,7 +212,7 @@ public class DBAdapter {
 					}
 					}
 				} catch (SQLException e) {
-					e.printStackTrace();
+					log.error("pullResultsBundle", e);
 				}
 				return Result.resultList(resultList);
 				
