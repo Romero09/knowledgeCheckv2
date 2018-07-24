@@ -19,8 +19,9 @@ import bootcamp.kcv2.Result;
 public class DBAdapter {
 
 	protected static Connection conn;
+	public static final Logger log = Logger.getLogger(DBAdapter.class);
 	public static final DBAdapter dbAdapter = new DBAdapter();
-	static final Logger log = Logger.getLogger(DBAdapter.class);
+	
 
 	private DBAdapter() {
 		try {
@@ -37,7 +38,6 @@ public class DBAdapter {
 
 	public static final class QuestionTableAdapter {
 		
-		static final Logger log = Logger.getLogger(QuestionTableAdapter.class);
 		
 		private QuestionTableAdapter(){
 			
@@ -140,6 +140,7 @@ public class DBAdapter {
 
 	public static final class ResultTableAdapter {
 		
+		
 		private ResultTableAdapter(){
 			
 		}
@@ -218,8 +219,5 @@ public class DBAdapter {
 				
 		}
 
-		public static void main(String[] args){
-			System.out.println(pullResultsBundle("Knowledge Check 4"));
-		}
 	}
 }
