@@ -55,3 +55,5 @@
 2018-07-23 17:16:52 INFO  bootcamp.kcv2.util.DBAdapter <init>:32 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-23 17:19:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:32 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-23 17:25:04 INFO  bootcamp.kcv2.util.DBAdapter <init>:32 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 10:06:53 INFO  bootcamp.kcv2.util.DBAdapter <init>:32 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 10:08:10 INFO  bootcamp.kcv2.util.DBAdapter <init>:32 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false

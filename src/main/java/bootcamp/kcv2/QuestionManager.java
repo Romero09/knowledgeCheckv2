@@ -3,6 +3,9 @@ package bootcamp.kcv2;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import bootcamp.kcv2.util.DBAdapter.QuestionTableAdapter;
 import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
@@ -14,12 +17,19 @@ public class QuestionManager {
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle;
-	private int examDuration = 20; //Default value
+	private int examDuration = 1; //Default value
+	private Timer timer;
 	
 	
 
 	public void setExamStarted(boolean examStarted) {
 		isExamStarted = examStarted;
+		if(examStarted == false){
+			timer.cancel();
+		}
+		if(examStarted == true){
+			examTimer();
+		}
 	}
 
 	/**
@@ -98,10 +108,23 @@ public class QuestionManager {
 	public static String examTimer(){
 		 Calendar cal = Calendar.getInstance();
 	        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-	        cal.add(Calendar.MINUTE, qmSingleton.examDuration);
-	        String time = sdf.format(cal.getTime());
-		return time;
+	        cal.add(Calendar.MINUTE, qmSingleton.examDuration +1);
+	        
+	        Date time = cal.getTime();
+	        qmSingleton.timer = new Timer();
+	        qmSingleton.timer.schedule(qmSingleton.new RemindTask(), time);
+	        String examEnds = "Exam will ends at: " + sdf.format(cal.getTime());
+	        System.out.println(examEnds);
+		return examEnds;
 	}
+	
+	  class RemindTask extends TimerTask {
+	        public void run() {
+	        	isExamStarted = false;
+	            System.out.println("Time's up!");
+	            qmSingleton.timer.cancel(); //Terminate the timer thread
+	        }
+	    }
 	
 	public static void main(String args[]){
 		examTimer();
