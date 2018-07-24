@@ -1,5 +1,7 @@
 package bootcamp.kcv2.util;
-
+/**
+ * This class contains constant for remote connection to MySQL database.
+ */
 public class BaseConfiguration {
 
 	// REMOTE cloud server for real men

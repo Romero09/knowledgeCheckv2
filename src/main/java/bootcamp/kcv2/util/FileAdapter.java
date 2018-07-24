@@ -13,12 +13,8 @@ import bootcamp.kcv2.QuestionManager;
 
 /**
  * This class provides export from database
- * and input into ArrayList
- * @author Deniss Sutugins
- * @version 1.0
- *
+ * and input data from txt file into ArrayList.
  */
-
 
 public class FileAdapter  {
 	private static final String ANSWER_VARIANT = "ANSWER VARIANTS:";
@@ -32,12 +28,12 @@ public class FileAdapter  {
 	
 	
 	/**
-	 *  This method receives fileName and question
+	 * This method  exports content into txt file.
 	 *  
-	 * @param fileName File name where the questions are saved
-	 * @param alq is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers
-	 * @return true if successful, false if error
-	 * @see IOException
+	 * @param fileName File name where the content are saved.
+	 * @param question is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers.
+	 * @return True if successful, false if error.
+	 * @exception IOException
 	 */
 	public boolean exportQuestions( String fileName) {
 		ArrayList<Question> alq = QuestionManager.getInstance().pullQuestionBundle("%%");
@@ -70,11 +66,14 @@ public class FileAdapter  {
 	}
 
 
-	/**Import Question into Database
+	/**
+	 * This method imports Questions into ArrayList which then proceed into database.
 	 * 
+	 * @param fileName File name from witch data are read.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws SQLException
+	 * @returns ArraList of object Question.
 	 */
 
 	public ArrayList<Question> importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {

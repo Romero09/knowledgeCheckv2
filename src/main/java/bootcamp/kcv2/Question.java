@@ -3,7 +3,9 @@ package bootcamp.kcv2;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * This class can make object Question if called and can group, split, format sequence type answers.  
+ */
 public class Question {
 
 	public static final String SEPARATOR = "===";
@@ -36,7 +38,7 @@ public class Question {
 
 	/**
 	 * @param id
-	 *            the id to set
+	 *            the id to set.
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -51,7 +53,7 @@ public class Question {
 
 	/**
 	 * @param set
-	 *            the set to set
+	 *            the set to set.
 	 */
 	public void setSet(String set) {
 		this.set = set;
@@ -66,7 +68,7 @@ public class Question {
 
 	/**
 	 * @param setId
-	 *            the setId to set
+	 *            the setId to set.
 	 */
 	public void setSetId(int setId) {
 		this.setId = setId;
@@ -81,14 +83,14 @@ public class Question {
 
 	/**
 	 * @param questionText
-	 *            the questionText to set
+	 *            the questionText to set.
 	 */
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
 	}
 
 	/**
-	 * @return the questiontype
+	 * @return the question type
 	 */
 	public QuestionTypes getQuestionType() {
 		return questionType;
@@ -98,7 +100,7 @@ public class Question {
 	
 	/**
 	 * @param questiontype
-	 *            the questiontype to set
+	 *            the question type to set.
 	 */
 	public void setQuestionType(String questiontype) {
 		this.questionType = QuestionTypes.valueOf(questiontype);
@@ -113,7 +115,7 @@ public class Question {
 
 	/**
 	 * @param answersVar
-	 *            the answersVar to set
+	 *            the answersVar to set.
 	 */
 	public void setAnswersVar(ArrayList<String> answersVar) {
 		this.answersVar = answersVar;
@@ -128,13 +130,17 @@ public class Question {
 
 	/**
 	 * @param correctAnswers
-	 *            the correctAnswers to set
+	 *            the correctAnswers to set.
 	 */
 	public void setCorrectAnswers(ArrayList<String> correctAnswers) {
 		this.correctAnswers = correctAnswers;
 	}
 	
-	// Grouping from array to String to store in DB separating it with delimiter
+	/**
+	 * Grouping from array to String to store in database MySQL separating it with delimiter.
+	 * @param answersList list with answer for questions. 
+	 * @return Answers for question, null if answers list is empty. 
+	 */
 	public static String answersGrouping(ArrayList<String> answersList) {
 		if (answersList == null) {
 			return null;
@@ -149,7 +155,11 @@ public class Question {
 		return answers.toString();
 	}
 
-	// Splits answers by selected delimiter for answers var and correct answers.
+	/**
+	 * This method splits answers by selected delimiter for answers variants and correct answers.
+	 * @param answers -Student answers. 
+	 * @return ArrayList with answers. 
+	 */
 	public static ArrayList<String> answersSpliter(String answers) {
 		ArrayList<String> answersList = new ArrayList<>();
 		if (answers == null) {
@@ -166,7 +176,11 @@ public class Question {
 			return answersList;
 		}
 	}
-	
+	/**
+	 * This method formats answers for sequence type question.
+	 * @param answer -student answers. 
+	 * @return Sequence answers which was made by student in sequence type question.
+	 */
 	public static String sequenceAnswersFormatter(String answer){
 		
 		StringBuilder seqAnswer = new StringBuilder();

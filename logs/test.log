@@ -81,3 +81,14 @@
 2018-07-24 12:48:59 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-24 12:50:06 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-24 12:51:29 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 13:39:40 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:19:21 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:19:35 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:19:57 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:21:36 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:24:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:27:00 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:27:14 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:27:23 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:27:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 14:28:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:30 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false

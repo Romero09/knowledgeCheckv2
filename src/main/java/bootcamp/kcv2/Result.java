@@ -1,8 +1,9 @@
 package bootcamp.kcv2;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
+/**
+ * This class provides results for student knowledge check session.
+ */
 public class Result {
 
 	private int id;
@@ -27,55 +28,83 @@ public class Result {
 		this.answer = answer;
 		this.isCorrect = isCorrect;
 	}
-
+    /**   
+     * @return the id
+     */
 	public int getId() {
 		return id;
 	}
-
+    /**
+     * @param id -the id to set.
+     */
 	public void setId(int id) {
 		this.id = id;
 	}
-
+    /**
+     * @return user code
+     */
 	public String getUserCode() {
 		return userCode;
 	}
-
+    /**
+     * @param code -unique user code.
+     */
 	public void setUserCode(String code) {
 		this.userCode = code;
 	}
-
+    /**
+     * @return question bundle for test
+     */
 	public String getQuestionBundle() {
 		return questionBundle;
 	}
-
-	public void setQuestionBundle(String questionBundle) {
+    /**
+     * @param questionBundle -question bundle for test session
+     */
+	public void setQuestionBundule(String questionBundle) {
 		this.questionBundle = questionBundle;
 	}
-
+    /**
+     * @return question id 
+     */
 	public int getQuestionId() {
 		return questionId;
 	}
-
+    /**
+     * @param questionId -question serial number
+     */
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
-
+    /**
+     * @return answer which was made by student
+     */
 	public ArrayList<String> getAnswer() {
 		return answer;
 	}
-
+    /**
+     * @param answer student answers
+     */
 	public void setAnswer(ArrayList<String> answer) {
 		this.answer = answer;
 	}
-
+     /**
+      * @return 1 if correct, 0 if incorrect 
+      */
 	public ArrayList<Integer> getIsCorrect() {
 		return isCorrect;
 	}
-
+     /**
+      * @param isCorrect contains correct answer about question
+      */
 	public void setIsCorrect(ArrayList<Integer> isCorrect) {
 		this.isCorrect = isCorrect;
 	}
-
+/**
+ * This method gives information to student about his test session.
+ * @param resultArray student answers sheet
+ * @return test session results
+ */
 	public static ArrayList<String> resultList(ArrayList<ArrayList<String>> resultArray) {
 
 		ArrayList<String> resultList = new ArrayList<>();

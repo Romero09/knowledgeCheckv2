@@ -1,0 +1,38 @@
+package bootcamp.KCV2;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.validation.constraints.AssertTrue;
+
+import org.apache.log4j.Logger;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import bootcamp.kcv2.QuestionManager;
+import bootcamp.kcv2.util.FileAdapter;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class FileAdapterTest {
+	
+	final Logger log = Logger.getLogger(FileAdapterTest.class);
+	public static FileAdapter adapter;
+
+	@Test
+	public final void Test01fileAdapterTest() {
+		adapter = new FileAdapter();
+		
+		assertTrue(adapter.exportQuestions("testfile.txt"));
+		//try {
+			//assertTrue(adapter.importQuestion("testfile.txt"));
+		//} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		//}
+		// TODO Auto-generated constructor stub
+	}
+
+}

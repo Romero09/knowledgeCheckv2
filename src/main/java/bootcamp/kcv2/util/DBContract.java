@@ -1,4 +1,8 @@
 package bootcamp.kcv2.util;
+/**
+ * This class contains constants which are used in project to get 
+ * information about question, results and student.
+ */
 
 public class DBContract {
 	
