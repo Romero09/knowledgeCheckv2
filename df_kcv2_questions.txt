@@ -9,7 +9,7 @@ ANSWER CORRECT:Pavel
 ID:61
 QUESTION BUNDLE:SQL
 QUESTION ID:2
-QUESTION TEXT:Write in correct sequence a)dog b)cat c)bird
+QUESTION TEXT:Write in correct sequence   a)dog b)cat c)bird
 QUESTION TYPE:SEQUENCE
 ANSWER VARIANTS:
 ANSWER CORRECT:c===b===a

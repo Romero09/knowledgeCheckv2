@@ -78,8 +78,7 @@ public class FileAdapter  {
 	 */
 
 	public ArrayList<Question> importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
-		
-		DBAdapter.QuestionTableAdapter.clearQuestionTable();
+		System.out.println(fileName);
 		
 		ArrayList<Question> alq = new ArrayList<>();
 		alq.clear();
@@ -87,6 +86,10 @@ public class FileAdapter  {
 		
 		try (BufferedReader fin = new BufferedReader(new FileReader(fileName))) {
 			tmp = fin.readLine();
+			
+			if(tmp.isEmpty()){
+				return null;
+			}
 			
 			while (tmp != null) {
 				tmp = tmp.replace("\uFEFF", "");
@@ -126,6 +129,8 @@ public class FileAdapter  {
 			
 		}
 		
+		DBAdapter.QuestionTableAdapter.clearQuestionTable();
+		
 		for(int i=0;i<alq.size();i++) {
 			DBAdapter.QuestionTableAdapter.insertQuestion(alq.get(i));
 			//System.out.println(alq.get(i).getCorrectAnswers());
@@ -136,7 +141,7 @@ public class FileAdapter  {
 	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 		FileAdapter util = new FileAdapter();
 		//util.exportQuestions("question.txt");
-		util.importQuestion("question.txt");
+		util.importQuestion("all_questions.txt");
 		
 	}
 }
