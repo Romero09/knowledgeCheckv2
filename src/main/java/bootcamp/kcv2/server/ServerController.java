@@ -86,7 +86,7 @@ public class ServerController {
             currentAnswers = null;
         }
         // TODO: make sure method processes currentAnswers==null as all wrong
-        float ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
+        String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
 
         // TO-DO: output result for a student as HTML table
         return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"" +

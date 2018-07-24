@@ -96,53 +96,53 @@ public class DBAdapter {
 			}
 			return result;
 		}
+//TODO DELETE IF NOT USED
+//		// Updates Question object in DB by ID
+//		public static boolean updateQuestion(Question question) {
+//			boolean status = false;
+//			String query = "UPDATE " + QuestionTable.DATA_TABLE + " SET `" + QuestionTable.QUESTION_BUNDULE_KEY
+//					+ "` = ?, `" + QuestionTable.QUESTION_ID_KEY + "` = ?," + " `" + QuestionTable.QUESTION_TEXT_KEY
+//					+ "` = ?, `" + QuestionTable.QUESTION_TYPE_KEY + "` = ?," + " `" + QuestionTable.ANSWERS_VAR_KEY
+//					+ "` = ?, `" + QuestionTable.ANSWERS_COR_KEY + "` = ? WHERE `" + QuestionTable.ID_KEY + "` = ?";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setString(1, question.getSet());
+//				preparedStatement.setInt(2, question.getSetId());
+//				preparedStatement.setString(3, question.getQuestionText());
+//				preparedStatement.setString(4, question.getQuestionType().toString());
+//				preparedStatement.setString(5, Question.answersGrouping(question.getAnswersVar()));
+//				preparedStatement.setString(6, Question.answersGrouping(question.getCorrectAnswers()));
+//				preparedStatement.setInt(7, question.getId());
+//
+//				int updatedRows = preparedStatement.executeUpdate();
+//				conn.commit();
+//				if (updatedRows > 0)
+//					status = true;
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return status;
+//		}
 
-		// Updates Question object in DB by ID
-		public static boolean updateQuestion(Question question) {
-			boolean status = false;
-			String query = "UPDATE " + QuestionTable.DATA_TABLE + " SET `" + QuestionTable.QUESTION_BUNDULE_KEY
-					+ "` = ?, `" + QuestionTable.QUESTION_ID_KEY + "` = ?," + " `" + QuestionTable.QUESTION_TEXT_KEY
-					+ "` = ?, `" + QuestionTable.QUESTION_TYPE_KEY + "` = ?," + " `" + QuestionTable.ANSWERS_VAR_KEY
-					+ "` = ?, `" + QuestionTable.ANSWERS_COR_KEY + "` = ? WHERE `" + QuestionTable.ID_KEY + "` = ?";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setString(1, question.getSet());
-				preparedStatement.setInt(2, question.getSetId());
-				preparedStatement.setString(3, question.getQuestionText());
-				preparedStatement.setString(4, question.getQuestionType().toString());
-				preparedStatement.setString(5, Question.answersGrouping(question.getAnswersVar()));
-				preparedStatement.setString(6, Question.answersGrouping(question.getCorrectAnswers()));
-				preparedStatement.setInt(7, question.getId());
-
-				int updatedRows = preparedStatement.executeUpdate();
-				conn.commit();
-				if (updatedRows > 0)
-					status = true;
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return status;
-		}
-
-		// Deletes question form DB
-		public static boolean deleteQuestion(int id) {
-			String query = "DELETE FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.ID_KEY + "` = ?";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setInt(1, id);
-				int deletedRows = preparedStatement.executeUpdate();
-				conn.commit();
-
-				if (deletedRows > 0) {
-					return true;
-				}
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return false;
-		}
+//		TODO Delete
+//		public static boolean deleteQuestion(int id) {
+//			String query = "DELETE FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.ID_KEY + "` = ?";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setInt(1, id);
+//				int deletedRows = preparedStatement.executeUpdate();
+//				conn.commit();
+//
+//				if (deletedRows > 0) {
+//					return true;
+//				}
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return false;
+//		}
 
 		// Inserts new Question in DB with new ID(objects ID is ignored)
 		public static boolean insertQuestion(Question question) {
@@ -278,166 +278,166 @@ public class DBAdapter {
 		
 	}
 
-	public static final class StudentTableAdapter {
-		
-		private StudentTableAdapter(){
-			
-		}
-
-		public static Student findStudent(int id) {
-			// find student by id
-			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setInt(1, id);
-				try (ResultSet rs = preparedStatement.executeQuery()){
-				conn.commit();
-				if (!rs.isBeforeFirst()) {
-					return new Student(0, null, null, null);
-				}
-				while (rs.next()) {
-					String firstName = rs.getString(StudentTable.NAME_KEY);
-					String lastName = rs.getString(StudentTable.SURNAME_KEY);
-					String code = rs.getString("code");
-					return new Student(id, code, firstName, lastName);
-				}
-				}
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		public static List<Student> findStudent(String firstName, String lastName) {
-			try {
-				conn.setAutoCommit(false);
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			firstName = "%" + firstName + "%";
-			lastName = "%" + lastName + "%";
-
-			List<Student> studentList = new ArrayList<>();
-
-			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.NAME_KEY
-					+ "` LIKE ? AND `" + StudentTable.SURNAME_KEY + "` LIKE ?";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setString(1, firstName);
-				preparedStatement.setString(2, lastName);
-				try(ResultSet rs = preparedStatement.executeQuery()){
-				conn.commit();
-
-				if (!rs.isBeforeFirst()) {
-					return studentList;
-				}
-				while (rs.next()) {
-					String first = rs.getString(StudentTable.NAME_KEY);
-					String last = rs.getString(StudentTable.SURNAME_KEY);
-					String code = rs.getString(StudentTable.CODE_KEY);
-					int id = rs.getInt(StudentTable.ID_KEY);
-
-					studentList.add(new Student(id, code, first, last));
-				}
-				}
-
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return studentList;
-		}
-
-		public static boolean insertStudent(String firstName, String lastName, String code) {
-
-			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.CODE_KEY + "` = ?";
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setString(1, code);
-				try(ResultSet rs = preparedStatement.executeQuery()){
-				conn.commit();
-				if (rs.isBeforeFirst()) {
-					System.out.println("Such code already exists");
-
-					return false;
-				}
-				}
-
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			if (code.length() > 4)
-				return false;
-			if (lastName.length() > 45)
-				return false;
-			if (firstName.length() > 45)
-				return false;
-
-			query = "INSERT INTO " + StudentTable.DATA_TABLE + " (" + StudentTable.NAME_KEY + ", "
-					+ StudentTable.SURNAME_KEY + ", " + StudentTable.CODE_KEY + ") VALUES (?,?,?)";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setString(1, firstName);
-				preparedStatement.setString(2, lastName);
-				preparedStatement.setString(3, code);
-				int insertedRow = preparedStatement.executeUpdate();
-				conn.commit();
-				if (insertedRow > 0) {
-					return true;
-				}
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return false;
-		}
-
-		public static boolean updateStudent(Student student) {
-			boolean status = false;
-
-			String query = "UPDATE " + StudentTable.DATA_TABLE + " SET `" + StudentTable.NAME_KEY + "` = ?, `"
-					+ StudentTable.SURNAME_KEY + "` = ?, `" + StudentTable.CODE_KEY + "` = ? WHERE `"
-					+ StudentTable.ID_KEY + "` = ?";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setString(1, student.getName());
-				preparedStatement.setString(2, student.getSurename());
-				preparedStatement.setString(3, student.getCode());
-				preparedStatement.setInt(4, student.getId());
-
-				int updatedRows = preparedStatement.executeUpdate();
-				conn.commit();
-
-				if (updatedRows > 0)
-					status = true;
-
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return status;
-		}
-
-		public static boolean deleteStudent(int id) {
-			String query = "DELETE FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
-
-			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-				preparedStatement.setInt(1, id);
-				int deletedRows = preparedStatement.executeUpdate();
-				conn.commit();
-
-				if (deletedRows > 0) {
-					return true;
-				}
-			} catch (SQLException e) {
-				// Auto-generated catch block
-				e.printStackTrace();
-			}
-			return false;
-		}
-
-	}
-
+//	public static final class StudentTableAdapter {
+//		
+//		private StudentTableAdapter(){
+//			
+//		}
+//
+//		public static Student findStudent(int id) {
+//			// find student by id
+//			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setInt(1, id);
+//				try (ResultSet rs = preparedStatement.executeQuery()){
+//				conn.commit();
+//				if (!rs.isBeforeFirst()) {
+//					return new Student(0, null, null, null);
+//				}
+//				while (rs.next()) {
+//					String firstName = rs.getString(StudentTable.NAME_KEY);
+//					String lastName = rs.getString(StudentTable.SURNAME_KEY);
+//					String code = rs.getString("code");
+//					return new Student(id, code, firstName, lastName);
+//				}
+//				}
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return null;
+//		}
+//
+//		public static List<Student> findStudent(String firstName, String lastName) {
+//			try {
+//				conn.setAutoCommit(false);
+//			} catch (SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//			firstName = "%" + firstName + "%";
+//			lastName = "%" + lastName + "%";
+//
+//			List<Student> studentList = new ArrayList<>();
+//
+//			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.NAME_KEY
+//					+ "` LIKE ? AND `" + StudentTable.SURNAME_KEY + "` LIKE ?";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setString(1, firstName);
+//				preparedStatement.setString(2, lastName);
+//				try(ResultSet rs = preparedStatement.executeQuery()){
+//				conn.commit();
+//
+//				if (!rs.isBeforeFirst()) {
+//					return studentList;
+//				}
+//				while (rs.next()) {
+//					String first = rs.getString(StudentTable.NAME_KEY);
+//					String last = rs.getString(StudentTable.SURNAME_KEY);
+//					String code = rs.getString(StudentTable.CODE_KEY);
+//					int id = rs.getInt(StudentTable.ID_KEY);
+//
+//					studentList.add(new Student(id, code, first, last));
+//				}
+//				}
+//
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return studentList;
+//		}
+//
+//		public static boolean insertStudent(String firstName, String lastName, String code) {
+//
+//			String query = "SELECT * FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.CODE_KEY + "` = ?";
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setString(1, code);
+//				try(ResultSet rs = preparedStatement.executeQuery()){
+//				conn.commit();
+//				if (rs.isBeforeFirst()) {
+//					System.out.println("Such code already exists");
+//
+//					return false;
+//				}
+//				}
+//
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			if (code.length() > 4)
+//				return false;
+//			if (lastName.length() > 45)
+//				return false;
+//			if (firstName.length() > 45)
+//				return false;
+//
+//			query = "INSERT INTO " + StudentTable.DATA_TABLE + " (" + StudentTable.NAME_KEY + ", "
+//					+ StudentTable.SURNAME_KEY + ", " + StudentTable.CODE_KEY + ") VALUES (?,?,?)";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setString(1, firstName);
+//				preparedStatement.setString(2, lastName);
+//				preparedStatement.setString(3, code);
+//				int insertedRow = preparedStatement.executeUpdate();
+//				conn.commit();
+//				if (insertedRow > 0) {
+//					return true;
+//				}
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return false;
+//		}
+//
+//		public static boolean updateStudent(Student student) {
+//			boolean status = false;
+//
+//			String query = "UPDATE " + StudentTable.DATA_TABLE + " SET `" + StudentTable.NAME_KEY + "` = ?, `"
+//					+ StudentTable.SURNAME_KEY + "` = ?, `" + StudentTable.CODE_KEY + "` = ? WHERE `"
+//					+ StudentTable.ID_KEY + "` = ?";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setString(1, student.getName());
+//				preparedStatement.setString(2, student.getSurename());
+//				preparedStatement.setString(3, student.getCode());
+//				preparedStatement.setInt(4, student.getId());
+//
+//				int updatedRows = preparedStatement.executeUpdate();
+//				conn.commit();
+//
+//				if (updatedRows > 0)
+//					status = true;
+//
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			return status;
+//		}
+//
+//		public static boolean deleteStudent(int id) {
+//			String query = "DELETE FROM " + StudentTable.DATA_TABLE + " WHERE `" + StudentTable.ID_KEY + "` = ?";
+//
+//			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+//				preparedStatement.setInt(1, id);
+//				int deletedRows = preparedStatement.executeUpdate();
+//				conn.commit();
+//
+//				if (deletedRows > 0) {
+//					return true;
+//				}
+//			} catch (SQLException e) {
+//				// Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return false;
+//		}
+//
+//	}
+//
 }

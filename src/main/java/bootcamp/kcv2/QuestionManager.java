@@ -17,17 +17,15 @@ public class QuestionManager {
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle;
-	private int examDuration = 1; //Default value
+	private int examDuration = 1; // Default value
 	private Timer timer;
-	
-	
 
 	public void setExamStarted(boolean examStarted) {
 		isExamStarted = examStarted;
-		if(examStarted == false){
+		if (examStarted == false) {
 			timer.cancel();
 		}
-		if(examStarted == true){
+		if (examStarted == true) {
 			examTimer();
 		}
 	}
@@ -46,7 +44,7 @@ public class QuestionManager {
 	public String getCurrentQuestionBundle() {
 		return currentQuestionBundle;
 	}
-	
+
 	public void setCurrentQuestionBundle(String set) {
 		this.currentQuestionBundle = set;
 	}
@@ -57,12 +55,12 @@ public class QuestionManager {
 	public static QuestionManager getInstance() {
 		return qmSingleton;
 	}
-	
-	public int getExamDuration(){
+
+	public int getExamDuration() {
 		return examDuration;
 	}
-	
-	public void setExamDuration(int examDuration){
+
+	public void setExamDuration(int examDuration) {
 		this.examDuration = examDuration;
 	}
 
@@ -90,12 +88,12 @@ public class QuestionManager {
 	 * @return
 	 */
 	public ArrayList<Question> getQuestionBundle(String userCode) {
-		 for (StudentAnswerSheet studentAnswerSheet : answers) {
-		 if (studentAnswerSheet.getStudentCode().equals(userCode)) {
-		 System.err.println("User has already participated.");
-		 return null;
-		 }
-		 }
+		for (StudentAnswerSheet studentAnswerSheet : answers) {
+			if (studentAnswerSheet.getStudentCode().equals(userCode)) {
+				System.err.println("User has already participated.");
+				return null;
+			}
+		}
 		StudentAnswerSheet as = new StudentAnswerSheet();
 		as.setStudentCode(userCode);
 		as.setQuestionBundleName(qmSingleton.currentQuestionBundle);
@@ -104,32 +102,30 @@ public class QuestionManager {
 		return pullQuestionBundle(qmSingleton.currentQuestionBundle);
 	}
 
-	
-	public static String examTimer(){
-		 Calendar cal = Calendar.getInstance();
-	        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-	        cal.add(Calendar.MINUTE, qmSingleton.examDuration +1);
-	        
-	        Date time = cal.getTime();
-	        qmSingleton.timer = new Timer();
-	        qmSingleton.timer.schedule(qmSingleton.new RemindTask(), time);
-	        String examEnds = "Exam will ends at: " + sdf.format(cal.getTime());
-	        System.out.println(examEnds);
+	public static String examTimer() {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		cal.add(Calendar.MINUTE, qmSingleton.examDuration + 1);
+
+		Date time = cal.getTime();
+		qmSingleton.timer = new Timer();
+		qmSingleton.timer.schedule(qmSingleton.new RemindTask(), time);
+		String examEnds = "Exam will ends at: " + sdf.format(cal.getTime());
+		System.out.println(examEnds);
 		return examEnds;
 	}
-	
-	  class RemindTask extends TimerTask {
-	        public void run() {
-	        	isExamStarted = false;
-	            System.out.println("Time's up!");
-	            qmSingleton.timer.cancel(); //Terminate the timer thread
-	        }
-	    }
-	
-	public static void main(String args[]){
+
+	class RemindTask extends TimerTask {
+		public void run() {
+			isExamStarted = false;
+			System.out.println("Time's up!");
+			qmSingleton.timer.cancel(); // Terminate the timer thread
+		}
+	}
+
+	public static void main(String args[]) {
 		examTimer();
 	}
-	
 
 	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
@@ -140,15 +136,15 @@ public class QuestionManager {
 		return QuestionTableAdapter.pullBundleNames();
 	}
 
-	// Updates Question object in DB by ID
-	public boolean updateQuestion(Question question) {
-		return QuestionTableAdapter.updateQuestion(question);
-	}
+	// TODO DELETE// Updates Question object in DB by ID
+	// public boolean updateQuestion(Question question) {
+	// return QuestionTableAdapter.updateQuestion(question);
+	// }
 
-	// Deletes question form DB
-	public boolean deleteQuestion(int id) {
-		return QuestionTableAdapter.deleteQuestion(id);
-	}
+	// TODO DELETE// Deletes question form DB
+	// public boolean deleteQuestion(int id) {
+	// return QuestionTableAdapter.deleteQuestion(id);
+	// }
 
 	// Inserts new Question in DB with new ID(objects ID is ignored)
 	public boolean insertQuestion(Question question) {
@@ -179,15 +175,15 @@ public class QuestionManager {
 			if (alQuestions.get(i).getQuestionType().equals(QuestionTypes.SEQUENCE)) {
 				String sequenceAnswer = Question.sequenceAnswersFormatter(currentAnswer);
 				String sequenceCorrectAnswer = Question.sequenceAnswersFormatter(correctAnswer);
-				if(sequenceAnswer.equals(sequenceCorrectAnswer)){
+				if (sequenceAnswer.equals(sequenceCorrectAnswer)) {
 					correctAnswers.add(1); // Correct - True
 					correctAnswersCount++;
 				} else {
-				correctAnswers.add(0); // Incorrect - False
+					correctAnswers.add(0); // Incorrect - False
 				}
 				continue;
 			}
-			
+
 			if (currentAnswer.equals(correctAnswer)) {
 
 				correctAnswers.add(1); // Correct - True
@@ -199,36 +195,34 @@ public class QuestionManager {
 
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
 		ResultTableAdapter.insertQuestion(result);
-		
-		
-		
+
 		int percantageResult = 0;
-		if(totalQuestions>0){
-		percantageResult = (int)(((float) correctAnswersCount / totalQuestions * 100));
-		} else{
+		if (totalQuestions > 0) {
+			percantageResult = (int) (((float) correctAnswersCount / totalQuestions * 100));
+		} else {
 			percantageResult = 0;
-			}
-		
+		}
+
 		StringBuilder totalResult = new StringBuilder();
-		totalResult.append(correctAnswersCount+"/"+totalQuestions);
-		totalResult.append(" " + String.valueOf(percantageResult +"%, "));
+		totalResult.append(correctAnswersCount + "/" + totalQuestions);
+		totalResult.append(" " + String.valueOf(percantageResult + "%, "));
 		totalResult.append("Wrong answers on questions: " + studentResults(correctAnswers) + ".");
-		
+
 		return totalResult.toString();
 	}
-	
-	public String studentResults(ArrayList<Integer> correctAnswers){
-		
+
+	public String studentResults(ArrayList<Integer> correctAnswers) {
+
 		ArrayList<String> incorrectQuestions = new ArrayList<>();
-		
+
 		for (int i = 0; i < correctAnswers.size(); i++) {
-			
-			if(correctAnswers.get(i)==0)
-			incorrectQuestions.add(String.valueOf(i+1));
+
+			if (correctAnswers.get(i) == 0)
+				incorrectQuestions.add(String.valueOf(i + 1));
 		}
-		
+
 		String incorrectQuestionString = incorrectQuestions.toString();
-		
+
 		return incorrectQuestionString;
 	}
 
