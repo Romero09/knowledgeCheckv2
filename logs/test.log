@@ -609,3 +609,15 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
 2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
 2018-07-24 16:11:52 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 22:48:08 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 22:57:19 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 22:57:20 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 22:57:20 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 22:57:20 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 22:57:20 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 22:58:17 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-24 22:58:19 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:74 - AE58
+2018-07-24 22:58:19 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - []
+2018-07-24 22:58:19 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-24 22:58:19 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:86 - [SQL, Threads]
+2018-07-24 23:04:46 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false

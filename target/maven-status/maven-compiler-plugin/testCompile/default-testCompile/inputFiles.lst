@@ -1,1 +1,4 @@
-/home/student/workspace/KCV2/src/test/java/bootcamp/KCV2/AppTest.java
+/home/student/workspace/kcv2/src/test/java/bootcamp/KCV2/StudentAnswerSheetTest.java
+/home/student/workspace/kcv2/src/test/java/bootcamp/KCV2/ServerControllerTest.java
+/home/student/workspace/kcv2/src/test/java/bootcamp/KCV2/FileAdapterTest.java
+/home/student/workspace/kcv2/src/test/java/bootcamp/KCV2/QuestionManagerTest.java

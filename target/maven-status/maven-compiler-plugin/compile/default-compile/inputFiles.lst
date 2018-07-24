@@ -1,1 +1,11 @@
-/home/student/workspace/KCV2/src/main/java/bootcamp/KCV2/App.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/util/DBContract.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/server/ServerApplication.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/util/FileAdapter.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/server/ServerController.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/Question.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/util/DBAdapter.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/QuestionTypes.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/Result.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/QuestionManager.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/util/BaseConfiguration.java
+/home/student/workspace/kcv2/src/main/java/bootcamp/kcv2/StudentAnswerSheet.java
