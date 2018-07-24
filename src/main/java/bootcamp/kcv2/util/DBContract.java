@@ -38,18 +38,4 @@ public class DBContract {
 		public static final String IS_CORRECT_KEY = "isCorrect";
 
 	}
-	
-	public static final class StudentTable {
-		
-		private StudentTable(){
-			
-		}
-		
-		public static final String DATA_TABLE = "Student";
-		public static final String ID_KEY = "id";
-		public static final String NAME_KEY = "name";
-		public static final String SURNAME_KEY = "surname";
-		public static final String CODE_KEY = "code";
-	}
-
 }

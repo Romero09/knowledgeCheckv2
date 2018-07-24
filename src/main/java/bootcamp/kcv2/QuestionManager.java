@@ -17,7 +17,7 @@ public class QuestionManager {
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle;
-	private int examDuration = 1; // Default value
+	private int examDuration = 20; // Default value
 	private Timer timer;
 
 	public void setExamStarted(boolean examStarted) {
@@ -105,7 +105,7 @@ public class QuestionManager {
 	public static String examTimer() {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		cal.add(Calendar.MINUTE, qmSingleton.examDuration + 1);
+		cal.add(Calendar.MINUTE, qmSingleton.examDuration);
 
 		Date time = cal.getTime();
 		qmSingleton.timer = new Timer();
@@ -165,13 +165,11 @@ public class QuestionManager {
 		for (int i = 0; i < answers.size(); i++) {
 			correctAnswer = Question.answersGrouping(alQuestions.get(i).getCorrectAnswers());
 			totalQuestions++;
-
 			if (answers.get(i).replaceAll(".*?(.?.?.?)?$", "$1").contains(Question.SEPARATOR)) {
 				currentAnswer = answers.get(i).substring(0, answers.get(i).length() - 3);
 			} else {
 				currentAnswer = answers.get(i);
 			}
-
 			if (alQuestions.get(i).getQuestionType().equals(QuestionTypes.SEQUENCE)) {
 				String sequenceAnswer = Question.sequenceAnswersFormatter(currentAnswer);
 				String sequenceCorrectAnswer = Question.sequenceAnswersFormatter(correctAnswer);
@@ -183,16 +181,13 @@ public class QuestionManager {
 				}
 				continue;
 			}
-
 			if (currentAnswer.equals(correctAnswer)) {
-
 				correctAnswers.add(1); // Correct - True
 				correctAnswersCount++;
 			} else {
 				correctAnswers.add(0); // Incorrect - False
 			}
 		}
-
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
 		ResultTableAdapter.insertQuestion(result);
 
@@ -202,27 +197,20 @@ public class QuestionManager {
 		} else {
 			percantageResult = 0;
 		}
-
 		StringBuilder totalResult = new StringBuilder();
 		totalResult.append(correctAnswersCount + "/" + totalQuestions);
 		totalResult.append(" " + String.valueOf(percantageResult + "%, "));
 		totalResult.append("Wrong answers on questions: " + studentResults(correctAnswers) + ".");
-
 		return totalResult.toString();
 	}
 
 	public String studentResults(ArrayList<Integer> correctAnswers) {
-
 		ArrayList<String> incorrectQuestions = new ArrayList<>();
-
 		for (int i = 0; i < correctAnswers.size(); i++) {
-
 			if (correctAnswers.get(i) == 0)
 				incorrectQuestions.add(String.valueOf(i + 1));
 		}
-
 		String incorrectQuestionString = incorrectQuestions.toString();
-
 		return incorrectQuestionString;
 	}
 
