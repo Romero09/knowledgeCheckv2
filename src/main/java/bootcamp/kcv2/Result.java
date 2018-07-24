@@ -7,22 +7,22 @@ public class Result {
 
 	private int id;
 	private String userCode;
-	private String questionBundule;
+	private String questionBundle;
 	private int questionId;
 	private ArrayList<String> answer;
 	private ArrayList<Integer> isCorrect;
 
-	public Result(String code, String questionBundule, ArrayList<String> answer, ArrayList<Integer> isCorrect) {
-		this(0, code, questionBundule, 0, answer, isCorrect);
+	public Result(String code, String questionBundle, ArrayList<String> answer, ArrayList<Integer> isCorrect) {
+		this(0, code, questionBundle, 0, answer, isCorrect);
 
 	}
 
-	public Result(int id, String code, String questionBundule, int questionId, ArrayList<String> answer,
+	public Result(int id, String code, String questionBundle, int questionId, ArrayList<String> answer,
 			ArrayList<Integer> isCorrect) {
 		super();
 		this.id = id;
 		this.userCode = code;
-		this.questionBundule = questionBundule;
+		this.questionBundle = questionBundle;
 		this.questionId = questionId;
 		this.answer = answer;
 		this.isCorrect = isCorrect;
@@ -44,12 +44,12 @@ public class Result {
 		this.userCode = code;
 	}
 
-	public String getQuestionBundule() {
-		return questionBundule;
+	public String getQuestionBundle() {
+		return questionBundle;
 	}
 
-	public void setQuestionBundule(String questionBundule) {
-		this.questionBundule = questionBundule;
+	public void setQuestionBundle(String questionBundle) {
+		this.questionBundle = questionBundle;
 	}
 
 	public int getQuestionId() {

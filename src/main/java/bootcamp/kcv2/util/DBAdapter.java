@@ -47,7 +47,7 @@ public class DBAdapter {
 		public static ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
 
 			ArrayList<Question> alq = new ArrayList<>();
-			String query = "SELECT * FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.QUESTION_BUNDULE_KEY
+			String query = "SELECT * FROM " + QuestionTable.DATA_TABLE + " WHERE `" + QuestionTable.QUESTION_BUNDLE_KEY
 					+ "` LIKE ?";
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, currentQuestionBundle);
@@ -59,7 +59,7 @@ public class DBAdapter {
 				}
 				while (rs.next()) {
 					int idQ = rs.getInt(QuestionTable.ID_KEY);
-					String setQ = rs.getString(QuestionTable.QUESTION_BUNDULE_KEY);
+					String setQ = rs.getString(QuestionTable.QUESTION_BUNDLE_KEY);
 					int setIdQ = rs.getInt(QuestionTable.QUESTION_ID_KEY);
 					String questionTextQ = rs.getString(QuestionTable.QUESTION_TEXT_KEY);
 					String questionTypeQ = rs.getString(QuestionTable.QUESTION_TYPE_KEY);
@@ -75,7 +75,7 @@ public class DBAdapter {
 		}
 
 		public static ArrayList<String> pullBundleNames() {
-			String query = "SELECT DISTINCT (" + QuestionTable.QUESTION_BUNDULE_KEY + ") " + "FROM "
+			String query = "SELECT DISTINCT (" + QuestionTable.QUESTION_BUNDLE_KEY + ") " + "FROM "
 					+ QuestionTable.DATA_TABLE;
 			ArrayList<String> result = new ArrayList<>();
 
@@ -83,9 +83,9 @@ public class DBAdapter {
 				try(ResultSet rs = st.executeQuery(query)){
 				conn.commit();
 				while (rs.next()) {
-					String bundleName = rs.getString(QuestionTable.QUESTION_BUNDULE_KEY);
+					String bundleName = rs.getString(QuestionTable.QUESTION_BUNDLE_KEY);
 					if (bundleName != null) {
-						result.add(rs.getString(QuestionTable.QUESTION_BUNDULE_KEY));
+						result.add(rs.getString(QuestionTable.QUESTION_BUNDLE_KEY));
 					}
 				}
 				}
@@ -98,7 +98,7 @@ public class DBAdapter {
 //		// Updates Question object in DB by ID
 //		public static boolean updateQuestion(Question question) {
 //			boolean status = false;
-//			String query = "UPDATE " + QuestionTable.DATA_TABLE + " SET `" + QuestionTable.QUESTION_BUNDULE_KEY
+//			String query = "UPDATE " + QuestionTable.DATA_TABLE + " SET `" + QuestionTable.QUESTION_BUNDLE_KEY
 //					+ "` = ?, `" + QuestionTable.QUESTION_ID_KEY + "` = ?," + " `" + QuestionTable.QUESTION_TEXT_KEY
 //					+ "` = ?, `" + QuestionTable.QUESTION_TYPE_KEY + "` = ?," + " `" + QuestionTable.ANSWERS_VAR_KEY
 //					+ "` = ?, `" + QuestionTable.ANSWERS_COR_KEY + "` = ? WHERE `" + QuestionTable.ID_KEY + "` = ?";
@@ -145,7 +145,7 @@ public class DBAdapter {
 		// Inserts new Question in DB with new ID(objects ID is ignored)
 		public static boolean insertQuestion(Question question) {
 
-			String query = "INSERT INTO " + QuestionTable.DATA_TABLE + " (" + QuestionTable.QUESTION_BUNDULE_KEY + ", "
+			String query = "INSERT INTO " + QuestionTable.DATA_TABLE + " (" + QuestionTable.QUESTION_BUNDLE_KEY + ", "
 					+ QuestionTable.QUESTION_ID_KEY + ", " + QuestionTable.QUESTION_TEXT_KEY + ", "
 					+ QuestionTable.QUESTION_TYPE_KEY + ", " + "" + QuestionTable.ANSWERS_VAR_KEY + ", "
 					+ QuestionTable.ANSWERS_COR_KEY + ") VALUES (?,?,?,?,?,?)";
@@ -199,13 +199,13 @@ public class DBAdapter {
 			boolean status = false;
 
 			String query = "INSERT INTO " + ResultTable.DATA_TABLE + " (" + ResultTable.USER_CODE_KEY + ", "
-					+ ResultTable.QUESTION_BUNDULE_KEY + ", " + ResultTable.QUESTION_ID_KEY + ", "
+					+ ResultTable.QUESTION_BUNDLE_KEY + ", " + ResultTable.QUESTION_ID_KEY + ", "
 					+ ResultTable.ANSWER_KEY + ", " + ResultTable.IS_CORRECT_KEY + ") VALUES (?,?,?,?,?)";
 
 			for (int i = 0; i < result.getIsCorrect().size(); i++) {
 				try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 					preparedStatement.setString(1, result.getUserCode());
-					preparedStatement.setString(2, result.getQuestionBundule());
+					preparedStatement.setString(2, result.getQuestionBundle());
 					preparedStatement.setInt(3, i + 1);
 					preparedStatement.setString(4, result.getAnswer().get(i));
 					preparedStatement.setInt(5, result.getIsCorrect().get(i));
@@ -245,7 +245,7 @@ public class DBAdapter {
 			
 			ArrayList<ArrayList<String>> resultList = new ArrayList<>();
 			
-			String query = "SELECT * FROM " + ResultTable.DATA_TABLE + " WHERE `" + ResultTable.QUESTION_BUNDULE_KEY + "` = ?";
+			String query = "SELECT * FROM " + ResultTable.DATA_TABLE + " WHERE `" + ResultTable.QUESTION_BUNDLE_KEY + "` = ?";
 			
 			try(PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 				preparedStatement.setString(1, bundleName);

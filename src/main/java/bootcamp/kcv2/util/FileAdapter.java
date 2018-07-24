@@ -26,7 +26,7 @@ public class FileAdapter  {
 	private static final String QUESTION_TYPE = "QUESTION TYPE:";
 	private static final String QUESTION_TEXT = "QUESTION TEXT:";
 	private static final String QUESTION_ID = "QUESTION ID:";
-	private static final String QUESTION_BUNDLE= "QUESTION BUNDULE:";
+	private static final String QUESTION_BUNDLE= "QUESTION BUNDLE:";
 	private static final String ID = "ID:";
 	
 	

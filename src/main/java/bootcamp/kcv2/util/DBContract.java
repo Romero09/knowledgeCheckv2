@@ -14,7 +14,7 @@ public class DBContract {
 
 		public static final String DATA_TABLE = "Question";
 		public static final String ID_KEY = "id";
-		public static final String QUESTION_BUNDULE_KEY = "questionBundule";
+		public static final String QUESTION_BUNDLE_KEY = "questionBundle";
 		public static final String QUESTION_ID_KEY = "questionId";
 		public static final String QUESTION_TEXT_KEY = "questionText";
 		public static final String QUESTION_TYPE_KEY = "questionType";
@@ -32,7 +32,7 @@ public class DBContract {
 		public static final String DATA_TABLE = "Result";
 		public static final String ID_KEY = "id";
 		public static final String USER_CODE_KEY = "userCode";
-		public static final String QUESTION_BUNDULE_KEY = "questionBundule";
+		public static final String QUESTION_BUNDLE_KEY = "questionBundle";
 		public static final String QUESTION_ID_KEY = "questionId";
 		public static final String ANSWER_KEY = "answer";
 		public static final String IS_CORRECT_KEY = "isCorrect";

@@ -77,7 +77,7 @@ public class QuestionManager {
 
 		System.err.println("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
 
-		return restultsCheck(userCode, answers, alQuestions);
+		return resultsCheck(userCode, answers, alQuestions);
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class QuestionManager {
 		return QuestionTableAdapter.insertQuestion(question);
 	}
 
-	public String restultsCheck(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+	public String resultsCheck(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 
 		ArrayList<Integer> correctAnswers = new ArrayList<>();
 		int totalQuestions = 0;
