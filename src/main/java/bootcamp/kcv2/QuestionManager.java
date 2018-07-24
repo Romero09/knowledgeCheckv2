@@ -1,6 +1,8 @@
 package bootcamp.kcv2;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import bootcamp.kcv2.util.DBAdapter.QuestionTableAdapter;
 import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
@@ -12,6 +14,9 @@ public class QuestionManager {
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle;
+	private int examDuration = 20; //Default value
+	
+	
 
 	public void setExamStarted(boolean examStarted) {
 		isExamStarted = examStarted;
@@ -41,6 +46,14 @@ public class QuestionManager {
 
 	public static QuestionManager getInstance() {
 		return qmSingleton;
+	}
+	
+	public int getExamDuration(){
+		return examDuration;
+	}
+	
+	public void setExamDuration(int examDuration){
+		this.examDuration = examDuration;
 	}
 
 	/**
@@ -81,6 +94,19 @@ public class QuestionManager {
 		return pullQuestionBundle(qmSingleton.currentQuestionBundle);
 	}
 
+	
+	public static String examTimer(){
+		 Calendar cal = Calendar.getInstance();
+	        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	        cal.add(Calendar.MINUTE, qmSingleton.examDuration);
+	        String time = sdf.format(cal.getTime());
+		return time;
+	}
+	
+	public static void main(String args[]){
+		examTimer();
+	}
+	
 
 	// Returns Question object searched by SET
 	public ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {

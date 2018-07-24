@@ -1,0 +1,72 @@
+ID:39
+QUESTION BUNDULE:Knowledge Check 4
+QUESTION ID:1
+QUESTION TEXT:Event, which occurs during the execution of a program, that disrupts the normal flow of the program's instructions. (Select the best option)
+QUESTION TYPE:SINGLE_CHOICE
+ANSWER VARIANTS:error===disconnect===exception===explosion
+ANSWER CORRECT:exception
+===========================================================================
+ID:40
+QUESTION BUNDULE:Knowledge Check 4
+QUESTION ID:2
+QUESTION TEXT:Event, which occurs during the execution of a program, that disrupts the normal flow of the program's instructions. (Select two options)
+QUESTION TYPE:MULTI_CHOICE
+ANSWER VARIANTS:error===disconnect===exception===explosion
+ANSWER CORRECT:exception===explosion
+===========================================================================
+ID:41
+QUESTION BUNDULE:Knowledge Check 4
+QUESTION ID:3
+QUESTION TEXT:try block must have â?¦ block
+QUESTION TYPE:OPEN
+ANSWER VARIANTS:
+ANSWER CORRECT:catch
+===========================================================================
+ID:42
+QUESTION BUNDULE:Knowledge Check 5
+QUESTION ID:1
+QUESTION TEXT:Which function is used to understand if file is actually created
+QUESTION TYPE:SINGLE_CHOICE
+ANSWER VARIANTS:exists()===created()===available()
+ANSWER CORRECT:exists()
+===========================================================================
+ID:43
+QUESTION BUNDULE:Knowledge Check 5
+QUESTION ID:2
+QUESTION TEXT:Constructor can be synchronized ( type true or false)
+QUESTION TYPE:OPEN
+ANSWER VARIANTS:
+ANSWER CORRECT:true
+===========================================================================
+ID:44
+QUESTION BUNDULE:Knowledge Check 5
+QUESTION ID:3
+QUESTION TEXT:System.out.print() is a method, which write to standard input.
+QUESTION TYPE:SINGLE_CHOICE
+ANSWER VARIANTS:true===false
+ANSWER CORRECT:false
+===========================================================================
+ID:45
+QUESTION BUNDULE:Knowledge Check 5
+QUESTION ID:4
+QUESTION TEXT:Write in correct sequence a)dog b)cat c)bird
+QUESTION TYPE:SEQUENCE
+ANSWER VARIANTS:
+ANSWER CORRECT:c===b===a
+===========================================================================
+ID:46
+QUESTION BUNDULE:DF_IMPORT
+QUESTION ID:4
+QUESTION TEXT:QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+QUESTION TYPE:SEQUENCE
+ANSWER VARIANTS:
+ANSWER CORRECT:c===b===a
+===========================================================================
+ID:47
+QUESTION BUNDULE:DF_IMPORT
+QUESTION ID:5
+QUESTION TEXT:Another question from DF_IMPORT
+QUESTION TYPE:SINGLE_CHOICE
+ANSWER VARIANTS:true===false
+ANSWER CORRECT:true
+===========================================================================
