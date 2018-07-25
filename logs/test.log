@@ -2021,3 +2021,70 @@ Caused by: java.net.SocketException: Broken pipe (Write failed)
 2018-07-25 12:43:38 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
 2018-07-25 12:43:38 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
 2018-07-25 12:43:38 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-25 12:46:45 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 12:47:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 12:47:51 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 12:48:25 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 12:48:27 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-25 12:48:27 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-25 12:48:27 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-25 12:48:28 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL, Threads]
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-25 12:48:30 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-25 14:26:57 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:26:59 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-25 14:26:59 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-25 14:26:59 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-25 14:26:59 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL, Threads]
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-25 14:27:01 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-25 14:27:27 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:29:20 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:30:20 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:31:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:31:58 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:32:41 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:35:37 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:37:03 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:37:37 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:38:07 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:38:09 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-25 14:38:09 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - []
+2018-07-25 14:38:09 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-25 14:38:10 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL, Threads]
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-25 14:38:12 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-25 14:47:37 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:48:15 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:50:20 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:50:57 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:52:58 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:54:13 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:54:41 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:57:14 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:58:11 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 14:58:55 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 15:01:25 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 15:02:09 INFO  bootcamp.kcv2.util.DBAdapter <init>:31 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-25 15:02:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-25 15:02:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-25 15:02:11 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-25 15:02:11 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL, Threads]
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-25 15:02:13 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]

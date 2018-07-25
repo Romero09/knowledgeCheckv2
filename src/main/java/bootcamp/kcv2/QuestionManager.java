@@ -19,6 +19,7 @@ public class QuestionManager {
 	private String currentQuestionBundle;
 	private int examDuration = 20; // Default value
 	private Timer timer;
+	private String examEnds;
 
 	public void setExamStarted(boolean examStarted) {
 		isExamStarted = examStarted;
@@ -30,6 +31,14 @@ public class QuestionManager {
 		}
 	}
 
+	public String getExamEnds() {
+		return examEnds;
+	}
+	
+	public void setExamEnds(String examEnds) {
+		this.examEnds = examEnds;
+	}
+	
 	/**
 	 * Returns true if exam session has been started by administrator
 	 *
@@ -72,6 +81,10 @@ public class QuestionManager {
 	 * @return
 	 */
 	public String submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
+		
+		if(!isExamStarted()){
+			return "You are late. Exam ended at " + examEnds;
+		}
 
 		answers.remove(0);
 
@@ -102,7 +115,7 @@ public class QuestionManager {
 		return pullQuestionBundle(qmSingleton.currentQuestionBundle);
 	}
 
-	public static String examTimer() {
+	public static void examTimer() {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		cal.add(Calendar.MINUTE, qmSingleton.examDuration);
@@ -110,9 +123,7 @@ public class QuestionManager {
 		Date time = cal.getTime();
 		qmSingleton.timer = new Timer();
 		qmSingleton.timer.schedule(qmSingleton.new RemindTask(), time);
-		String examEnds = "Exam will ends at: " + sdf.format(cal.getTime());
-		System.out.println(examEnds);
-		return examEnds;
+		qmSingleton.setExamEnds("Exam will ends at: " + sdf.format(cal.getTime()));
 	}
 
 	class RemindTask extends TimerTask {

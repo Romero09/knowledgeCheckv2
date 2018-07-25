@@ -32,21 +32,18 @@ import bootcamp.kcv2.server.ServerApplication;
 @IntegrationTest("server.port:0")
 @DirtiesContext
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ServerControllerTest extends Mockito{
-	
+public class ServerControllerTest extends Mockito {
+
 	static ResponseEntity<String> entity;
 	static String now;
 	static QuestionManager manager = QuestionManager.getInstance();
 
-	
 	@Value("${local.server.port}")
 	private int port;
 
-	
 	@Rule
 	public Timeout globalTimeout = Timeout.seconds(4);
-	
-	
+
 	@Test
 	public final void test01WebHome() throws Exception {
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port, String.class);
@@ -57,19 +54,18 @@ public class ServerControllerTest extends Mockito{
 		assertEquals("Exam not started, check isExamStarted.", true,
 				entity.getBody().contains("Enter your student code:"));
 	}
-	
+
 	@Test
 	public final void test02QuestionPage() throws Exception {
 		manager.setCurrentQuestionBundle(manager.pullBundleNames().get(0));
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("Referer", "http://localhost:8080/");
+		headers.add("Referer", "http://localhost:8080/");
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/exam?userCode=JUni", String.class);
 		assertEquals("No referer should be bad request.", true,
 				entity.getBody().contains("You don't have access to this page"));
 		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/exam?userCode=JUni", HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
-		assertEquals("Wrong response status value. Check that exam is running.", HttpStatus.OK,
-				entity.getStatusCode());
+		assertEquals("Wrong response status value. Check that exam is running.", HttpStatus.OK, entity.getStatusCode());
 		assertEquals("Question list is not presented.", true,
 				entity.getBody().contains("Submit answers and get results"));
 	}
@@ -77,32 +73,88 @@ public class ServerControllerTest extends Mockito{
 	@Test
 	public final void test03AdminPage() throws Exception {
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("Referer", "http://localhost:8080/");
-		//entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/admin?authkey=1234", String.class);
+		headers.add("Referer", "http://localhost:8080/");
+		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
 		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/admin?authkey=1234", HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
-		//System.out.println(entity.getBody());
+		assertEquals("Acces not granted or exam not started.", true,
+				entity.getBody().contains("Exam is in progress. Press Stop button when the time is over."));
+
+		manager.setExamStarted(false);
+		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/admin?authkey=1234", HttpMethod.GET,
+				new HttpEntity<Object>(headers), String.class);
+		assertEquals("Acces not granted or exam not started.", true, entity.getBody()
+				.contains("<h1>Administrator Page</h1><p><form method=\"get\" action=\"/admin/startExam\">"));
+
+	}
+
+	@Test
+	public final void test04SendAnswers() throws Exception {
+		manager.setExamStarted(true);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+		headers.add("Referer", "http://localhost:8080/");
+		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/sendAnswers?userCode=JUni",
+				HttpMethod.POST, new HttpEntity<Object>(headers), String.class);
+		// System.out.println(entity.getBody());
+		assertEquals("Results should be submitted.", true, entity.getBody().contains("Results have been submitted"));
+		manager.setExamStarted(false);
+
+	}
+	
+	@Test
+	public final void test05StartExam() throws Exception {
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+		headers.add("Referer", "http://localhost:8080/");
+		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
+		entity = new TestRestTemplate().exchange("http://localhost:" + port 
+				+ "/admin/startExam?bundlename="+manager.getCurrentQuestionBundle(), HttpMethod.GET,
+				new HttpEntity<Object>(headers), String.class);
+		
 		assertEquals("Acces not granted or exam not started.", true,
 				entity.getBody().contains("Exam is in progress. Press Stop button when the time is over."));
 		
-		//manager.setExamStarted(false);
-//		entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/admin", String.class);
-//		assertEquals("Acces not granted or exam not started.", true,
-//				entity.getBody().contains("Administrator Page"));
-//		System.out.println(entity.getBody());
+		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
+				+ "/admin/startExam?bundlename="+manager.getCurrentQuestionBundle(), String.class);
+		System.out.println(entity.getBody());
+		assertEquals("Acces shouldnt be granted.", true,
+				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
 	}
+	
+	@Test
+	public final void test06StartExam() throws Exception {
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+		headers.add("Referer", "http://localhost:8080/");
+		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
+		entity = new TestRestTemplate().exchange("http://localhost:" + port 
+				+ "/admin/stopExam", HttpMethod.GET,
+				new HttpEntity<Object>(headers), String.class);
 		
-		@Test
-		public final void test04SendAnswers() throws Exception {
-			
-			MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-	        headers.add("Referer", "http://localhost:8080/");
-			entity = new TestRestTemplate().exchange("http://localhost:" + port + "/sendAnswers", HttpMethod.POST,
-					new HttpEntity<Object>(headers), String.class);
-			System.out.println(entity.getBody());
-			assertEquals("Exam not started, check isExamStarted.", true,
-					entity.getBody().contains("Enter your student code:"));
-			manager.setExamStarted(false);
+		assertEquals("Acces not granted or exam not started.", true,
+				entity.getBody().contains("<h1>Administrator Page</h1><p><form method=\"get\" action=\"/admin/startExam\">"));
 		
+		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
+				+ "/admin/stopExam", String.class);
+		System.out.println(entity.getBody());
+		assertEquals("Acces shouldnt be granted.", true,
+				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
 	}
-	}
+	
+	@Test
+	public final void test07ShowResult() throws Exception {
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+		headers.add("Referer", "http://localhost:8080/");
+		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
+		entity = new TestRestTemplate().exchange("http://localhost:" + port 
+				+ "/admin/showResults", HttpMethod.GET,
+				new HttpEntity<Object>(headers), String.class);
+		assertEquals("Result show not working.", true,
+				entity.getBody().contains("Return to the Admin page"));
+		
+		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
+				+ "/admin/showResults", String.class);
+		System.out.println(entity.getBody());
+		assertEquals("Acces shouldnt be granted.", true,
+				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
+		
+	}	
+}
