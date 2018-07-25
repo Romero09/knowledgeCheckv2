@@ -24,6 +24,7 @@ public class QuestionManagerTest {
 	public final void test01isExamStarted() {
 		try {
 			manager = QuestionManager.getInstance();
+			manager.setExamStarted(false);
 			assertFalse(manager.isExamStarted());
 		} catch (Exception e) {
 		}
@@ -46,7 +47,7 @@ public class QuestionManagerTest {
 		try {
 			manager = QuestionManager.getInstance();
 			manager.getCurrentQuestionBundle();
-			Assert.assertEquals(manager.getCurrentQuestionBundle(), null);
+			Assert.assertNotNull(manager.getCurrentQuestionBundle());
 		} catch (Exception e) {
 		}
 	}
@@ -159,5 +160,27 @@ public class QuestionManagerTest {
 		QuestionTypes[] a = QuestionTypes.values();
 		assertTrue(a != null);
 	}
+	
+	@Test
+	public final void test12QuestionTypes() {
+
+		Question test = new Question(0, null, 0, null,"MULTI_CHOICE", null, null);
+		
+		ArrayList<String> answersVar = new ArrayList<String>();
+		ArrayList<String> correctAnswers = new ArrayList<String>();
+		answersVar.add("A");
+		correctAnswers.add("A");
+		test.setId(1);
+		test.setSet("test 1");
+		test.setSetId(1);
+		test.setQuestionText("A?");
+		test.setQuestionType("SINGLE_CHOICE");
+		test.setAnswersVar(answersVar);
+		test.setCorrectAnswers(correctAnswers);
+		
+		
+	}
+	
+	
 
 }

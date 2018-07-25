@@ -18,9 +18,7 @@
 
 	<dependencies>
 
-		<!-- <dependency> <groupId>org.apache.tomcat.embed</groupId> <artifactId>tomcat-embed-jasper</artifactId> 
-			</dependency> <dependency> <groupId>javax.servlet</groupId> <artifactId>jstl</artifactId> 
-			</dependency> -->
+
 		<!-- JDBC exercise using MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -55,17 +53,35 @@
 			<artifactId>spring-boot-maven-plugin</artifactId>
 			<version>1.3.6.RELEASE</version>
 		</dependency>
+		
+		
+		<!-- AssertJ Swing tests -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-swing-junit</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+
+		<!-- Web Unit test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.1.RELEASE</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>1.3.6.RELEASE</version>
 		</dependency>
+		
+				<!-- Mockito mock objects -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>2.0.3.RELEASE</version>
-			<scope>test</scope>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
 		</dependency>
+		
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

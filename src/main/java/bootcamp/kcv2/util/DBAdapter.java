@@ -146,7 +146,7 @@ public class DBAdapter {
 		}
 
 		// Inserts new Results in Result table
-		public static boolean insertQuestion(Result result) {
+		public static boolean insertResult(Result result) {
 			boolean status = false;
 
 			String query = "INSERT INTO " + ResultTable.DATA_TABLE + " (" + ResultTable.USER_CODE_KEY + ", "

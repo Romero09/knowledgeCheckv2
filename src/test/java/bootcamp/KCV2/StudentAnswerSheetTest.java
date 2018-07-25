@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import bootcamp.kcv2.StudentAnswerSheet;
-import junit.framework.Assert;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentAnswerSheetTest {
 
 	@Test
@@ -17,11 +18,11 @@ public class StudentAnswerSheetTest {
 		
 		test.setQuestionBundleName("test1");
 		String qBundleName=test.getQuestionBundleName();
-		Assert.assertEquals("test1", qBundleName);
+		assertEquals("test1", qBundleName);
 		
 		test.setStudentCode("AE");
 		String studentCode=test.getStudentCode();
-		Assert.assertEquals("AE", studentCode);
+		assertEquals("AE", studentCode);
 		
 		ArrayList<String> answers = new ArrayList<String>();
 		answers.add("abc");
