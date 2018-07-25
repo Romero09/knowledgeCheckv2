@@ -176,7 +176,7 @@ public class QuestionManager {
 			}
 		}
 		Result result = new Result(userCode, currentQuestionBundle, answers, correctAnswers);
-		ResultTableAdapter.insertQuestion(result);
+		ResultTableAdapter.insertResult(result);
 
 		int percantageResult = 0;
 		if (totalQuestions > 0) {
