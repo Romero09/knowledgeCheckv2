@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import bootcamp.kcv2.util.DBAdapter;
 import bootcamp.kcv2.util.FileAdapter;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.MediaType;
@@ -82,16 +83,23 @@ public class ServerController {
             }
         }
 
+
+        // TODO decide where to do exam time checks
+        // initially the exam time expiration check was intoduced in ServerControl
+        // but it's better to keep all internal logic in the QuestionManager
+        // so that ServerController is only Presentation layers which takes input
+        // and passes it to the QuestionManager
+
         if (!qm.isExamStarted()) {
             // TO-DO: if exam is stopped, submit empty results
             currentAnswers = null;
         }
-        // TODO: make sure method processes currentAnswers==null as all wrong
+        // TODO: make sure QuestionManager method processes currentAnswers==null as all wrong
         String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
 
         // TO-DO: output result for a student as HTML table
-        return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"" +
-                "<h3>Correct answers:</h3><p>" + ratio + "</a>";
+        return "<h3>Results have been submitted</h3><p>" +
+                "\n<h3>Correct answers:</h3><p>" + ratio;
     }
 
     /**
@@ -137,8 +145,8 @@ public class ServerController {
      */
     @RequestMapping(value = "/exam", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
-    public String questionsPage(@RequestParam(value = "userCode", required = true) String userCode,
-                                HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String exam(@RequestParam(value = "userCode", required = true) String userCode,
+                       HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         System.err.println(request.getHeader("Referer"));
         StringBuilder sb = new StringBuilder();
@@ -156,11 +164,15 @@ public class ServerController {
 
             // check if bundle is null (someone has already logged in
             if (alQuestions == null) {
-                return "<h1>Error!</h1><p>User has already participated.";
+                return "<h1>Error!</h1><p>User has already participated or incorrect user name.";
             }
 
-            // TODO: add countdown timer (or this will remain manual using "yellow screen" scenario
+            // TO-DO: add countdown timer (or this will remain manual using "yellow screen" scenario
             // TO-DO: question types must be done as enum
+            sb.append("<hr><h2 class=\"text-warning\">");
+            sb.append(QuestionManager.examTimer());
+            sb.append("</h2><hr><p>");
+
 
             for (Question q : alQuestions) {
                 // for each question make an html representation
@@ -428,10 +440,11 @@ public class ServerController {
             return;
         }
 
-        // TODO create startExam() or refine login in setExamStarted();
+        // TO-DO create startExam() or refine login in setExamStarted();
         // TO-DO pass the selected topic
         qm.setCurrentQuestionBundle(bundleName);
         qm.setExamStarted(true);
+        qm.setExamDuration(20); // TODO request value from Admin
 
         System.err.println("Selected bundle:" + bundleName);
         response.sendRedirect("/admin");
@@ -471,6 +484,10 @@ public class ServerController {
         sb.append("<h1>Exam results</h1>");
 
         // TODO display results of all students
+        ArrayList<String> detailedResults = DBAdapter.ResultTableAdapter.pullResultsBundle(qm.getCurrentQuestionBundle());
+        for (String str : detailedResults) {
+            sb.append("<br>").append(str);
+        }
 
         sb.append("<a href=\"/admin\">Return to the Admin page</a>");
         return sb.toString();
