@@ -245,9 +245,6 @@ public class DBAdapter {
 		 */
 		public static ResultSet pullResultsBundle(String bundleName) {
 
-//			ArrayList<ArrayList<String>> resultList = new ArrayList<>();
-
-//			String query = "SELECT * FROM " + ResultTable.DATA_TABLE + " WHERE `" + ResultTable.QUESTION_BUNDLE_KEY + "` = ?";
 			String query = "select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer from Result LEFT JOIN Question \n" +
 					"ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) " +
 					"WHERE Result.questionBundle=" + bundleName +

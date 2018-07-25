@@ -105,6 +105,7 @@ public class Result {
  * @param resultArray student answers sheet
  * @return test session results
  */
+	//TODO Delete if not needed
 	public static ArrayList<String> resultList(ArrayList<ArrayList<String>> resultArray) {
 
 		ArrayList<String> resultList = new ArrayList<>();
