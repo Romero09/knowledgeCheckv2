@@ -50,7 +50,4 @@ public class StudentAnswerSheet {
 	public void setAnswers(ArrayList<String> answers) {
 		this.answers = answers;
 	}
-	
-	
-
 }

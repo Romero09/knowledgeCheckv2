@@ -10,6 +10,11 @@ public class DBContract {
 		
 	}
 
+    /**
+     * 
+     * Constants for Question Table.
+     *
+     */
 	public static final class QuestionTable {
 		
 		private QuestionTable(){
@@ -27,6 +32,11 @@ public class DBContract {
 
 	}
 
+    /**
+     * 
+     * Constants for Result Table.
+     *
+     */
 	public static final class ResultTable {
 		
 		private ResultTable(){

@@ -108,14 +108,12 @@ public class Result {
 	public static ArrayList<String> resultList(ArrayList<ArrayList<String>> resultArray) {
 
 		ArrayList<String> resultList = new ArrayList<>();
-
 		String currentCode = "";
 		int currentScore = 0;
 		String oneResult = "";
 		String resultAnswers = "";
 
 		for (int i = 0; i < resultArray.size(); i++) {
-			
 			if (currentCode.equals("")) {
 				currentCode = resultArray.get(i).get(0);
 				currentScore = Integer.valueOf(resultArray.get(i).get(1));
@@ -140,9 +138,7 @@ public class Result {
 				}
 			}
 		}
-
 		return resultList;
-
 	}
 
 }
