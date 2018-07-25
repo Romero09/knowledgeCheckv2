@@ -34,7 +34,8 @@ public class ServerController {
     private static final String MULTI_FLAG = "_multi";
     public static final String COOKIE_NAME = "KCV2Admin";
     public static final String COOKIE_VALUE = "KCV2AdminYES";
-    private static final String IMPORT_EXPORT_FILENAME = "df_kcv2_questions.txt";
+    private static final String IMPORT_EXPORT_FILENAME = "all_questions_temp.txt";
+    public static final int ADMIN_COOKIE_EXPIRE_SECONDS = 1800;
 
     // TODO: select one or another. Irrational implementation when parameter is returned to the calling method
 
@@ -90,7 +91,7 @@ public class ServerController {
 
         // TO-DO: output result for a student as HTML table
         return "<a href=\"/\"><input type=button class=\"btn btn-primary\" value=\"Results have been submitted\"" +
-                "<p>Correct answers: " + ratio + "</a>";
+                "<h3>Correct answers:</h3><p>" + ratio + "</a>";
     }
 
     /**
@@ -112,7 +113,7 @@ public class ServerController {
             sb.append("<center><p>Enter your student code:");
             sb.append("<p><form action=\"exam\">");
             sb.append("<input type=\"text\" name=\"userCode\">");
-            sb.append("<p><input class=\"btn btn-primary\" type=\"submit\" value=\"Start Exam now!\">");
+            sb.append("<p><p><p><input class=\"btn btn-primary\" type=\"submit\" value=\"Start Exam now!\">");
             sb.append("</center></form>");
         } else {
             sb.append("<p>Sorry, the exam has not started yet.");
@@ -152,6 +153,11 @@ public class ServerController {
 
             alQuestions = qm.getQuestionBundle(userCode);
 //			 DF: questionBundle = qm.getQuestionBundle(userCode);
+
+            // check if bundle is null (someone has already logged in
+            if (alQuestions == null) {
+                return "<h1>Error!</h1><p>User has already participated.";
+            }
 
             // TODO: add countdown timer (or this will remain manual using "yellow screen" scenario
             // TO-DO: question types must be done as enum
@@ -278,9 +284,7 @@ public class ServerController {
                 return sb.toString() + "\n\nPlease provide password and authorize as Test Administrator";
             } else {
                 Cookie c = new Cookie(COOKIE_NAME, COOKIE_VALUE); //bake cookie
-                // TODO set production cookie timeout
-//                c.setMaxAge(1800); //set expire time to 30 min
-                c.setMaxAge(60); //set expire time to 60 seconds for debug purposes
+                c.setMaxAge(ADMIN_COOKIE_EXPIRE_SECONDS); //set expire time to 30 min
                 response.addCookie(c); //put cookie in response
                 response.sendRedirect("/admin"); // and return to the main admin page
             }
