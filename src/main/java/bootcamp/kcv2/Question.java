@@ -3,8 +3,9 @@ package bootcamp.kcv2;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
- * This class can make object Question if called and can group, split, format sequence type answers.  
+ * This class can make object Question if called and can group, split and format sequence type answers.  
  */
 public class Question {
 

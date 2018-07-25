@@ -62,7 +62,7 @@ public class ServerControllerTest extends Mockito {
 		headers.add("Referer", "http://localhost:8080/");
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/exam?userCode=JUni", String.class);
 		assertEquals("No referer should be bad request.", true,
-				entity.getBody().contains("You don't have access to this page"));
+				entity.getBody().contains("ERROR"));
 		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/exam?userCode=JUni", HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
 		assertEquals("Wrong response status value. Check that exam is running.", HttpStatus.OK, entity.getStatusCode());

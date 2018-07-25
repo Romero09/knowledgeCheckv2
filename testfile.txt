@@ -1,4 +1,4 @@
-ID:660
+ID:672
 QUESTION BUNDLE:SQL
 QUESTION ID:1
 QUESTION TEXT:name
@@ -6,7 +6,7 @@ QUESTION TYPE:OPEN
 ANSWER VARIANTS:
 ANSWER CORRECT:Pavel
 ===========================================================================
-ID:661
+ID:673
 QUESTION BUNDLE:SQL
 QUESTION ID:2
 QUESTION TEXT:Write in correct sequence   a)dog b)cat c)bird
@@ -14,7 +14,7 @@ QUESTION TYPE:SEQUENCE
 ANSWER VARIANTS:
 ANSWER CORRECT:c===b===a
 ===========================================================================
-ID:662
+ID:674
 QUESTION BUNDLE:Threads
 QUESTION ID:3
 QUESTION TEXT:surname22222
@@ -22,7 +22,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:table===column===array
 ANSWER CORRECT:column
 ===========================================================================
-ID:663
+ID:675
 QUESTION BUNDLE:SQL
 QUESTION ID:4
 QUESTION TEXT:surname22222

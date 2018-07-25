@@ -34,9 +34,8 @@ public class FileAdapter  {
 	 * This method  exports content into txt file.
 	 *  
 	 * @param fileName File name where the content are saved.
-	 * @param question is ArrayList with information about Question id, bundle, question id, question text, question type, answers variants and correct answers.
 	 * @return True if successful, false if error.
-	 * @exception IOException
+	 * @see IOException
 	 */
 	public boolean exportQuestions( String fileName) {
 		ArrayList<Question> alq = QuestionManager.getInstance().pullQuestionBundle("%%");
@@ -65,10 +64,10 @@ public class FileAdapter  {
 	 * This method imports Questions into ArrayList which then proceed into database.
 	 * 
 	 * @param fileName File name from witch data are read.
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws SQLException
-	 * @returns ArraList of object Question.
+	 * @see FileNotFoundException
+	 * @see IOException
+	 * @see SQLException
+	 * @return Array List of object Question.
 	 */
 	public boolean importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
 		System.out.println(fileName);

@@ -16,6 +16,9 @@ import bootcamp.kcv2.util.DBContract.ResultTable;
 import bootcamp.kcv2.Question;
 import bootcamp.kcv2.Result;
 
+/**
+ * This class helps to manage Database.
+ */
 public class DBAdapter {
 
 	protected static Connection conn;
@@ -23,6 +26,11 @@ public class DBAdapter {
 	public static final DBAdapter dbAdapter = new DBAdapter();
 	
 
+	/**
+     * Establishes a connection to MySQL database.
+     * @see ClassNotFoundException
+     * @see SQLException
+     */
 	private DBAdapter() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -35,15 +43,22 @@ public class DBAdapter {
 			log.error("DB connection", e);
 		}
 	}
-
+	
+	/**
+	 * This class helps to manage Questions in Database.
+	 *
+	 */
 	public static final class QuestionTableAdapter {
 		
-		
 		private QuestionTableAdapter(){
-			
 		}
 
-		// Returns Question object searched by SET
+		/**
+		 * This method returns question object searched by SET in MySQL database.
+		 * @param currentQuestionBundle - question bundle that currently is used
+		 * @see SQLException
+		 * @return null if no such question in Question table was found, otherwise returns ArrayList of object Question if question was found
+		 */
 		public static ArrayList<Question> pullQuestionBundle(String currentQuestionBundle) {
 
 			ArrayList<Question> alq = new ArrayList<>();
@@ -74,6 +89,11 @@ public class DBAdapter {
 			return alq;
 		}
 
+        /**
+         * This method pulls question theme from MySQL database.
+         * @see SQLException
+         * @return bundle names for question
+         */
 		public static ArrayList<String> pullBundleNames() {
 			String query = "SELECT DISTINCT (" + QuestionTable.QUESTION_BUNDLE_KEY + ") " + "FROM "
 					+ QuestionTable.DATA_TABLE;
@@ -95,7 +115,12 @@ public class DBAdapter {
 			return result;
 		}
 
-		// Inserts new Question in DB with new ID(objects ID is ignored)
+		/**
+		 * This method inserts new question in database MySQL with new ID(objects ID is ignored).
+		 * @param question object with parameters 
+		 * @see SQLException
+		 * @return true if question in database was added, false if wasn't
+		 */
 		public static boolean insertQuestion(Question question) {
 
 			String query = "INSERT INTO " + QuestionTable.DATA_TABLE + " (" + QuestionTable.QUESTION_BUNDLE_KEY + ", "
@@ -120,7 +145,11 @@ public class DBAdapter {
 			return false;
 		}
 		
-		// Deletes results form DB
+		/**
+		 * This method clears(deletes) Question Table in MySQL database. 
+		 * @see SQLException
+		 * @return true if table was deleted, false if wasn't
+		 */
 		public static boolean clearQuestionTable() {
 			String query = "DELETE FROM " + QuestionTable.DATA_TABLE;
 
@@ -138,6 +167,9 @@ public class DBAdapter {
 		}
 	}
 
+	/**
+	 * This class helps to manage Results in Database.
+	 */
 	public static final class ResultTableAdapter {
 		
 		
@@ -145,7 +177,12 @@ public class DBAdapter {
 			
 		}
 
-		// Inserts new Results in Result table
+		/**
+		 * This method inserts students results in Result table. 
+		 * @param result object with student results
+		 * @see SQLException
+		 * @return true if result was inserted , false if wasn't
+		 */
 		public static boolean insertResult(Result result) {
 			boolean status = false;
 
@@ -172,7 +209,10 @@ public class DBAdapter {
 			return status;
 		}
 		
-		// Deletes results form DB
+		/**This method  clears(deletes) Results in MySQL Database. 
+		 * @see SQLException
+		 * @return true if table was deleted, false if wasn't
+		 */
 		public static boolean clearResultTable() {
 			String query = "DELETE FROM " + ResultTable.DATA_TABLE;
 
@@ -189,7 +229,12 @@ public class DBAdapter {
 			return false;
 		}
 		
-		
+		/**
+		 * This method pulls Result from MySQL Database.
+		 * @param bundleName -question set for exam.
+		 * @see SQLException
+		 * @return List with results
+		 */
 		public static ArrayList<String> pullResultsBundle(String bundleName){
 			
 			ArrayList<ArrayList<String>> resultList = new ArrayList<>();
