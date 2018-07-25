@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import bootcamp.kcv2.util.DBAdapter;
+import bootcamp.kcv2.util.DBContract;
 import bootcamp.kcv2.util.FileAdapter;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +19,7 @@ import bootcamp.kcv2.util.BaseConfiguration;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import java.io.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -28,19 +28,22 @@ import java.util.*;
 @Controller
 public class ServerController {
 
-//    private static final String BOOTSTRAP_CSS = "";
-    private static final String BOOTSTRAP_CSS = "<link rel=\"stylesheet\" "
+    //    private static final String BOOTSTRAP_CSS = "";
+    private static final String BOOTSTRAP_CSS = "<!doctype html><html><head>" +
+            "<meta charset=\"utf-8\">\n" +
+            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">" +
+            "<link rel=\"stylesheet\" "
             + "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css "
             + " \" integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" "
-            + "crossorigin=\"anonymous\">\n";
+            + "crossorigin=\"anonymous\">\n" +
+            "</head><body>\n" +
+            "<div class=\"container\">";
     private static final String MULTI_FLAG = "_multi";
     public static final String COOKIE_NAME = "KCV2Admin";
     public static final String COOKIE_VALUE = "KCV2AdminYES";
     private static final String IMPORT_EXPORT_FILENAME = "all_questions_temp.txt";
     public static final int ADMIN_COOKIE_EXPIRE_SECONDS = 1800;
     public static final int DEFAULT_EXAM_DURATION = 20;
-
-    // TODO: select one or another. Irrational implementation when parameter is returned to the calling method
 
     ArrayList<Question> alQuestions = new ArrayList<>();
     private QuestionManager qm = QuestionManager.getInstance();
@@ -84,21 +87,6 @@ public class ServerController {
                 currentAnswers.add(value);
             }
         }
-
-
-        // TO-DO decide where to do exam time checks
-        // initially the exam time expiration check was intoduced in ServerControl
-        // but it's better to keep all internal logic in the QuestionManager
-        // so that ServerController is only Presentation layers which takes input
-        // and passes it to the QuestionManager
-
-//        if (!qm.isExamStarted()) {
-//            // TO-DO: if exam is stopped, submit empty results
-//            currentAnswers = null;
-//            return "<h3>Results have been submitted</h3><p>" +
-//                    "Unfortunately the exam has already been stopped." +
-//                    "<p>All answers are counted as WRONG.";
-//        } else {
 
         // TO-DO: make sure QuestionManager method processes currentAnswers==null as all wrong
         String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
@@ -169,7 +157,7 @@ public class ServerController {
 //			 DF: questionBundle = qm.getQuestionBundle(userCode);
 
             // check if bundle is null (someone has already logged in
-            if (alQuestions == null || userCode.length()!=4) {
+            if (alQuestions == null || userCode.length() != 4) {
                 return "<h1>Error!</h1><p>User has already participated or incorrect user name.";
             }
 
@@ -279,17 +267,6 @@ public class ServerController {
 
         // check if admin is logged in
         boolean isAdmin = authorizeAdmin(request, response);
-//        boolean isAdmin = false;
-//        Cookie[] cookies = request.getCookies();
-//        if (cookies != null) {
-//            for (Cookie c : cookies) {
-//                System.err.println("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
-//                if (c.getName().equals(COOKIE_NAME) && c.getValue().equals(COOKIE_VALUE)) {
-//                    isAdmin = true;
-//                }
-//            }
-//        }
-
 		 /*
 		 If not admin - check if the GET request has "admin" AUTH_KEY.
 		 If provided - set authorized cookie and proceed to the forms
@@ -303,7 +280,6 @@ public class ServerController {
                 Cookie c = new Cookie(COOKIE_NAME, COOKIE_VALUE); //bake cookie
                 c.setMaxAge(ADMIN_COOKIE_EXPIRE_SECONDS); //set expire time to 30 min
                 response.addCookie(c); //put cookie in response
-//                response.sendRedirect("/admin"); // and return to the main admin page
             }
         }
 
@@ -325,27 +301,41 @@ public class ServerController {
          *
          * */
         // Start Exam form
-        sb.append("<h2> Exam Administration</h2>");
+        sb.append("<hr>");
+        sb.append("<h2>I. Exam Administration</h2>");
         ArrayList<String> bundleNamesList = qm.pullBundleNames();
+
+        sb.append("<table class=\"table align-bottom\"><tr><td>");
         sb.append("<p><form method=\"get\" action=\"/admin/startExam\">");
-        sb.append("<p>Select topic:<p>");
+        sb.append("<p>Select test duration (minutes)<p>");
+        sb.append("<input type=\"text\" name=\"examduration\" value=\"20\" size=\"5\">" +
+                "");
+        sb.append("<p>Select exam topic:<p>");
         sb.append("<select id=\"bundlename\" name=\"bundlename\">");
         for (String str : bundleNamesList) {
             sb.append("<option value=\"" + str + "\">" + str + "</option>");
         }
         sb.append("</select>");
-        sb.append("<p>Select test duration (min)<p>");
-        sb.append("<input type=\"text\" name=\"examduration\" value=\"20\" size=\"5\"></input>");
+
         sb.append("<p><input type=\"submit\" value=\"Start Exam\" class=\"btn btn-danger\"/>");
         sb.append("</form>");
+        sb.append("</td><td class=\"align-bottom\">");
 
         // Check Results form
-        sb.append("<hr>");
         sb.append("<p><form method=\"get\" action=\"/admin/showResults\">");
+        sb.append("<p>Select results topic:<p>");
+        sb.append("<select id=\"resultbundle\" name=\"resultbundle\">");
+        for (String str : bundleNamesList) {
+            sb.append("<option value=\"" + str + "\">" + str + "</option>");
+        }
+        sb.append("</select>");
         sb.append("<p><input type=\"submit\" value=\"Check exam results\" class=\"btn btn-info\"/>");
         sb.append("</form>");
 
-        sb.append("<h2>Database Maintenance</h2>");
+        sb.append("</td></tr></table></div>");
+
+
+        sb.append("<div class=\"container\"><hr><h2>II. Database Maintenance</h2>");
         // Clear answers
         sb.append("<hr>");
         sb.append("<h3>Clear answers history</h3>" +
@@ -353,6 +343,7 @@ public class ServerController {
         sb.append("<p><form method=\"get\" action=\"/admin/clearAnswers\">");
         sb.append("<p><input type=\"submit\" value=\"Clear Answers\" />");
         sb.append("</form>");
+        sb.append("</tr></td>");
 
         // Export Questions
         sb.append("<hr>");
@@ -367,7 +358,7 @@ public class ServerController {
         sb.append("<p>Warning! All existing questions in the database will be destroyed!!!");
         sb.append("<p><form enctype=\"multipart/form-data\" method=\"post\" action=\"/admin/importQuestions\">");
         sb.append("<input type=\"file\" name=\"txtfile\">");
-        sb.append("<input type=\"submit\" value=\"Import file with questions\"></p><br>");
+        sb.append("<input type=\"submit\" value=\"Import file with questions\"><br>");
         sb.append("</form>");
 
         return sb.toString();
@@ -481,7 +472,7 @@ public class ServerController {
             return;
         }
 
-        int intDuration= DEFAULT_EXAM_DURATION;
+        int intDuration = DEFAULT_EXAM_DURATION;
         try {
             intDuration = Integer.valueOf(examDuration);
         } catch (NumberFormatException e) {
@@ -512,7 +503,7 @@ public class ServerController {
 
         // TO-DO create stopExam() or refine login in setExamStarted();
 //		qm.stopExam();
-        if(qm.isExamStarted()) {
+        if (qm.isExamStarted()) {
             qm.setExamStarted(false);
         }
         response.sendRedirect("/admin");
@@ -520,7 +511,10 @@ public class ServerController {
 
     @RequestMapping(value = "/admin/showResults", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
-    public String showResults(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String showResults(
+            @RequestParam(value = "resultbundle", required = true) String bundleName,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
         System.err.println("ServerController__showResults() called");
 
         if (!authorizeAdmin(request, response)) {
@@ -534,12 +528,60 @@ public class ServerController {
         sb.append("<h1>Exam results</h1>");
 
         // TO-DO display results of all students
-        ArrayList<String> detailedResults = DBAdapter.ResultTableAdapter.pullResultsBundle(qm.getCurrentQuestionBundle());
-        for (String str : detailedResults) {
-            sb.append("<br>").append(str);
-            System.err.println(str);
+        sb.append("<table class=\"table table-hover\"><tr>");
+        sb.append("<thead class=\"thead-light\">");
+        sb.append("<th>Student</th>");
+        sb.append("<th>Topic</th>");
+        sb.append("<th>Question #</th>");
+        sb.append("<th>Question Text</th>");
+        sb.append("<th>Student Answer</th>");
+        sb.append("<th>Correct Answer Was</th>");
+        sb.append("<th>Answer Correct?</th>");
+        sb.append("</tr>");
+        sb.append("</thead>");
+        ResultSet rs = DBAdapter.ResultTableAdapter.pullResultsBundle(bundleName);
+        try {
+            while (rs.next()) {
+                sb.append("<tr>");
+                sb.append("<td>" + rs.getString(DBContract.ResultTable.USER_CODE_KEY) + "</td>");
+                sb.append("<td>" + bundleName + "</td>");
+                sb.append("<td>" + rs.getInt(DBContract.ResultTable.QUESTION_ID_KEY) + "</td>");
+                sb.append("<td>" + rs.getString(DBContract.QuestionTable.QUESTION_TEXT_KEY) + "</td>");
+
+
+                sb.append("<td>");
+                ArrayList<String> studentAnswers = Question.answersSpliter(rs.getString(DBContract.ResultTable.ANSWER_KEY));
+//                sb.append("<td>" + rs.getString(DBContract.ResultTable.ANSWER_KEY) + "</td>");
+                for (String str : studentAnswers) {
+                    sb.append(str+"<br>");
+                }
+                sb.append("</td>");
+
+                sb.append("<td>");
+                ArrayList<String> answers = Question.answersSpliter(rs.getString(DBContract.QuestionTable.ANSWERS_COR_KEY));
+//                sb.append("raw data from db: " + rs.getString(DBContract.QuestionTable.ANSWERS_COR_KEY));
+//                sb.append("<br>answersSplitter data: ");
+                for (String str : answers) {
+                    sb.append(str+"<br>");
+                }
+                sb.append("</td>");
+
+                String correct;
+                if (rs.getInt(DBContract.ResultTable.IS_CORRECT_KEY) == 1) {
+                    correct = "<p class=\"text-success\">yes</p>";
+                } else {
+                    correct = "<p class=\"text-danger\">NO</p>";
+                }
+                sb.append("<td>" + correct + "</td>");
+                sb.append("</tr>");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
+
+        sb.append("</table>");
         sb.append("<p><a href=\"/admin\">Return to the Admin page</a>");
         return sb.toString();
     }
