@@ -28,6 +28,7 @@ import java.util.*;
 @Controller
 public class ServerController {
 
+//    private static final String BOOTSTRAP_CSS = "";
     private static final String BOOTSTRAP_CSS = "<link rel=\"stylesheet\" "
             + "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css "
             + " \" integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" "
@@ -37,6 +38,7 @@ public class ServerController {
     public static final String COOKIE_VALUE = "KCV2AdminYES";
     private static final String IMPORT_EXPORT_FILENAME = "all_questions_temp.txt";
     public static final int ADMIN_COOKIE_EXPIRE_SECONDS = 1800;
+    public static final int DEFAULT_EXAM_DURATION = 20;
 
     // TODO: select one or another. Irrational implementation when parameter is returned to the calling method
 
@@ -84,22 +86,26 @@ public class ServerController {
         }
 
 
-        // TODO decide where to do exam time checks
+        // TO-DO decide where to do exam time checks
         // initially the exam time expiration check was intoduced in ServerControl
         // but it's better to keep all internal logic in the QuestionManager
         // so that ServerController is only Presentation layers which takes input
         // and passes it to the QuestionManager
 
-        if (!qm.isExamStarted()) {
-            // TO-DO: if exam is stopped, submit empty results
-            currentAnswers = null;
-        }
-        // TODO: make sure QuestionManager method processes currentAnswers==null as all wrong
-        String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
+//        if (!qm.isExamStarted()) {
+//            // TO-DO: if exam is stopped, submit empty results
+//            currentAnswers = null;
+//            return "<h3>Results have been submitted</h3><p>" +
+//                    "Unfortunately the exam has already been stopped." +
+//                    "<p>All answers are counted as WRONG.";
+//        } else {
 
+        // TO-DO: make sure QuestionManager method processes currentAnswers==null as all wrong
+        String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
         // TO-DO: output result for a student as HTML table
         return "<h3>Results have been submitted</h3><p>" +
-                "\n<h3>Correct answers:</h3><p>" + ratio;
+                "\n<h3>Here is your result:</h3><p>" + ratio +
+                "<p>You may now close this page.";
     }
 
     /**
@@ -118,9 +124,9 @@ public class ServerController {
 
         if (qm.isExamStarted()) {
             sb.append(BOOTSTRAP_CSS);
-            sb.append("<center><p>Enter your student code:");
+            sb.append("<center><p>Enter your <b>4-character</b> student code:");
             sb.append("<p><form action=\"exam\">");
-            sb.append("<input type=\"text\" name=\"userCode\">");
+            sb.append("<input type=\"text\" name=\"userCode\" maxlength=\"4\">");
             sb.append("<p><p><p><input class=\"btn btn-primary\" type=\"submit\" value=\"Start Exam now!\">");
             sb.append("</center></form>");
         } else {
@@ -154,7 +160,7 @@ public class ServerController {
         if (request.getHeader("Referer") != null) {
             // Good request, because coming from the home page
             sb.append(BOOTSTRAP_CSS);
-            sb.append("<h1>" + qm.getCurrentQuestionBundle() + "</h1>\n");
+            sb.append("<h1>Test topic: " + qm.getCurrentQuestionBundle() + "</h1>\n");
             sb.append("<form method=\"post\" action=\"/sendAnswers\">\n");
 
             sb.append("<input name=\"userCode\" type=\"hidden\" value=\"" + userCode + "\">");
@@ -163,15 +169,15 @@ public class ServerController {
 //			 DF: questionBundle = qm.getQuestionBundle(userCode);
 
             // check if bundle is null (someone has already logged in
-            if (alQuestions == null) {
+            if (alQuestions == null || userCode.length()!=4) {
                 return "<h1>Error!</h1><p>User has already participated or incorrect user name.";
             }
 
             // TO-DO: add countdown timer (or this will remain manual using "yellow screen" scenario
             // TO-DO: question types must be done as enum
             sb.append("<hr><h2 class=\"text-warning\">");
-            sb.append(QuestionManager.examTimer());
-            sb.append("</h2><hr><p>");
+            sb.append(qm.getExamEnds());
+            sb.append("</h2><p>");
 
 
             for (Question q : alQuestions) {
@@ -228,15 +234,14 @@ public class ServerController {
 
     /**
      * Pages to be protected by requiring the authorization:
-     *
+     * <p>
      * /admin (and set's cookie if it's absent)
      * /admin/startExam
      * /admin/stopExam
      * /admin/showResults
      * /admin/exportQuestions
      * /admin/importQuestions
-     *
-    * */
+     */
     private boolean authorizeAdmin(HttpServletRequest request, HttpServletResponse response) {
         // check if admin is logged in
         boolean isAdmin = false;
@@ -270,7 +275,7 @@ public class ServerController {
 
         StringBuilder sb = new StringBuilder();
         sb.append(BOOTSTRAP_CSS);
-        sb.append("<h1>Administrator Page</h1>");
+        sb.append("<h1 align=\"center\">Administrator Page</h1>");
 
         // check if admin is logged in
         boolean isAdmin = authorizeAdmin(request, response);
@@ -298,7 +303,7 @@ public class ServerController {
                 Cookie c = new Cookie(COOKIE_NAME, COOKIE_VALUE); //bake cookie
                 c.setMaxAge(ADMIN_COOKIE_EXPIRE_SECONDS); //set expire time to 30 min
                 response.addCookie(c); //put cookie in response
-                response.sendRedirect("/admin"); // and return to the main admin page
+//                response.sendRedirect("/admin"); // and return to the main admin page
             }
         }
 
@@ -320,13 +325,17 @@ public class ServerController {
          *
          * */
         // Start Exam form
+        sb.append("<h2> Exam Administration</h2>");
         ArrayList<String> bundleNamesList = qm.pullBundleNames();
         sb.append("<p><form method=\"get\" action=\"/admin/startExam\">");
+        sb.append("<p>Select topic:<p>");
         sb.append("<select id=\"bundlename\" name=\"bundlename\">");
         for (String str : bundleNamesList) {
             sb.append("<option value=\"" + str + "\">" + str + "</option>");
         }
         sb.append("</select>");
+        sb.append("<p>Select test duration (min)<p>");
+        sb.append("<input type=\"text\" name=\"examduration\" value=\"20\" size=\"5\"></input>");
         sb.append("<p><input type=\"submit\" value=\"Start Exam\" class=\"btn btn-danger\"/>");
         sb.append("</form>");
 
@@ -336,8 +345,18 @@ public class ServerController {
         sb.append("<p><input type=\"submit\" value=\"Check exam results\" class=\"btn btn-info\"/>");
         sb.append("</form>");
 
+        sb.append("<h2>Database Maintenance</h2>");
+        // Clear answers
+        sb.append("<hr>");
+        sb.append("<h3>Clear answers history</h3>" +
+                "<p>Warning! The table with answers will be erased completely!");
+        sb.append("<p><form method=\"get\" action=\"/admin/clearAnswers\">");
+        sb.append("<p><input type=\"submit\" value=\"Clear Answers\" />");
+        sb.append("</form>");
+
         // Export Questions
         sb.append("<hr>");
+        sb.append("<h3>Export questions</h3>");
         sb.append("<p><form method=\"get\" action=\"/admin/exportQuestions\">");
         sb.append("<p><input type=\"submit\" value=\"Export questions\" />");
         sb.append("</form>");
@@ -352,6 +371,27 @@ public class ServerController {
         sb.append("</form>");
 
         return sb.toString();
+    }
+
+    @RequestMapping(value = "/admin/clearAnswers", method = RequestMethod.GET)
+    @ResponseBody
+    public String clearAnswers(
+            HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.err.println("ServerController__exportQuestions() called");
+
+        if (!authorizeAdmin(request, response)) {
+            System.err.println("NOT AUTHORIZED");
+            response.sendRedirect("/admin");
+            return "";
+        } else {
+            if (DBAdapter.ResultTableAdapter.clearResultTable()) {
+                return "All answers have been deleted.<p>" +
+                        "<a href=\"/admin\">Click here to return to Admin page.</a>";
+            } else {
+                return "Problem occurred while clearing answers.<p>" +
+                        "<a href=\"/admin\">Click here to return to Admin page.</a>";
+            }
+        }
     }
 
     @RequestMapping(value = "/admin/exportQuestions", method = RequestMethod.GET)
@@ -399,7 +439,7 @@ public class ServerController {
 
         Part p = request.getPart("txtfile");
         InputStream ir = p.getInputStream();
-       
+
         // delete existing temp file on server
         File f = new File(IMPORT_EXPORT_FILENAME);
         f.delete();
@@ -431,6 +471,7 @@ public class ServerController {
     @ResponseBody
     public void startExam(
             @RequestParam(value = "bundlename", required = false) String bundleName,
+            @RequestParam(value = "examduration", required = false) String examDuration,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.err.println("ServerController__startExam() called");
 
@@ -440,11 +481,19 @@ public class ServerController {
             return;
         }
 
+        int intDuration= DEFAULT_EXAM_DURATION;
+        try {
+            intDuration = Integer.valueOf(examDuration);
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/admin");
+        }
+
+        // if all parameters correct - start exam
         // TO-DO create startExam() or refine login in setExamStarted();
         // TO-DO pass the selected topic
         qm.setCurrentQuestionBundle(bundleName);
+        qm.setExamDuration(intDuration); // TO-DO request value from Admin
         qm.setExamStarted(true);
-        qm.setExamDuration(20); // TODO request value from Admin
 
         System.err.println("Selected bundle:" + bundleName);
         response.sendRedirect("/admin");
@@ -461,10 +510,11 @@ public class ServerController {
             return;
         }
 
-        // TODO create stopExam() or refine login in setExamStarted();
+        // TO-DO create stopExam() or refine login in setExamStarted();
 //		qm.stopExam();
-        qm.setExamStarted(false);
-
+        if(qm.isExamStarted()) {
+            qm.setExamStarted(false);
+        }
         response.sendRedirect("/admin");
     }
 
@@ -483,13 +533,14 @@ public class ServerController {
         sb.append("<a href=\"/admin\">Return to the Admin page</a>");
         sb.append("<h1>Exam results</h1>");
 
-        // TODO display results of all students
+        // TO-DO display results of all students
         ArrayList<String> detailedResults = DBAdapter.ResultTableAdapter.pullResultsBundle(qm.getCurrentQuestionBundle());
         for (String str : detailedResults) {
             sb.append("<br>").append(str);
+            System.err.println(str);
         }
 
-        sb.append("<a href=\"/admin\">Return to the Admin page</a>");
+        sb.append("<p><a href=\"/admin\">Return to the Admin page</a>");
         return sb.toString();
     }
 }
