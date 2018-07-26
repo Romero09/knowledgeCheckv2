@@ -122,9 +122,12 @@ public class ServerController {
         // TO-DO: make sure QuestionManager method processes currentAnswers==null as all wrong
         String ratio = qm.submitResults(userCode, currentAnswers, alQuestions);
         // TO-DO: output result for a student as HTML table
-        return "<h3>Results have been submitted</h3><p>" +
+        return  BOOTSTRAP_CSS+
+        		"<center><div id=\"logostyle\" class=\"align-middle\">\n"+
+        		"<h3>Results have been submitted</h3><p>" +
                 "\n<h3>Here is your result:</h3><p>" + ratio +
-                "<p>You may now close this page.";
+                "<p>You may now close this page.\n"+
+                "</div>\n</center>\n</div>";
     }
 
     /**
