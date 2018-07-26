@@ -1,4 +1,4 @@
-package bootcamp.kcv2;
+package bootcamp.kcv2.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -32,7 +31,7 @@ import bootcamp.kcv2.server.ServerApplication;
 @IntegrationTest("server.port:0")
 @DirtiesContext
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ServerControllerTest extends Mockito {
+public class ServerControllerTest{
 
 	static ResponseEntity<String> entity;
 	static String now;

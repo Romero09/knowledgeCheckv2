@@ -114,9 +114,11 @@ public class FileAdapter  {
 					 tmp = fin.readLine();
 					 tmp = fin.readLine();
 			}
+			fin.close();
 			DBAdapter.QuestionTableAdapter.clearQuestionTable();
 		} catch (IOException e) {
 			log.error("importQuestion", e);
+			
 		}
 		for(int i=0;i<alq.size();i++) {
 			DBAdapter.QuestionTableAdapter.insertQuestion(alq.get(i));

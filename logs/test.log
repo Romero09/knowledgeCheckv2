@@ -3963,3 +3963,40 @@ ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result
 ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
 2018-07-26 14:43:10 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
 ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:55:46 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:56:24 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 15:23:24 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2f8f5f62
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1068e947
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7dc222ae
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@aecb35a
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5fcd892a
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@8b87145
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6483f5ae
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@b9afc07
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@382db087
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73d4cc9e
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@80169cf
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5427c60c
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@15bfd87
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@543e710e
+2018-07-26 15:23:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@57f23557
+2018-07-26 15:23:26 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 15:23:28 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 15:23:36 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 15:23:36 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 15:23:36 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 15:23:36 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 15:23:37 INFO  test.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 15:23:37 INFO  test.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 15:23:37 INFO  test.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 15:23:37 INFO  test.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 15:23:37 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 15:23:38 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 15:24:10 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 15:24:11 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;

@@ -1,4 +1,4 @@
-package bootcamp.kcv2;
+package bootcamp.kcv2.test;
 
 import static org.junit.Assert.*;
 import java.io.IOException;
