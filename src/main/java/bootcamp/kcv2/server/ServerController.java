@@ -36,6 +36,16 @@ public class ServerController {
             + "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css "
             + " \" integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" "
             + "crossorigin=\"anonymous\">\n" +
+            "<style> \n" +
+            "#logostyle {\n" +
+            "    height: 408px;\n" +
+            "    width: 612px;\n" +
+            "    background-color: #cccccc;\n" +
+            "    background-image: url(\"logo.png\");\n" +
+            "    display: table-cell;" +
+            "    vertical-align: middle;" +
+            "}\n" +
+            "</style>" +
             "</head><body>\n" +
             "<div class=\"container\">";
     private static final String MULTI_FLAG = "_multi";
@@ -112,12 +122,15 @@ public class ServerController {
 
         if (qm.isExamStarted()) {
             sb.append(BOOTSTRAP_CSS);
-            sb.append("<center><p>Enter your <b>4-character</b> student code:");
+            sb.append("<center><div id=\"logostyle\" class=\"align-middle\">\n");
+            sb.append("<p>Enter your <b>4-character</b> student code:\n");
             sb.append("<p><form action=\"exam\">");
             sb.append("<input type=\"text\" name=\"userCode\" maxlength=\"4\">");
-            sb.append("<p><p><p><input class=\"btn btn-primary\" type=\"submit\" value=\"Start Exam now!\">");
-            sb.append("</center></form>");
+            sb.append("<p><p><p><input class=\"btn btn-primary\" type=\"submit\" value=\"Start Exam now!\">\n");
+            sb.append("</form>\n");
+            sb.append("</div>\n</center>\n</div>");
         } else {
+            sb.append(BOOTSTRAP_CSS);
             sb.append("<p>Sorry, the exam has not started yet.");
             sb.append("<p>Please wait for the teacher to start exam and RELOAD this page!");
             sb.append("<p><p><a href=\"\">Reload...</a>");
@@ -553,7 +566,7 @@ public class ServerController {
                 ArrayList<String> studentAnswers = Question.answersSpliter(rs.getString(DBContract.ResultTable.ANSWER_KEY));
 //                sb.append("<td>" + rs.getString(DBContract.ResultTable.ANSWER_KEY) + "</td>");
                 for (String str : studentAnswers) {
-                    sb.append(str+"<br>");
+                    sb.append(str + "<br>");
                 }
                 sb.append("</td>");
 
@@ -562,7 +575,7 @@ public class ServerController {
 //                sb.append("raw data from db: " + rs.getString(DBContract.QuestionTable.ANSWERS_COR_KEY));
 //                sb.append("<br>answersSplitter data: ");
                 for (String str : answers) {
-                    sb.append(str+"<br>");
+                    sb.append(str + "<br>");
                 }
                 sb.append("</td>");
 
