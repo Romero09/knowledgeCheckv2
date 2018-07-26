@@ -87,7 +87,7 @@ public class QuestionManagerTest {
 			answers.add("A");
 			ArrayList<Question> alQuestions = manager.pullQuestionBundle(manager.getCurrentQuestionBundle());
 
-			String userCode = "AE58";
+			String userCode = "TEST";
 			manager = QuestionManager.getInstance();
 			manager.submitResults(userCode, answers, alQuestions);
 			log.info(userCode);
@@ -146,7 +146,7 @@ public class QuestionManagerTest {
 		try {
 			ArrayList<String> answers = new ArrayList<String>();
 			ArrayList<Question> alQuestions = manager.pullQuestionBundle(manager.pullBundleNames().get(0));
-			String userCode = "AE58";
+			String userCode = "TEST";
 			manager.resultsCheck(userCode, answers, alQuestions);
 			for (int i = 0; i < alQuestions.size(); i++) {
 				if (i == 0) {
@@ -184,8 +184,8 @@ public class QuestionManagerTest {
 	public final void test10getQuestionBundle() {
 		try {
 			manager = QuestionManager.getInstance();
-			manager.getQuestionBundle("AE58");
-			manager.getQuestionBundle("AE58");
+			manager.getQuestionBundle("TEST");
+			manager.getQuestionBundle("TEST");
 		} catch (Exception e) {
 		}
 	}

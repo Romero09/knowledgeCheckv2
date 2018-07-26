@@ -1,40 +1,59 @@
 package bootcamp.kcv2.server;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import bootcamp.kcv2.util.DBAdapter;
-import bootcamp.kcv2.util.DBContract;
-import bootcamp.kcv2.util.FileAdapter;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import bootcamp.kcv2.Question;
 import bootcamp.kcv2.QuestionManager;
-import bootcamp.kcv2.StudentAnswerSheet;
 import bootcamp.kcv2.util.BaseConfiguration;
-import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
-
-import java.io.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
+import bootcamp.kcv2.util.DBAdapter;
+import bootcamp.kcv2.util.DBContract;
+import bootcamp.kcv2.util.FileAdapter;
 
 // TO-DO add auth check for every /admin page and subpage (cookie check)
 
+/**
+ * 
+ * This class helps to control server.
+ * <p>'Abandon hope all ye who enter here'  
+ * <p>-Dante's Divine Comedy.
+ *
+ */
 @Controller
 public class ServerController {
 
+	public static final Logger log = Logger.getLogger(ServerController.class);
     //    private static final String BOOTSTRAP_CSS = "";
     private static final String BOOTSTRAP_CSS = "<!doctype html><html><head>" +
             "<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">" +
             "<link rel=\"stylesheet\" "
-            + "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css "
-            + " \" integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" "
+            + "href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+            + "\" integrity=\"sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B\" "
             + "crossorigin=\"anonymous\">\n" +
             "<style> \n" +
             "#logostyle {\n" +
@@ -61,9 +80,11 @@ public class ServerController {
     /**
      * Method is used to parse and process received answers
      * <p>
-     * It does: 1. builds and ArrayList of answers 2. sends answers to the
-     * QuestionManager 3. receives score result from QuestionManager 4. displays
-     * result to the student
+     * It does: 
+     * <p>1. Builds and ArrayList of answers. 
+     * <p>2. Sends answers to the QuestionManager. 
+     * <p>3. Receives score result from QuestionManager. 
+     * <p>4. Displays result to the student.
      */
     @RequestMapping(value = "/sendAnswers", produces = "text/html;chearset=UTF-8", method = RequestMethod.POST)
     @ResponseBody
@@ -72,7 +93,7 @@ public class ServerController {
     public String sendAnswers(@RequestParam(value = "userCode", required = true) String userCode,
                               HttpServletRequest request, HttpServletResponse response) {
 
-        System.err.println(userCode);
+        log.info(userCode);
         ArrayList<String> currentAnswers = new ArrayList<>();
 
         Enumeration<String> parNames = request.getParameterNames();
@@ -107,22 +128,22 @@ public class ServerController {
     }
 
     /**
-     * Main Start page (Homepage). Asks for login or denies access if exam has
+     * This method provides main Start page (Homepage). Asks for login or denies access if exam has
      * not been started yet.
      *
-     * @param request
-     * @param response
-     * @return
-     * @throws IOException
+     * @param request user sent data
+     * @param response server response to user data
+     * @return page in which users are redirected according to situation.
+     * @see IOException
      */
     @RequestMapping(value = "/", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public String homePage(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuilder sb = new StringBuilder();
 
+        sb.append(BOOTSTRAP_CSS);
+        sb.append("<center><div id=\"logostyle\" class=\"align-middle\">\n");
         if (qm.isExamStarted()) {
-            sb.append(BOOTSTRAP_CSS);
-            sb.append("<center><div id=\"logostyle\" class=\"align-middle\">\n");
             sb.append("<p>Enter your <b>4-character</b> student code:\n");
             sb.append("<p><form action=\"exam\">");
             sb.append("<input type=\"text\" name=\"userCode\" maxlength=\"4\">");
@@ -130,32 +151,31 @@ public class ServerController {
             sb.append("</form>\n");
             sb.append("</div>\n</center>\n</div>");
         } else {
-            sb.append(BOOTSTRAP_CSS);
-            sb.append("<p>Sorry, the exam has not started yet.");
+            sb.append("<b><p>Sorry, the exam has not started yet.");
             sb.append("<p>Please wait for the teacher to start exam and RELOAD this page!");
-            sb.append("<p><p><a href=\"\">Reload...</a>");
+            sb.append("<p><p><a href=\"\">Reload...</a></b>");
         }
 
         return sb.toString();
     }
 
     /**
-     * Exam web-page for students. Available during the exam. Loads the
+     * This method shows exam web-page for students.That is available during the exam. Loads the
      * questions and displays a web form with HTML input elements and Submit
      * button.
      *
-     * @param userCode
-     * @param request
-     * @param response
-     * @return
-     * @throws IOException
+     * @param userCode user unique code
+     * @param request user sent data
+     * @param response server response to user data
+     * @return page in which users are redirected according to situation.
+     * @see IOException
      */
     @RequestMapping(value = "/exam", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public String exam(@RequestParam(value = "userCode", required = true) String userCode,
                        HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        System.err.println(request.getHeader("Referer"));
+        log.info(request.getHeader("Referer"));
         StringBuilder sb = new StringBuilder();
 
         if (request.getHeader("Referer") != null) {
@@ -210,7 +230,6 @@ public class ServerController {
                                     + "\">").append(answer).append("<br>\n");
                             break;
                         case SEQUENCE:
-                            // TODO: solve concept of sequence question
                             sb.append("<input type=\"text\" name=\"q" + alQuestions.indexOf(q) + MULTI_FLAG + "\" value=\""
                                     + answer + "\">").append(answer).append("<br>\n");
                             break;
@@ -235,13 +254,16 @@ public class ServerController {
 
     /**
      * Pages to be protected by requiring the authorization:
-     * <p>
-     * /admin (and set's cookie if it's absent)
-     * /admin/startExam
-     * /admin/stopExam
-     * /admin/showResults
-     * /admin/exportQuestions
-     * /admin/importQuestions
+     * <p> Admin pages:
+     * <p>/admin (and set's cookie if it's absent)
+     * <p>/admin/startExam
+     * <p>/admin/stopExam
+     * <p>/admin/showResults
+     * <p>/admin/exportQuestions
+     * <p>/admin/importQuestions
+     * @param request user sent data
+     * @param response server response to user data
+     * @return true if user is admin, false if isn't
      */
     private boolean authorizeAdmin(HttpServletRequest request, HttpServletResponse response) {
         // check if admin is logged in
@@ -249,7 +271,7 @@ public class ServerController {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie c : cookies) {
-                System.err.println("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
+                log.info("Cookie:" + c + "--" + c.getName() + "---" + c.getValue());
                 if (c.getName().equals(COOKIE_NAME) && c.getValue().equals(COOKIE_VALUE)) {
                     isAdmin = true;
                 }
@@ -272,11 +294,11 @@ public class ServerController {
     @ResponseBody
     public String adminPage(@RequestParam(value = "authkey", required = false) String authKey,
                             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__adminPage() called");
+        log.info("ServerController__adminPage() called");
 
         StringBuilder sb = new StringBuilder();
         sb.append(BOOTSTRAP_CSS);
-        sb.append("<h1 align=\"center\">Administrator Page</h1>");
+        sb.append("<h1 align=\"center\">Administrator Panel</h1>");
 
         // check if admin is logged in
         boolean isAdmin = authorizeAdmin(request, response);
@@ -297,6 +319,9 @@ public class ServerController {
         }
 
         if (qm.isExamStarted()) {
+            sb.append("<hr><h2 class=\"text-warning\">");
+            sb.append(qm.getExamEnds());
+            sb.append("</h2><p>");
             sb.append("<p> Exam is in progress. Press Stop button when the time is over.");
             sb.append("<form method=\"get\" action=\"/admin/stopExam\">");
             sb.append("<input class=\"btn btn-warning\" type=\"submit\" value=\"Stop Exam\" />");
@@ -377,14 +402,21 @@ public class ServerController {
         return sb.toString();
     }
 
+    /**
+     * This method if called redirects to {@link bootcamp.kcv2.util.DBAdapter.ResultTableAdapter#clearResultTable  clearTable}.
+     * @param request user sent data
+     * @param response server response to user data
+     * @return notification if table was cleared or not
+     * @see IOException
+     */
     @RequestMapping(value = "/admin/clearAnswers", method = RequestMethod.GET)
     @ResponseBody
     public String clearAnswers(
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__exportQuestions() called");
+        log.info("ServerController__exportQuestions() called");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+            log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
             return "";
         } else {
@@ -398,13 +430,19 @@ public class ServerController {
         }
     }
 
+    /**
+     * This method export Question from admin panel.
+     * @param request user sent data
+     * @param response server response to user data
+     * @see IOException
+     */
     @RequestMapping(value = "/admin/exportQuestions", method = RequestMethod.GET)
     public void exportQuestions(
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__exportQuestions() called");
+       log.info("ServerController__exportQuestions() called");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+            log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
             return;
         }
@@ -424,19 +462,26 @@ public class ServerController {
         while ((str = br.readLine()) != null) {
             out.println(str);
         }
-
+        br.close();
         out.flush();
         out.close();
     }
 
+    /**
+     * This method import file into data base from admin panel.
+     * @param request user sent data
+     * @param response server response to user data
+     * @see IOException
+     * @see ServletException
+     */
     @RequestMapping(value = "/admin/importQuestions", produces = "text/html;charset=UTF-8", method = RequestMethod.POST)
     public void importQuestions(
             HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.err.println("ServerController__importQuestions() called");
-        System.err.println("___Received input file:");
+        log.info("ServerController__importQuestions() called");
+        log.info("___Received input file:");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+            log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
             return;
         }
@@ -450,15 +495,12 @@ public class ServerController {
 
         FileWriter fr = new FileWriter(f);
 
-        // TO-DO 1: process POST body and generate .txt file on the server side
         int i;
         while ((i = ir.read()) != -1) {
-//            System.err.print((char) i);
             fr.write(i);
         }
         fr.close();
 
-        // TO-DO 2: call FileAdapter method to load the information into DB
         FileAdapter fa = new FileAdapter();
         try {
             fa.importQuestion(IMPORT_EXPORT_FILENAME);
@@ -466,21 +508,27 @@ public class ServerController {
             e.printStackTrace();
         }
 
-        // TODO 3: even better: pass InputStream variable as a parameter to ImportAllQuestions() method
-
         response.sendRedirect("/admin");
     }
 
+    /**
+     * This method provides start exam function in admin panel.
+     * @param bundleName question set for exam.
+     * @param examDuration time for completing exam
+     * @param request user sent data
+     * @param response server response to user data
+     * @see IOException
+     */
     @RequestMapping(value = "/admin/startExam", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public void startExam(
             @RequestParam(value = "bundlename", required = false) String bundleName,
             @RequestParam(value = "examduration", required = false) String examDuration,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__startExam() called");
+        log.info("ServerController__startExam() called");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+        	log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
             return;
         }
@@ -493,52 +541,60 @@ public class ServerController {
         }
 
         // if all parameters correct - start exam
-        // TO-DO create startExam() or refine login in setExamStarted();
-        // TO-DO pass the selected topic
         qm.setCurrentQuestionBundle(bundleName);
         qm.setExamDuration(intDuration); // TO-DO request value from Admin
         qm.setExamStarted(true);
 
-        System.err.println("Selected bundle:" + bundleName);
+        log.info("Selected bundle:" + bundleName);
         response.sendRedirect("/admin");
     }
 
     @RequestMapping(value = "/admin/stopExam", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public void stopExam(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__stopExam() called");
+        log.info("ServerController__stopExam() called");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+           log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
             return;
         }
 
-        // TO-DO create stopExam() or refine login in setExamStarted();
-//		qm.stopExam();
         if (qm.isExamStarted()) {
             qm.setExamStarted(false);
         }
         response.sendRedirect("/admin");
     }
 
+    /**
+     * This method provides function in admin panel which can show result.
+     * @param bundleName question set for exam.
+     * @param request user sent data
+     * @param response server response to user data
+     * @return page in which users are redirected according to situation.
+     * @see IOException
+     */
     @RequestMapping(value = "/admin/showResults", produces = "text/html;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     public String showResults(
             @RequestParam(value = "resultbundle", required = true) String bundleName,
             HttpServletRequest request,
             HttpServletResponse response) throws IOException {
-        System.err.println("ServerController__showResults() called");
+       log.info("ServerController__showResults() called");
 
         if (!authorizeAdmin(request, response)) {
-            System.err.println("NOT AUTHORIZED");
+        	log.info("NOT AUTHORIZED");
             response.sendRedirect("/admin");
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(BOOTSTRAP_CSS);
-        sb.append("<a href=\"/admin\">Return to the Admin page</a>");
-        sb.append("<h1>Exam results</h1>");
+        StringBuilder sbFinal = new StringBuilder(); // for finalpage
+        StringBuilder sb = new StringBuilder(); // for detailed table
+        StringBuilder sb2 = new StringBuilder(); // for student summary
+        HashMap<String, Integer> studentSummary = new HashMap<>();
+
+        sbFinal.append(BOOTSTRAP_CSS);
+        sbFinal.append("<a href=\"/admin\">Return to the Admin page</a>");
+        sbFinal.append("<h1>Exam results</h1>");
 
         // TO-DO display results of all students
         sb.append("<table class=\"table table-hover\"><tr>");
@@ -552,11 +608,22 @@ public class ServerController {
         sb.append("<th>Answer Correct?</th>");
         sb.append("</tr>");
         sb.append("</thead>");
+
+        int questionCount = 0;
+        String firstUser = "";
+
         ResultSet rs = DBAdapter.ResultTableAdapter.pullResultsBundle(bundleName);
         try {
             while (rs.next()) {
                 sb.append("<tr>");
-                sb.append("<td>" + rs.getString(DBContract.ResultTable.USER_CODE_KEY) + "</td>");
+                String userCode = rs.getString(DBContract.ResultTable.USER_CODE_KEY);
+                if (firstUser.equals("")) {
+                    firstUser = userCode;
+                    questionCount++;
+                } else if (firstUser.equals(userCode)) {
+                    questionCount++;
+                }
+                sb.append("<td>" + userCode + "</td>");
                 sb.append("<td>" + bundleName + "</td>");
                 sb.append("<td>" + rs.getInt(DBContract.ResultTable.QUESTION_ID_KEY) + "</td>");
                 sb.append("<td>" + rs.getString(DBContract.QuestionTable.QUESTION_TEXT_KEY) + "</td>");
@@ -564,7 +631,6 @@ public class ServerController {
 
                 sb.append("<td>");
                 ArrayList<String> studentAnswers = Question.answersSpliter(rs.getString(DBContract.ResultTable.ANSWER_KEY));
-//                sb.append("<td>" + rs.getString(DBContract.ResultTable.ANSWER_KEY) + "</td>");
                 for (String str : studentAnswers) {
                     sb.append(str + "<br>");
                 }
@@ -572,30 +638,81 @@ public class ServerController {
 
                 sb.append("<td>");
                 ArrayList<String> answers = Question.answersSpliter(rs.getString(DBContract.QuestionTable.ANSWERS_COR_KEY));
-//                sb.append("raw data from db: " + rs.getString(DBContract.QuestionTable.ANSWERS_COR_KEY));
-//                sb.append("<br>answersSplitter data: ");
                 for (String str : answers) {
                     sb.append(str + "<br>");
                 }
                 sb.append("</td>");
 
-                String correct;
-                if (rs.getInt(DBContract.ResultTable.IS_CORRECT_KEY) == 1) {
-                    correct = "<p class=\"text-success\">yes</p>";
+                String correctText;
+                int correctNum = rs.getInt(DBContract.ResultTable.IS_CORRECT_KEY);
+                if (correctNum == 1) {
+                    correctText = "<p class=\"text-success\">yes</p>";
                 } else {
-                    correct = "<p class=\"text-danger\">NO</p>";
+                    correctText = "<p class=\"text-danger\">NO</p>";
                 }
-                sb.append("<td>" + correct + "</td>");
+                sb.append("<td>" + correctText + "</td>");
                 sb.append("</tr>");
+
+                if (studentSummary.get(userCode) != null) {
+                    // increment correct answers
+                    studentSummary.put(userCode, studentSummary.get(userCode) + correctNum);
+                } else {
+                    // add new object and it's counter of right answers
+                    studentSummary.put(userCode, correctNum);
+                }
             }
+            log.info(studentSummary);
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         sb.append("</table>");
-        sb.append("<p><a href=\"/admin\">Return to the Admin page</a>");
-        return sb.toString();
+
+        // forming second table with student summary
+        sb2.append("<table class=\"table table-hover\"><tr>");
+        sb2.append("<thead class=\"thead-light\">");
+        sb2.append("<th>Student</th>");
+        sb2.append("<th>Correct Answers</th>");
+        sb2.append("<th>Total Answers in the test</th>");
+        sb2.append("<th>Ratio, %</th>");
+        sb2.append("</tr>");
+        sb2.append("</thead>");
+
+        for (String str : studentSummary.keySet()) {
+            sb2.append("<tr>");
+            sb2.append("<td>" + str + "</td>");
+            sb2.append("<td>" + studentSummary.get(str) + "</td>");
+            sb2.append("<td>" + questionCount + "</td>");
+            sb2.append("<td>" + String.format("%3.0f", 100f * studentSummary.get(str) / questionCount) + "</td>");
+            sb2.append("</tr>");
+        }
+
+        sb2.append("</table>");
+
+
+        sbFinal.append("<ul class=\"nav nav-pills\">\n");
+        sbFinal.append("       <li class=\"nav-item\"><a class=\"nav-link active\" data-toggle=\"pill\" href=\"#summary\">Summary</a></li>\n");
+        sbFinal.append("       <li class=\"nav-item\"><a class=\"nav-link\" data-toggle=\"pill\" href=\"#details\">Details</a></li>\n");
+        sbFinal.append("</ul><p>\n\n");
+            sbFinal.append("<div class=\"tab-content\">\n");
+                sbFinal.append("<div id=\"summary\" class=\"tab-pane fade show active\">\n");
+                    sbFinal.append("<h3>Summary</h3>");
+                    sbFinal.append("<p>"+sb2.toString()+"</p>");
+                sbFinal.append("</div>\n");
+                sbFinal.append("<div id=\"details\" class=\"tab-pane fade\">");
+                    sbFinal.append("<h3>Details</h3>");
+                    sbFinal.append("<p>"+sb.toString()+"</p>");
+                sbFinal.append("</div>\n");
+            sbFinal.append("</div>");
+
+
+        sbFinal.append("<p><a href=\"/admin\">Return to the Admin page</a>");
+        sbFinal.append("<!-- Optional JavaScript -->");
+        sbFinal.append("<!-- jQuery first, then Popper.js, then Bootstrap JS -->");
+        sbFinal.append("<script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>");
+        sbFinal.append("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\" crossorigin=\"anonymous\"></script>");
+        sbFinal.append("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+
+        return sbFinal.toString();
     }
 }

@@ -5,6 +5,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 
+ * This class turns on server.
+ *
+ */
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan

@@ -4000,3 +4000,336 @@ ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result
 2018-07-26 15:24:10 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
 2018-07-26 15:24:11 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
 ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:12:53 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 16:12:56 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:13:06 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:13:09 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:13:19 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:13:24 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 2' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:13:27 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 3' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 16:22:53 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=pxzx Answers=[Pavel, super()===, True===, Inheritance===Composition===Association===Aggregation, interface method===]
+2018-07-26 16:23:20 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=aaaa Answers=[UML, super()===, False, Inheritance===Composition===, abstract class===]
+2018-07-26 16:23:37 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=dddd Answers=[, , True===, Inheritance===Composition===Association===, abstract method===]
+2018-07-26 16:42:35 INFO  kcv2.QuestionManager run:155 - Time's up!
+2018-07-26 17:01:00 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:01:05 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:01:58 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3881b884
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1185b0b7
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ec70725
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2082e0e4
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@15f229e8
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ce33e9
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1f86f7da
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@28b4b10e
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2c0d7099
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@74844f8a
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5c945ee7
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@51a5a8ba
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@16eb93af
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@404566e7
+2018-07-26 17:02:00 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3ed87b6e
+2018-07-26 17:02:00 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:02:03 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:02:12 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 17:02:12 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:02:13 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:02:13 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:02:13 INFO  test.QuestionManagerTest test05submitResults:93 - TEST
+2018-07-26 17:02:13 INFO  test.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 17:02:13 INFO  test.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 17:02:13 INFO  test.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 17:02:14 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:02:15 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 17:06:54 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2f8f5f62
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1068e947
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7dc222ae
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@aecb35a
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5fcd892a
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@8b87145
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6483f5ae
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@b9afc07
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@382db087
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73d4cc9e
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@80169cf
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5427c60c
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@15bfd87
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@543e710e
+2018-07-26 17:06:55 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@57f23557
+2018-07-26 17:06:55 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:06:57 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:07:04 INFO  server.ServerController exam:169 - 
+2018-07-26 17:07:04 INFO  server.ServerController exam:169 - http://localhost:8080/
+2018-07-26 17:07:04 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:04 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@34876abc--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:04 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:04 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@6fb12443--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  server.ServerController sendAnswers:87 - JUni
+2018-07-26 17:07:05 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 17:07:05 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:07:05 INFO  server.ServerController startExam:489 - ServerController__startExam() called
+2018-07-26 17:07:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@7fe0b3c7--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  server.ServerController startExam:509 - Selected bundle:Knowledge check 1
+2018-07-26 17:07:05 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1b930301--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  server.ServerController startExam:489 - ServerController__startExam() called
+2018-07-26 17:07:05 INFO  server.ServerController startExam:492 - NOT AUTHORIZED
+2018-07-26 17:07:05 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:05 INFO  server.ServerController stopExam:516 - ServerController__stopExam() called
+2018-07-26 17:07:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@3beba554--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@204bcdfe--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  server.ServerController stopExam:516 - ServerController__stopExam() called
+2018-07-26 17:07:05 INFO  server.ServerController stopExam:519 - NOT AUTHORIZED
+2018-07-26 17:07:05 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:05 INFO  server.ServerController showResults:538 - ServerController__showResults() called
+2018-07-26 17:07:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1fac94ab--KCV2Admin---KCV2AdminYES
+2018-07-26 17:07:05 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:07:05 INFO  server.ServerController showResults:619 - {pxzx=3, aaaa=2, dddd=2}
+2018-07-26 17:07:05 INFO  server.ServerController showResults:538 - ServerController__showResults() called
+2018-07-26 17:07:05 INFO  server.ServerController showResults:541 - NOT AUTHORIZED
+2018-07-26 17:07:05 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:07:06 INFO  server.ServerController showResults:619 - {pxzx=3, aaaa=2, dddd=2}
+2018-07-26 17:07:06 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:07:06 INFO  test.QuestionManagerTest test05submitResults:93 - TEST
+2018-07-26 17:07:06 INFO  test.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 17:07:06 INFO  test.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 17:07:06 INFO  test.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 17:07:07 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:07:08 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 17:08:05 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:08:05 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@2d794398--KCV2Admin---KCV2AdminYES
+2018-07-26 17:08:05 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:08:10 INFO  server.ServerController startExam:489 - ServerController__startExam() called
+2018-07-26 17:08:10 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1d4b4e9e--KCV2Admin---KCV2AdminYES
+2018-07-26 17:08:10 INFO  server.ServerController startExam:509 - Selected bundle:Knowledge check 1
+2018-07-26 17:08:10 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:08:10 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1bd42b6a--KCV2Admin---KCV2AdminYES
+2018-07-26 17:08:27 INFO  server.ServerController exam:169 - http://localhost:8080/
+2018-07-26 17:08:33 INFO  server.ServerController exam:169 - http://localhost:8080/
+2018-07-26 17:08:39 INFO  server.ServerController sendAnswers:87 - ppoj
+2018-07-26 17:08:39 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=ppoj Answers=[, parent()===, True===, Inheritance===Composition===Association===, interface method===]
+2018-07-26 17:09:06 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:09:06 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@461494f7--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:07 INFO  server.ServerController stopExam:516 - ServerController__stopExam() called
+2018-07-26 17:09:07 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@6f2a41ee--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:07 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:09:07 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@159fd78--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:10 INFO  server.ServerController showResults:538 - ServerController__showResults() called
+2018-07-26 17:09:10 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@138cb347--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:10 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:09:10 INFO  server.ServerController showResults:619 - {pxzx=3, aaaa=2, dddd=2, ppoj=1}
+2018-07-26 17:09:33 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:09:33 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1513c660--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:42 INFO  server.ServerController clearAnswers:398 - ServerController__exportQuestions() called
+2018-07-26 17:09:42 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1a70e0c4--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:44 INFO  server.ServerController adminPage:286 - ServerController__adminPage() called
+2018-07-26 17:09:44 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1f090e68--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:45 INFO  server.ServerController showResults:538 - ServerController__showResults() called
+2018-07-26 17:09:45 INFO  server.ServerController authorizeAdmin:263 - Cookie:javax.servlet.http.Cookie@1122dd22--KCV2Admin---KCV2AdminYES
+2018-07-26 17:09:45 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:09:45 INFO  server.ServerController showResults:619 - {}
+2018-07-26 17:16:56 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2f8f5f62
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1068e947
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7dc222ae
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@aecb35a
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5fcd892a
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@8b87145
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6483f5ae
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@b9afc07
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@382db087
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73d4cc9e
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@80169cf
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5427c60c
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@15bfd87
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@543e710e
+2018-07-26 17:16:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@57f23557
+2018-07-26 17:16:58 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:17:00 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:17:07 INFO  server.ServerController exam:178 - 
+2018-07-26 17:17:07 INFO  server.ServerController exam:178 - http://localhost:8080/
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@5931828a--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@18afa0e4--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController sendAnswers:96 - JUni
+2018-07-26 17:17:07 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 17:17:07 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:17:07 INFO  server.ServerController startExam:528 - ServerController__startExam() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7e2fbcb7--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController startExam:548 - Selected bundle:Knowledge check 1
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@3c2abb4f--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController startExam:528 - ServerController__startExam() called
+2018-07-26 17:17:07 INFO  server.ServerController startExam:531 - NOT AUTHORIZED
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController stopExam:555 - ServerController__stopExam() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@495f2ef0--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@575547ba--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  server.ServerController stopExam:555 - ServerController__stopExam() called
+2018-07-26 17:17:07 INFO  server.ServerController stopExam:558 - NOT AUTHORIZED
+2018-07-26 17:17:07 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:07 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@38152812--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:07 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:08 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:08 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:08 INFO  server.ServerController showResults:586 - NOT AUTHORIZED
+2018-07-26 17:17:08 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:08 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:08 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:08 INFO  test.QuestionManagerTest test05submitResults:93 - TEST
+2018-07-26 17:17:08 INFO  test.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 17:17:08 INFO  test.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 17:17:08 INFO  test.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 17:17:09 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:17:10 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 17:17:34 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:34 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7dd8cff--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:34 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:17:36 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:36 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@ef75274--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:36 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:36 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:38 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:38 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7d71e449--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:39 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:39 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7c0a7e3c--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:39 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 2' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:40 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:41 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:41 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@38405bd9--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:42 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:42 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@707a8522--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:42 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 3' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:43 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:44 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:17:44 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@1314b6a6--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:45 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:17:45 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7f3263d--KCV2Admin---KCV2AdminYES
+2018-07-26 17:17:45 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:17:46 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:17:52 INFO  util.DBAdapter <init>:38 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2f8f5f62
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1068e947
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7dc222ae
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@aecb35a
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5fcd892a
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@8b87145
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6483f5ae
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@b9afc07
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@382db087
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73d4cc9e
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@80169cf
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5427c60c
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@15bfd87
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@543e710e
+2018-07-26 17:17:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@57f23557
+2018-07-26 17:17:54 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:17:56 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 17:18:03 INFO  server.ServerController exam:178 - 
+2018-07-26 17:18:03 INFO  server.ServerController exam:178 - http://localhost:8080/
+2018-07-26 17:18:03 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:03 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@3efed3b1--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:03 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:03 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7bc5330d--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  server.ServerController sendAnswers:96 - JUni
+2018-07-26 17:18:04 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 17:18:04 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:18:04 INFO  server.ServerController startExam:528 - ServerController__startExam() called
+2018-07-26 17:18:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@54eeed68--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  server.ServerController startExam:548 - Selected bundle:Knowledge check 1
+2018-07-26 17:18:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7e7a2a3f--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  server.ServerController startExam:528 - ServerController__startExam() called
+2018-07-26 17:18:04 INFO  server.ServerController startExam:531 - NOT AUTHORIZED
+2018-07-26 17:18:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:04 INFO  server.ServerController stopExam:555 - ServerController__stopExam() called
+2018-07-26 17:18:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@47c32979--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@343fc83e--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  server.ServerController stopExam:555 - ServerController__stopExam() called
+2018-07-26 17:18:04 INFO  server.ServerController stopExam:558 - NOT AUTHORIZED
+2018-07-26 17:18:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:04 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:18:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@cb94ec9--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:04 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:18:04 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:18:04 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:18:04 INFO  server.ServerController showResults:586 - NOT AUTHORIZED
+2018-07-26 17:18:04 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:18:04 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:18:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:05 INFO  test.QuestionManagerTest test05submitResults:93 - TEST
+2018-07-26 17:18:05 INFO  test.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 17:18:05 INFO  test.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 17:18:05 INFO  test.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 17:18:05 INFO  kcv2.QuestionManager resultsCheck:203 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 17:18:06 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 17:18:25 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:25 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@be9bdce--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:27 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:18:27 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@4dd3935c--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:27 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:18:27 INFO  server.ServerController showResults:664 - {}
+2018-07-26 17:18:28 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:28 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@1c0cbf2b--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:29 INFO  server.ServerController startExam:528 - ServerController__startExam() called
+2018-07-26 17:18:29 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@7ac3bb9--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:29 INFO  server.ServerController startExam:548 - Selected bundle:Knowledge check 1
+2018-07-26 17:18:29 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:29 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@328b0fac--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:35 INFO  server.ServerController exam:178 - http://localhost:8080/
+2018-07-26 17:18:42 INFO  server.ServerController sendAnswers:96 - dddd
+2018-07-26 17:18:42 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=dddd Answers=[, parent()===, True===, , ]
+2018-07-26 17:18:53 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:53 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@441348f8--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:55 INFO  server.ServerController stopExam:555 - ServerController__stopExam() called
+2018-07-26 17:18:55 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@2296ead--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:55 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:18:55 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@74a71c18--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:56 INFO  server.ServerController showResults:583 - ServerController__showResults() called
+2018-07-26 17:18:56 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@9716995--KCV2Admin---KCV2AdminYES
+2018-07-26 17:18:56 INFO  util.DBAdapter pullResultsBundle:261 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 17:18:57 INFO  server.ServerController showResults:664 - {dddd=1}
+2018-07-26 17:19:04 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:19:04 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@40aaf618--KCV2Admin---KCV2AdminYES
+2018-07-26 17:19:07 INFO  server.ServerController clearAnswers:416 - ServerController__exportQuestions() called
+2018-07-26 17:19:07 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@33f085f6--KCV2Admin---KCV2AdminYES
+2018-07-26 17:19:09 INFO  server.ServerController adminPage:297 - ServerController__adminPage() called
+2018-07-26 17:19:09 INFO  server.ServerController authorizeAdmin:274 - Cookie:javax.servlet.http.Cookie@41214241--KCV2Admin---KCV2AdminYES
