@@ -127,7 +127,7 @@ public class FileAdapter  {
 //	public static void main (String[] args) throws FileNotFoundException, IOException, SQLException {
 //		FileAdapter util = new FileAdapter();
 //		//util.exportQuestions("question.txt");
-//		util.importQuestion("blank.txt");
+//		util.importQuestion("all_questionsWORKING(1).txt");
 //		
 //	}
 }

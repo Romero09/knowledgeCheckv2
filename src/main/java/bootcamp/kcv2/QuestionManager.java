@@ -35,6 +35,7 @@ public class QuestionManager {
 		isExamStarted = examStarted;
 		if (!examStarted) {
 			timer.cancel();
+			answers = new ArrayList<>();
 		}
 		if (examStarted) {
 			examTimer();
@@ -145,7 +146,7 @@ public class QuestionManager {
 		Date time = cal.getTime();
 		qmSingleton.timer = new Timer();
 		qmSingleton.timer.schedule(qmSingleton.new RemindTask(), time);
-		qmSingleton.setExamEnds("Exam will ends at: " + sdf.format(cal.getTime()));
+		qmSingleton.setExamEnds("Exam will end at: " + sdf.format(cal.getTime()));
 	}
 
     /**
