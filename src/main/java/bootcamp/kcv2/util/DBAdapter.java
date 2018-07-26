@@ -7,14 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import bootcamp.kcv2.util.DBContract.QuestionTable;
-import bootcamp.kcv2.util.DBContract.ResultTable;
 import bootcamp.kcv2.Question;
 import bootcamp.kcv2.Result;
+import bootcamp.kcv2.util.DBContract.QuestionTable;
+import bootcamp.kcv2.util.DBContract.ResultTable;
 
 /**
  * This class helps to manage Database.
