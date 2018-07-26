@@ -2867,3 +2867,169 @@ Caused by: java.net.SocketException: Broken pipe (Write failed)
 	at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3634)
 	... 61 more
 2018-07-25 17:20:46 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:24:34 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:26:18 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:26:33 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 09:27:31 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 09:30:35 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:31:31 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 09:31:56 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 09:34:33 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:34:35 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:34:35 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:34:35 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:34:36 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-26 09:34:39 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-26 09:35:35 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:35:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:35:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:35:37 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:35:37 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:36:48 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:36:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:36:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:36:49 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:36:49 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:41:13 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:41:14 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:41:14 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:41:14 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:41:15 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:44:29 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:45:17 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:45:41 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:45:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:45:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:45:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:45:44 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-26 09:45:47 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-26 09:49:18 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:50:38 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:50:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 09:50:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 09:50:41 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 09:50:41 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-26 09:50:45 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-26 09:51:00 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:51:38 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:52:05 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:52:29 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:53:32 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:53:50 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:54:31 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:55:55 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:57:02 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 09:57:48 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:00:05 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:00:25 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:01:05 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:02:13 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:04:17 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:04:49 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:05:10 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:05:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:06:58 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:07:42 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:09:08 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:10:02 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:10:05 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:10:38 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:10:41 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:10:41 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:13:46 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:13:49 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:13:49 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:13:50 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 10:13:50 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 10:13:50 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 10:13:50 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:45 - [0, 1, 2]
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:50 - [0, 1, 2]
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:55 - [1, 1, 1]
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:60 - [3, 3, 3]
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:65 - 4
+2018-07-26 10:13:55 INFO  bootcamp.KCV2.ResultTest test02resultList:66 - [3, 3, 3]
+2018-07-26 10:19:33 INFO  bootcamp.kcv2.util.DBAdapter <init>:40 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:19:35 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:19:36 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:19:36 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 10:19:36 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 10:19:36 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 10:19:36 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 10:20:49 INFO  bootcamp.kcv2.util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:20:52 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:20:52 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:20:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 10:20:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 10:20:53 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 10:20:53 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 10:27:28 INFO  bootcamp.kcv2.util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:27:30 INFO  bootcamp.kcv2.QuestionManager submitResults:112 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 10:27:30 INFO  bootcamp.kcv2.QuestionManager resultsCheck:206 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 10:27:31 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:27:31 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:27:32 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 10:27:32 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 10:27:32 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 10:27:33 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 10:27:33 INFO  bootcamp.kcv2.QuestionManager resultsCheck:206 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.QuestionManager getQuestionBundle:125 - User has already participated.
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1f041bad
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5afe1da5
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4fb8d97a
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@eebbe46
+2018-07-26 10:27:35 INFO  bootcamp.kcv2.util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 10:27:36 INFO  bootcamp.kcv2.util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 10:29:39 INFO  bootcamp.kcv2.util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 10:29:41 INFO  bootcamp.kcv2.QuestionManager submitResults:112 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 10:29:41 INFO  bootcamp.kcv2.QuestionManager resultsCheck:206 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 10:29:41 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:29:42 INFO  bootcamp.kcv2.util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='SQL' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 10:29:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:75 - AE58
+2018-07-26 10:29:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:76 - [A]
+2018-07-26 10:29:43 INFO  bootcamp.KCV2.QuestionManagerTest test05submitResults:77 - []
+2018-07-26 10:29:43 INFO  bootcamp.KCV2.QuestionManagerTest test06pullBundleNames:87 - [SQL]
+2018-07-26 10:29:44 INFO  bootcamp.kcv2.QuestionManager resultsCheck:206 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.QuestionManager getQuestionBundle:125 - User has already participated.
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@12c448c
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@48214788
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@728ce413
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7d143e6e
+2018-07-26 10:29:45 INFO  bootcamp.kcv2.util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 10:29:46 INFO  bootcamp.kcv2.util.FileAdapter importQuestion:73 - testfile.txt

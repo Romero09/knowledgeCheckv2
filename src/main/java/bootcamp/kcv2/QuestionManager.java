@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.log4j.Logger;
+
+import bootcamp.kcv2.util.DBAdapter;
 import bootcamp.kcv2.util.DBAdapter.QuestionTableAdapter;
 import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
 
@@ -16,7 +19,7 @@ import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
 public class QuestionManager {
 
 	private boolean isExamStarted = false;
-
+	public static final Logger log = Logger.getLogger(QuestionManager.class);
 	private static QuestionManager qmSingleton = new QuestionManager();
 	private ArrayList<StudentAnswerSheet> answers = new ArrayList<>();
 	private String currentQuestionBundle;
@@ -105,11 +108,8 @@ public class QuestionManager {
 		if(!isExamStarted()){
 			return "You are late. Exam ended at " + examEnds;
 		}
-
 		answers.remove(0);
-
-		System.err.println("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
-
+		log.info("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
 		return resultsCheck(userCode, answers, alQuestions);
 	}
 
@@ -122,7 +122,7 @@ public class QuestionManager {
 	public ArrayList<Question> getQuestionBundle(String userCode) {
 		for (StudentAnswerSheet studentAnswerSheet : answers) {
 			if (studentAnswerSheet.getStudentCode().equals(userCode)) {
-				System.err.println("User has already participated.");
+				log.info("User has already participated.");
 				return null;
 			}
 		}
@@ -155,7 +155,7 @@ public class QuestionManager {
 	class RemindTask extends TimerTask {
 		public void run() {
 			isExamStarted = false;
-			System.out.println("Time's up!");
+			log.info("Time's up!");
 			qmSingleton.timer.cancel(); // Terminate the timer thread
 		}
 	}
@@ -203,7 +203,7 @@ public class QuestionManager {
 		String correctAnswer = "";
 
 		if (answers.size() != alQuestions.size()) {
-			System.err.println("Something went wrong Answers array size doesent match Question array size");
+			log.info("Something went wrong Answers array size doesent match Question array size");
 		}
 		for (int i = 0; i < answers.size(); i++) {
 			correctAnswer = Question.answersGrouping(alQuestions.get(i).getCorrectAnswers());

@@ -20,48 +20,41 @@ import bootcamp.kcv2.QuestionManager;
 import bootcamp.kcv2.util.DBAdapter;
 import bootcamp.kcv2.util.FileAdapter;
 
+/**
+ * 
+ * This class provides Testing for class {@link bootcamp.kcv2.util.FileAdapter
+ * FileAdapter}.
+ *
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FileAdapterTest {
-	
+
 	final Logger log = Logger.getLogger(FileAdapterTest.class);
 	public static FileAdapter adapter;
 
+	/**
+	 * This method tries to create new file where data are stored.
+	 */
 	@Test
 	public final void Test01fileAdapterTest() {
 		adapter = new FileAdapter();
-		
-		assertTrue(adapter.exportQuestions("testfile.txt"));
-		DBAdapter.ResultTableAdapter.clearResultTable();
+
+		assertTrue("Export faild", adapter.exportQuestions("testfile.txt"));
 		try {
 			assertTrue(adapter.importQuestion("testfile.txt"));
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * This method tries to import data from txt file.
+	 */
 	@Test
 	public final void Test02fileAdapterTest() {
-		
+
 		try {
-			assertFalse(adapter.importQuestion("blank.txt"));
+			assertTrue("Import failed", adapter.importQuestion("testfile.txt"));
 		} catch (IOException | SQLException e) {
-			e.printStackTrace();
 		}
 	}
-	
-	
-	@Test
-	public final void Test03pullResultsBundle() {
-		
-		
-		ArrayList<String> a = DBAdapter.ResultTableAdapter.pullResultsBundle("SQL");
-		ArrayList<String> b = new ArrayList<String>();
-		assertEquals(a,b);
-			
-	}
-	
-	
-	
-
-	}
-
+}

@@ -100,46 +100,5 @@ public class Result {
 	public void setIsCorrect(ArrayList<Integer> isCorrect) {
 		this.isCorrect = isCorrect;
 	}
-/**
- * This method gives information to student about his test session.
- * @param resultArray student answers sheet
- * @return test session results
- */
-	//TODO Delete if not needed
-	public static ArrayList<String> resultList(ArrayList<ArrayList<String>> resultArray) {
-
-		ArrayList<String> resultList = new ArrayList<>();
-		String currentCode = "";
-		int currentScore = 0;
-		String oneResult = "";
-		String resultAnswers = "";
-
-		for (int i = 0; i < resultArray.size(); i++) {
-			if (currentCode.equals("")) {
-				currentCode = resultArray.get(i).get(0);
-				currentScore = Integer.valueOf(resultArray.get(i).get(1));
-				resultAnswers = resultArray.get(i).get(1);
-			} else {
-				if (currentCode.equals(resultArray.get(i).get(0))) {
-					resultAnswers = resultAnswers + "|" + resultArray.get(i).get(1);
-					currentScore = currentScore + Integer.valueOf(resultArray.get(i).get(1));
-					if (i == resultArray.size() - 1) {
-						oneResult = "Student: " + currentCode + " Result: " + resultAnswers + " Total: "+ String.valueOf(currentScore);
-						resultList.add(oneResult);
-						currentCode = resultArray.get(i).get(0);
-						currentScore = Integer.valueOf(resultArray.get(i).get(1));
-						resultAnswers = resultArray.get(i).get(1);
-					}
-				} else {
-					oneResult = "Student: " + currentCode + " Result: " + resultAnswers + " Total: "+ String.valueOf(currentScore);
-					resultList.add(oneResult);
-					currentCode = resultArray.get(i).get(0);
-					currentScore = Integer.valueOf(resultArray.get(i).get(1));
-					resultAnswers = resultArray.get(i).get(1);
-				}
-			}
-		}
-		return resultList;
-	}
 
 }

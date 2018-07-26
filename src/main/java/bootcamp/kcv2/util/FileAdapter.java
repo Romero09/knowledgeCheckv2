@@ -42,7 +42,7 @@ public class FileAdapter  {
 		try {
 			PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 			for (Question q : alq) {
-				System.err.println(q);
+				log.info("Readed line" + q);
 				writer.println(ID+q.getId());
 			    writer.println(QUESTION_BUNDLE+q.getSet());
 			    writer.println(QUESTION_ID+q.getSetId());
@@ -70,7 +70,7 @@ public class FileAdapter  {
 	 * @return Array List of object Question.
 	 */
 	public boolean importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
-		System.out.println(fileName);
+		log.info(fileName);
 		
 		ArrayList<Question> alq = new ArrayList<>();
 		alq.clear();

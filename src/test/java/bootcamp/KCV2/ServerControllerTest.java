@@ -52,7 +52,7 @@ public class ServerControllerTest extends Mockito {
 		manager.setExamStarted(true);
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port, String.class);
 		assertEquals("Exam not started, check isExamStarted.", true,
-				entity.getBody().contains("Enter your student code:"));
+				entity.getBody().contains("Enter your <b>4-character</b> student code"));
 	}
 
 	@Test
@@ -84,7 +84,7 @@ public class ServerControllerTest extends Mockito {
 		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/admin?authkey=1234", HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
 		assertEquals("Acces not granted or exam not started.", true, entity.getBody()
-				.contains("<h1>Administrator Page</h1><p><form method=\"get\" action=\"/admin/startExam\">"));
+				.contains("Exam Administration"));
 
 	}
 
@@ -95,7 +95,6 @@ public class ServerControllerTest extends Mockito {
 		headers.add("Referer", "http://localhost:8080/");
 		entity = new TestRestTemplate().exchange("http://localhost:" + port + "/sendAnswers?userCode=JUni",
 				HttpMethod.POST, new HttpEntity<Object>(headers), String.class);
-		// System.out.println(entity.getBody());
 		assertEquals("Results should be submitted.", true, entity.getBody().contains("Results have been submitted"));
 		manager.setExamStarted(false);
 
@@ -107,21 +106,19 @@ public class ServerControllerTest extends Mockito {
 		headers.add("Referer", "http://localhost:8080/");
 		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
 		entity = new TestRestTemplate().exchange("http://localhost:" + port 
-				+ "/admin/startExam?bundlename="+manager.getCurrentQuestionBundle(), HttpMethod.GET,
+				+ "/admin/startExam?bundlename="+manager.getCurrentQuestionBundle()+"&examduration=20", HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
-		
 		assertEquals("Acces not granted or exam not started.", true,
-				entity.getBody().contains("Exam is in progress. Press Stop button when the time is over."));
+				entity.getBody().contains("Exam is in progress"));
 		
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
 				+ "/admin/startExam?bundlename="+manager.getCurrentQuestionBundle(), String.class);
-		System.out.println(entity.getBody());
-		assertEquals("Acces shouldnt be granted.", true,
+		assertEquals("Acces should not been granted.", true,
 				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
 	}
 	
 	@Test
-	public final void test06StartExam() throws Exception {
+	public final void test06StoptExam() throws Exception {
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
 		headers.add("Referer", "http://localhost:8080/");
 		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
@@ -130,11 +127,10 @@ public class ServerControllerTest extends Mockito {
 				new HttpEntity<Object>(headers), String.class);
 		
 		assertEquals("Acces not granted or exam not started.", true,
-				entity.getBody().contains("<h1>Administrator Page</h1><p><form method=\"get\" action=\"/admin/startExam\">"));
+				entity.getBody().contains("Exam Administration"));
 		
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
 				+ "/admin/stopExam", String.class);
-		System.out.println(entity.getBody());
 		assertEquals("Acces shouldnt be granted.", true,
 				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
 	}
@@ -145,14 +141,14 @@ public class ServerControllerTest extends Mockito {
 		headers.add("Referer", "http://localhost:8080/");
 		headers.add("Cookie", "KCV2Admin=KCV2AdminYES");
 		entity = new TestRestTemplate().exchange("http://localhost:" + port 
-				+ "/admin/showResults", HttpMethod.GET,
+				+ "/admin/showResults?resultbundle="+manager.pullBundleNames().get(0), HttpMethod.GET,
 				new HttpEntity<Object>(headers), String.class);
 		assertEquals("Result show not working.", true,
 				entity.getBody().contains("Return to the Admin page"));
 		
 		entity = new TestRestTemplate().getForEntity("http://localhost:" + port 
-				+ "/admin/showResults", String.class);
-		System.out.println(entity.getBody());
+				+ "/admin/showResults?resultbundle="+manager.pullBundleNames().get(0), String.class);
+		
 		assertEquals("Acces shouldnt be granted.", true,
 				entity.getBody().contains("Please provide password and authorize as Test Administrator"));
 		

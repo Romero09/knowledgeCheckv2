@@ -10,9 +10,20 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import bootcamp.kcv2.Result;
+
+/**
+ * 
+ * 
+ * This class provides Testing for class {@link bootcamp.kcv2.Result  Result}.
+ *
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ResultTest {
 	final Logger log = Logger.getLogger(ResultTest.class);
+	
+	/**
+	 * This method tries to get set results.
+	 */
 	@Test
 	public final void test01resultSetGet() {
 		Result result = new Result(0, null, null, 0, null, null);
@@ -35,35 +46,4 @@ public class ResultTest {
 		assertEquals(isCorrect,result.getIsCorrect());
 	}
 
-	@Test
-	public final void test02resultList() {
-		ArrayList<ArrayList<String>> resultArray = new ArrayList<ArrayList<String>>() ;
-		ArrayList<String> resultList1 = new ArrayList<>();
-		resultList1.add("0");
-		resultList1.add("1");
-		resultList1.add("2");
-		log.info(resultList1);
-		ArrayList<String> resultList2 = new ArrayList<>();
-		resultList2.add("0");
-		resultList2.add("1");
-		resultList2.add("2");
-		log.info(resultList2);
-		ArrayList<String> resultList3 = new ArrayList<>();
-		resultList3.add("1");
-		resultList3.add("1");
-		resultList3.add("1");
-		log.info(resultList3);
-		ArrayList<String> resultList4= new ArrayList<>();
-		resultList4.add("3");
-		resultList4.add("3");
-		resultList4.add("3");
-		log.info(resultList4);
-		resultArray.add(resultList1);
-		resultArray.add(resultList2);
-		resultArray.add(resultList3);
-		resultArray.add(resultList4);
-		log.info(resultArray.size());
-		log.info(resultArray.get(3));
-		Result.resultList(resultArray);
-	}
 }

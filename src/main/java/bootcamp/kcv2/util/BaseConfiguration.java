@@ -16,10 +16,4 @@ public class BaseConfiguration {
 	// pass - PxDpiUiom35Dk5RLpMDD
 	// webpanel - http://www.phpmyadmin.co/sql.php?db=sql2248369
 
-	// LOCAL SERVER FOR noobs
-	// public static final String DB_SERVER = "localhost";
-	// public static final String DB_NAME = "kcv2";
-	// public static final String DB_USER = "root";
-	// public static final String DB_PASSWORD = "abcd1234";
-
 }

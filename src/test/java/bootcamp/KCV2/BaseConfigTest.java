@@ -6,8 +6,15 @@ import org.junit.Test;
 
 import bootcamp.kcv2.util.BaseConfiguration;
 
+/**
+ * 
+ * Testing connection parameters to database.
+ *
+ */
 public class BaseConfigTest {
-
+	/**
+	 * This method checks connection parameters.
+	 */
 	@Test
 	public final void test01() {
 		String AUTH_KEY = BaseConfiguration.AUTH_KEY;

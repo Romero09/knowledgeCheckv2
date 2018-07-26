@@ -15,11 +15,19 @@ import bootcamp.kcv2.QuestionManager;
 import bootcamp.kcv2.QuestionTypes;
 import bootcamp.kcv2.StudentAnswerSheet;
 
+/**
+ * 
+ * This class provides Testing for class {@link bootcamp.kcv2.QuestionManager
+ * QuestionManager}.
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class QuestionManagerTest {
 	final Logger log = Logger.getLogger(QuestionManagerTest.class);
 	public static QuestionManager manager;
 
+	/**
+	 * This method tests if exam is started.
+	 */
 	@Test
 	public final void test01isExamStarted() {
 		try {
@@ -30,6 +38,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method try to start exam.
+	 */
 	@Test
 	public final void test02setExamStarted() {
 		try {
@@ -42,6 +53,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tries to get current question bundle.
+	 */
 	@Test
 	public final void test03getCurrentQuestionBundle() {
 		try {
@@ -52,6 +66,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tries to set current question bundle.
+	 */
 	@Test
 	public final void test04setCurrentQuestionBundle() {
 		try {
@@ -62,6 +79,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tests submitting.
+	 */
 	@Test
 	public final void test05submitResults() {
 		try {
@@ -79,6 +99,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tries to get bundle names.
+	 */
 	@Test
 	public final void test06pullBundleNames() {
 		try {
@@ -100,6 +123,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tries to insert question.
+	 */
 	@Test
 	public final void test071insertQuestion() {
 		try {
@@ -111,6 +137,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method checks results.
+	 */
 	@Test
 	public final void test08resultsCheck() {
 		try {
@@ -119,21 +148,25 @@ public class QuestionManagerTest {
 			String userCode = "AE58";
 			manager.resultsCheck(userCode, answers, alQuestions);
 			for (int i = 0; i < alQuestions.size(); i++) {
-				if(i == 0){
-					answers.add(Question.answersGrouping(alQuestions.get(i).getCorrectAnswers())+"-WRONG");
+				if (i == 0) {
+					answers.add(Question.answersGrouping(alQuestions.get(i).getCorrectAnswers()) + "-WRONG");
 					continue;
 				}
-				if(i == alQuestions.size()-1){
-					answers.add(Question.answersGrouping(alQuestions.get(i).getCorrectAnswers())+"===");
+				if (i == alQuestions.size() - 1) {
+					answers.add(Question.answersGrouping(alQuestions.get(i).getCorrectAnswers()) + "===");
 					continue;
 				}
 				answers.add(Question.answersGrouping(alQuestions.get(i).getCorrectAnswers()));
 			}
-			Assert.assertEquals(manager.resultsCheck(userCode, answers, alQuestions), "2/3 66%, Wrong answers on questions: [1].");
+			Assert.assertEquals(manager.resultsCheck(userCode, answers, alQuestions),
+					"3/4 75%, Wrong answers on questions: [1].");
 		} catch (Exception e) {
 		}
 	}
 
+	/**
+	 * This method sets exam duration.
+	 */
 	@Test
 	public final void test09setExamDuration() {
 		try {
@@ -144,6 +177,9 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method tries to get question bundle.
+	 */
 	@Test
 	public final void test10getQuestionBundle() {
 		try {
@@ -154,18 +190,22 @@ public class QuestionManagerTest {
 		}
 	}
 
+	/**
+	 * This method test questions types.
+	 */
 	@Test
 	public final void test11QuestionTypes() {
 
 		QuestionTypes[] a = QuestionTypes.values();
 		assertTrue(a != null);
 	}
-	
+
+	/**
+	 * Same as {@link #test11QuestionTypes() testQuestionTypes}
+	 */
 	@Test
 	public final void test12QuestionTypes() {
-
-		Question test = new Question(0, null, 0, null,"MULTI_CHOICE", null, null);
-		
+		Question test = new Question(0, null, 0, null, "MULTI_CHOICE", null, null);
 		ArrayList<String> answersVar = new ArrayList<String>();
 		ArrayList<String> correctAnswers = new ArrayList<String>();
 		answersVar.add("A");
@@ -177,10 +217,7 @@ public class QuestionManagerTest {
 		test.setQuestionType("SINGLE_CHOICE");
 		test.setAnswersVar(answersVar);
 		test.setCorrectAnswers(correctAnswers);
-		
-		
+
 	}
-	
-	
 
 }
