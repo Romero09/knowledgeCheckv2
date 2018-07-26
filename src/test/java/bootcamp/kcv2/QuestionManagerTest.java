@@ -9,11 +9,10 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
 import bootcamp.kcv2.Question;
 import bootcamp.kcv2.QuestionManager;
 import bootcamp.kcv2.QuestionTypes;
-import bootcamp.kcv2.StudentAnswerSheet;
+
 
 /**
  * 
@@ -46,9 +45,9 @@ public class QuestionManagerTest {
 		try {
 			manager = QuestionManager.getInstance();
 			manager.setExamStarted(true);
-			Assert.assertEquals(manager.isExamStarted(), true);
+			Assert.assertEquals( true, manager.isExamStarted());
 			manager.setExamStarted(false);
-			Assert.assertEquals(manager.isExamStarted(), false);
+			Assert.assertEquals(false, manager.isExamStarted());
 		} catch (Exception e) {
 		}
 	}
@@ -61,7 +60,7 @@ public class QuestionManagerTest {
 		try {
 			manager = QuestionManager.getInstance();
 			manager.setCurrentQuestionBundle("JUnitTest");
-			Assert.assertEquals(manager.getCurrentQuestionBundle(), "JUnitTest");
+			Assert.assertEquals("JUnitTest", manager.getCurrentQuestionBundle());
 		} catch (Exception e) {
 		}
 	}
@@ -117,6 +116,7 @@ public class QuestionManagerTest {
 			manager = QuestionManager.getInstance();
 			manager.setCurrentQuestionBundle("JUnitTest");
 			ArrayList<Question> questions = manager.pullQuestionBundle(manager.getCurrentQuestionBundle());
+			assertNotNull(questions);
 
 		} catch (Exception e) {
 		}
@@ -131,6 +131,8 @@ public class QuestionManagerTest {
 			manager = QuestionManager.getInstance();
 
 			ArrayList<Question> questions = manager.pullQuestionBundle(manager.getCurrentQuestionBundle());
+			assertNotNull(questions);
+
 
 		} catch (Exception e) {
 		}
@@ -170,7 +172,7 @@ public class QuestionManagerTest {
 		try {
 			manager = QuestionManager.getInstance();
 			manager.setExamDuration(20);
-			Assert.assertEquals(manager.getExamDuration(), 20);
+			Assert.assertEquals(20,manager.getExamDuration());
 		} catch (Exception e) {
 		}
 	}

@@ -6,12 +6,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import org.apache.log4j.Logger;
-
-import bootcamp.kcv2.util.DBAdapter;
 import bootcamp.kcv2.util.DBAdapter.QuestionTableAdapter;
-import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;;
+import bootcamp.kcv2.util.DBAdapter.ResultTableAdapter;
 
 /**
  * This class helps to manage Questions.
@@ -107,7 +104,7 @@ public class QuestionManager {
 	public String submitResults(String userCode, ArrayList<String> answers, ArrayList<Question> alQuestions) {
 		
 		if(!isExamStarted()){
-			return "You are late. Exam ended at " + examEnds;
+			return "You are late. Exam already finished.";
 		}
 		answers.remove(0);
 		log.info("QuestionManager: Submitted results:\n\t" + "User=" + userCode + " Answers=" + answers);
@@ -137,7 +134,6 @@ public class QuestionManager {
 
 	/**
 	 * This method sets timer for exam.
-	 * @return remaining time until the end of the exam
 	 */
 	public static void examTimer() {
 		Calendar cal = Calendar.getInstance();

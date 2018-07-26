@@ -3526,3 +3526,440 @@ ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result
 ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
 2018-07-26 12:47:57 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
 ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:05:09 INFO  kcv2.QuestionManager run:159 - Time's up!
+2018-07-26 13:17:22 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:17:23 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:17:23 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:17:23 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:17:24 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:17:24 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:17:25 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5b4b6f3b
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@32d46229
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@35198da3
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7f08c343
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7fba492e
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6eeeb9da
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@17635531
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2e488e45
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@396519b
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3e0e3048
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7bc4ac3e
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@504274c1
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@16e5c19f
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@59263f7b
+2018-07-26 13:17:25 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7ddcd3d
+2018-07-26 13:17:25 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:17:28 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:17:37 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:17:37 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:17:38 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:17:38 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:20:45 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:20:47 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:20:47 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:20:47 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:20:47 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:20:48 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:20:49 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@799d4f69
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49c43f4e
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@290dbf45
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@12028586
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@17776a8
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69a10787
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d127a61
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2bbaf4f0
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@11c20519
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@365c30cc
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@701fc37a
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4148db48
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@282003e1
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7fad8c79
+2018-07-26 13:20:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@71a794e5
+2018-07-26 13:20:49 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:20:52 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:20:59 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:20:59 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:21:00 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:21:00 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:32:48 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@e45f292
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5f2108b5
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@31a5c39e
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3f49dace
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1e397ed7
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@490ab905
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@56ac3a89
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@27c20538
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@72d818d1
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e06451e
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@59494225
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e1567f1
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5cb9f472
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@cb644e
+2018-07-26 13:32:49 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@13805618
+2018-07-26 13:32:49 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:32:52 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:32:54 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:32:54 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:32:54 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:32:54 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:32:55 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:32:56 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:33:00 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:33:00 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:33:00 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:33:01 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:33:55 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@e45f292
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5f2108b5
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@31a5c39e
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3f49dace
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1e397ed7
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@490ab905
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@56ac3a89
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@27c20538
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@72d818d1
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e06451e
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@59494225
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e1567f1
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5cb9f472
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@cb644e
+2018-07-26 13:33:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@13805618
+2018-07-26 13:33:57 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:33:59 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:34:02 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:34:02 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:34:02 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:34:03 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:34:03 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:34:04 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:34:09 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:34:09 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:34:10 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:34:10 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:47:49 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:48:18 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:54:25 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@e45f292
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5f2108b5
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@31a5c39e
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3f49dace
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1e397ed7
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@490ab905
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@56ac3a89
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@27c20538
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@72d818d1
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e06451e
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@59494225
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6e1567f1
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5cb9f472
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@cb644e
+2018-07-26 13:54:26 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@13805618
+2018-07-26 13:54:26 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:54:30 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:54:35 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:54:35 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:54:35 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:54:35 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:54:35 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:54:37 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:54:41 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:54:41 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:54:42 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:54:42 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:56:45 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 13:56:46 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 13:56:46 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:56:50 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 13:56:54 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 13:56:54 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 13:56:54 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 13:56:54 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 13:56:54 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:56:56 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 13:57:00 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 13:57:00 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 13:57:01 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 13:57:01 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:01:10 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:01:11 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:01:11 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:01:14 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:01:17 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:01:17 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:01:17 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:01:17 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:01:18 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:01:19 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:01:24 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:01:24 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:01:24 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:01:25 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:06:57 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:06:58 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:06:58 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:07:01 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:07:04 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:07:04 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:07:04 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:07:04 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:07:05 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:07:06 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:07:11 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:07:11 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:07:11 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:07:12 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:09:28 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:09:30 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:09:30 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:09:35 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:09:39 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:09:39 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:09:39 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:09:39 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:09:40 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:09:41 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:09:47 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:09:47 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:09:48 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:09:49 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:16:37 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:16:39 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:16:39 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:16:39 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:16:39 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:16:40 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:16:41 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4daead88
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@43aa767
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5b3c11ce
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@46573cfe
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7ead0b51
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2f7d8a7c
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@14745c3c
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6bbb3280
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7dda5b25
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@1390a415
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3a5b1af7
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4932d580
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@7603cfc2
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@60256d1b
+2018-07-26 14:16:41 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@24b4f4a
+2018-07-26 14:16:41 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:16:44 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:16:54 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:16:54 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:16:54 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:16:54 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:25:52 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:25:54 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:25:54 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:25:57 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:26:00 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:26:00 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:26:00 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:26:00 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:26:01 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:26:02 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:26:06 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:26:06 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:26:07 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:26:07 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:36:33 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:36:34 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:36:34 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:36:37 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:36:40 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:36:40 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:36:40 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:36:40 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:36:40 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:36:41 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:36:46 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:36:46 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:36:47 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:36:47 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:40:42 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:40:44 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:40:44 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:40:47 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:40:49 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:40:49 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:40:49 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:40:50 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:40:50 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:40:51 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:40:57 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:40:57 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:40:57 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:40:58 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:42:56 INFO  util.DBAdapter <init>:39 - jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369?autoReconnect=true&useSSL=false
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@ff5b51f
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@25bbe1b6
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5702b3b1
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@69ea3742
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4b952a2d
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@3159c4b8
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@73846619
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@4bec1f0c
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@29ca901e
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5649fd9b
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@6adede5
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@2d928643
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@5025a98f
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@49993335
+2018-07-26 14:42:57 INFO  util.FileAdapter exportQuestions:45 - Readed linebootcamp.kcv2.Question@20322d26
+2018-07-26 14:42:57 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:43:00 INFO  util.FileAdapter importQuestion:73 - testfile.txt
+2018-07-26 14:43:03 INFO  kcv2.QuestionManagerTest test05submitResults:93 - AE58
+2018-07-26 14:43:03 INFO  kcv2.QuestionManagerTest test05submitResults:94 - [A]
+2018-07-26 14:43:03 INFO  kcv2.QuestionManagerTest test05submitResults:95 - []
+2018-07-26 14:43:03 INFO  kcv2.QuestionManagerTest test06pullBundleNames:108 - [Knowledge check 1, Knowledge check 2, Knowledge check 3]
+2018-07-26 14:43:03 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:43:04 INFO  kcv2.QuestionManager getQuestionBundle:123 - User has already participated.
+2018-07-26 14:43:10 INFO  kcv2.QuestionManager submitResults:110 - QuestionManager: Submitted results:
+	User=JUni Answers=[]
+2018-07-26 14:43:10 INFO  kcv2.QuestionManager resultsCheck:204 - Something went wrong Answers array size doesent match Question array size
+2018-07-26 14:43:10 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;
+2018-07-26 14:43:10 INFO  util.DBAdapter pullResultsBundle:262 - select Result.userCode, Result.questionId, Question.questionText, Question.answersCor, Result.answer, Result.isCorrect from Result INNER JOIN Question 
+ON (Question.questionBundle=Result.questionBundle AND Question.questionId=Result.questionId) WHERE Result.questionBundle='Knowledge check 1' ORDER BY Result.userCode, Result.questionBundle, Result.questionId ASC;

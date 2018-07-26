@@ -1,23 +1,12 @@
 package bootcamp.kcv2;
 
 import static org.junit.Assert.*;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.validation.constraints.AssertTrue;
-
 import org.apache.log4j.Logger;
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
-
-import bootcamp.kcv2.QuestionManager;
-import bootcamp.kcv2.util.DBAdapter;
 import bootcamp.kcv2.util.FileAdapter;
 
 /**

@@ -67,7 +67,7 @@ public class FileAdapter  {
 	 * @see FileNotFoundException
 	 * @see IOException
 	 * @see SQLException
-	 * @return Array List of object Question.
+	 * @return true if file was imported, false if file is empty
 	 */
 	public boolean importQuestion(String fileName) throws FileNotFoundException, IOException, SQLException {
 		log.info(fileName);

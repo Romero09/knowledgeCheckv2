@@ -53,8 +53,8 @@
 			<artifactId>spring-boot-maven-plugin</artifactId>
 			<version>1.3.6.RELEASE</version>
 		</dependency>
-		
-		
+
+
 		<!-- AssertJ Swing tests -->
 		<dependency>
 			<groupId>org.assertj</groupId>
@@ -73,15 +73,15 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>1.3.6.RELEASE</version>
 		</dependency>
-		
-				<!-- Mockito mock objects -->
+
+		<!-- Mockito mock objects -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.10.19</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -91,6 +91,24 @@
 	</dependencies>
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>
+								bootcamp.kcv2.server.ServerApplication
+							</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 			<plugin>
 				<!-- Set explicitly Java version for compiler -->
