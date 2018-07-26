@@ -1,4 +1,4 @@
-package bootcamp.KCV2;
+package bootcamp.kcv2;
 
 import static org.junit.Assert.*;
 
@@ -52,29 +52,28 @@ public class QuestionManagerTest {
 		} catch (Exception e) {
 		}
 	}
-
-	/**
-	 * This method tries to get current question bundle.
-	 */
-	@Test
-	public final void test03getCurrentQuestionBundle() {
-		try {
-			manager = QuestionManager.getInstance();
-			manager.getCurrentQuestionBundle();
-			Assert.assertNotNull(manager.getCurrentQuestionBundle());
-		} catch (Exception e) {
-		}
-	}
-
+	
 	/**
 	 * This method tries to set current question bundle.
 	 */
 	@Test
-	public final void test04setCurrentQuestionBundle() {
+	public final void test03setCurrentQuestionBundle() {
 		try {
 			manager = QuestionManager.getInstance();
-			manager.setCurrentQuestionBundle("test4");
-			Assert.assertEquals(manager.getCurrentQuestionBundle(), "test4");
+			manager.setCurrentQuestionBundle("JUnitTest");
+			Assert.assertEquals(manager.getCurrentQuestionBundle(), "JUnitTest");
+		} catch (Exception e) {
+		}
+	}
+	
+	/**
+	 * This method tries to get current question bundle.
+	 */
+	@Test
+	public final void test04getCurrentQuestionBundle() {
+		try {
+			manager = QuestionManager.getInstance();
+			Assert.assertNotNull(manager.getCurrentQuestionBundle());
 		} catch (Exception e) {
 		}
 	}
@@ -116,7 +115,7 @@ public class QuestionManagerTest {
 	public final void test07insertQuestion() {
 		try {
 			manager = QuestionManager.getInstance();
-			manager.setCurrentQuestionBundle("test4");
+			manager.setCurrentQuestionBundle("JUnitTest");
 			ArrayList<Question> questions = manager.pullQuestionBundle(manager.getCurrentQuestionBundle());
 
 		} catch (Exception e) {

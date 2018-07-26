@@ -28,7 +28,7 @@ public class QuestionManager {
 	private String examEnds;
 
 	/**
-	 * This method starts exam timer.
+	 * This method changes state of exam boolean and starts exam timer.
 	 * @param examStarted false if exam isn't started, true if exam is started
 	 */
 	public void setExamStarted(boolean examStarted) {

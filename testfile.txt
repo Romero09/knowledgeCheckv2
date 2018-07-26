@@ -1,4 +1,4 @@
-ID:915
+ID:1065
 QUESTION BUNDLE:Knowledge check 1
 QUESTION ID:1
 QUESTION TEXT:Abbreviation used for Unified Modeling Language (use UPPERCASE letters)
@@ -6,7 +6,7 @@ QUESTION TYPE:OPEN
 ANSWER VARIANTS:
 ANSWER CORRECT:UML
 ===========================================================================
-ID:916
+ID:1066
 QUESTION BUNDLE:Knowledge check 1
 QUESTION ID:2
 QUESTION TEXT:You use the _____ to call a superclass's constructor or method (Select the best option for free space)
@@ -14,7 +14,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:parent()===super()===static()===main()
 ANSWER CORRECT:super()
 ===========================================================================
-ID:917
+ID:1067
 QUESTION BUNDLE:Knowledge check 1
 QUESTION ID:3
 QUESTION TEXT:A class can extend at most one abstract class.
@@ -22,7 +22,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:True===False
 ANSWER CORRECT:True
 ===========================================================================
-ID:918
+ID:1068
 QUESTION BUNDLE:Knowledge check 1
 QUESTION ID:4
 QUESTION TEXT:Types of relationships In Object Oriented Programming (select all options)
@@ -30,7 +30,7 @@ QUESTION TYPE:MULTI_CHOICE
 ANSWER VARIANTS:Inheritance===Composition===Association===Aggregation
 ANSWER CORRECT:Inheritance===Composition===Association===Aggregation
 ===========================================================================
-ID:919
+ID:1069
 QUESTION BUNDLE:Knowledge check 1
 QUESTION ID:5
 QUESTION TEXT:A method that is declared without an implementation is... (Select the best option)
@@ -38,7 +38,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:abstract class===interface method===abstract method===interface
 ANSWER CORRECT:abstract method
 ===========================================================================
-ID:920
+ID:1070
 QUESTION BUNDLE:Knowledge check 2
 QUESTION ID:1
 QUESTION TEXT:try block must have ___ block
@@ -46,7 +46,7 @@ QUESTION TYPE:OPEN
 ANSWER VARIANTS:
 ANSWER CORRECT:catch
 ===========================================================================
-ID:921
+ID:1071
 QUESTION BUNDLE:Knowledge check 2
 QUESTION ID:2
 QUESTION TEXT:Event, which occurs during the execution of a program, that disrupts the normal flow of the program's instructions. (Select the best option)
@@ -54,7 +54,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:error===disconnect===exception===explosion
 ANSWER CORRECT:exception
 ===========================================================================
-ID:922
+ID:1072
 QUESTION BUNDLE:Knowledge check 2
 QUESTION ID:3
 QUESTION TEXT:Try block can have only one catch block
@@ -62,7 +62,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:True===False
 ANSWER CORRECT:False
 ===========================================================================
-ID:923
+ID:1073
 QUESTION BUNDLE:Knowledge check 2
 QUESTION ID:4
 QUESTION TEXT:Which of the blocks are not optional? (select all options)
@@ -70,7 +70,7 @@ QUESTION TYPE:MULTI_CHOICE
 ANSWER VARIANTS:catch===try===finally
 ANSWER CORRECT:catch===try
 ===========================================================================
-ID:924
+ID:1074
 QUESTION BUNDLE:Knowledge check 2
 QUESTION ID:5
 QUESTION TEXT:Select the correct collection initialization:
@@ -78,7 +78,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:List list = new List();===List<String> list = new LinkedList<String>();===Collection set = new Set();===List<Integer> = new LinkedList<Integer>();
 ANSWER CORRECT:List list = new List();
 ===========================================================================
-ID:925
+ID:1075
 QUESTION BUNDLE:Knowledge check 3
 QUESTION ID:1
 QUESTION TEXT:Constructor can be synchronized (type True or False)
@@ -86,7 +86,7 @@ QUESTION TYPE:OPEN
 ANSWER VARIANTS:
 ANSWER CORRECT:True
 ===========================================================================
-ID:926
+ID:1076
 QUESTION BUNDLE:Knowledge check 3
 QUESTION ID:2
 QUESTION TEXT:Which function is used to understand if file is actually created
@@ -94,7 +94,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:exists()===created()===available()
 ANSWER CORRECT:exists()
 ===========================================================================
-ID:927
+ID:1077
 QUESTION BUNDLE:Knowledge check 3
 QUESTION ID:3
 QUESTION TEXT:System.out.print() is a method, which write to standard input.
@@ -102,7 +102,7 @@ QUESTION TYPE:SINGLE_CHOICE
 ANSWER VARIANTS:True===False
 ANSWER CORRECT:False
 ===========================================================================
-ID:928
+ID:1078
 QUESTION BUNDLE:Knowledge check 3
 QUESTION ID:4
 QUESTION TEXT:Which of the blocks are not optional? (select all options)
@@ -110,7 +110,7 @@ QUESTION TYPE:MULTI_CHOICE
 ANSWER VARIANTS:catch===try===finally
 ANSWER CORRECT:catch===try
 ===========================================================================
-ID:929
+ID:1079
 QUESTION BUNDLE:Knowledge check 3
 QUESTION ID:5
 QUESTION TEXT:Write in sequence  the correct collection initialization:  a)List() b)new c)List d)list =

@@ -1,4 +1,4 @@
-package bootcamp.KCV2;
+package bootcamp.kcv2;
 
 import static org.junit.Assert.assertEquals;
 

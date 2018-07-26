@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mysql5-164d5ebc9c5-3946937f87cecbfb" provider="mysql" driver="mysql5" name="MySQL - sql2248369" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="sql2.freemysqlhosting.net" port="3306" server="" database="sql2248369" url="jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2248369" user="sql2248369" password="CydeYUp0FVdl8w==" home="/usr" type="dev">
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="port" value="22"/>
+				<property name="implementation" value="jsch"/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="CONFIG" id="mysql_ssl" enabled="false" save-password="false">
+				<property name="ssl.public.key.retrieve" value="false"/>
+				<property name="ssl.verify.server" value="true"/>
+				<property name="ssl.require" value="false"/>
+			</network-handler>
+		</connection>
+	</data-source>
+	<filters/>
+</data-sources>
