@@ -6,6 +6,6 @@ July-2018 Accenture Java Bootcamp part
 #### Project Members
 * Denis Gaponov (PM)
 * Deniss Sutugins
-* Pavels 
+* Pavels Vetlugins
 * Dmitrijs Klujevs
 * ...add yourself and merge :)
