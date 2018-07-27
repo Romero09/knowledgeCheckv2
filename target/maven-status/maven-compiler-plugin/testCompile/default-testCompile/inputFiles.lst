@@ -1,6 +1,6 @@
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/ServerControllerTest.java
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/FileAdapterTest.java
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/QuestionManagerTest.java
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/ResultTest.java
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/StudentAnswerSheetTest.java
-/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/BaseConfigTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/QuestionManagerTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/ServerControllerTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/StudentAnswerSheetTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/ResultTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/FileAdapterTest.java
+/home/student/workspace/KCV2/src/test/java/bootcamp/kcv2/test/BaseConfigTest.java

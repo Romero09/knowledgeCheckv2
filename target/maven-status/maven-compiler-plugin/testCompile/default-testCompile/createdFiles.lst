@@ -1,6 +1,6 @@
-bootcamp/kcv2/QuestionManagerTest.class
-bootcamp/kcv2/StudentAnswerSheetTest.class
-bootcamp/kcv2/ResultTest.class
-bootcamp/kcv2/FileAdapterTest.class
-bootcamp/kcv2/BaseConfigTest.class
-bootcamp/kcv2/ServerControllerTest.class
+bootcamp/kcv2/test/StudentAnswerSheetTest.class
+bootcamp/kcv2/test/ServerControllerTest.class
+bootcamp/kcv2/test/BaseConfigTest.class
+bootcamp/kcv2/test/FileAdapterTest.class
+bootcamp/kcv2/test/QuestionManagerTest.class
+bootcamp/kcv2/test/ResultTest.class
